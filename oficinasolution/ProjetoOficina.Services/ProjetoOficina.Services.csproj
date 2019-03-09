@@ -106,9 +106,12 @@
   <ItemGroup>
     <Compile Include="App_Start\SwaggerConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Perfil\PerfilUsuarioModel.cs" />
+    <Compile Include="Models\Usuario\UsuarioCadastroModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -121,8 +124,18 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Controllers\" />
-    <Folder Include="Models\" />
+    <ProjectReference Include="..\ProjetoOficina.DAL\ProjetoOficina.DAL.csproj">
+      <Project>{69128468-8AA1-441E-BCF6-7993307C0970}</Project>
+      <Name>ProjetoOficina.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ProjetoOficina.Entidades\ProjetoOficina.Entidades.csproj">
+      <Project>{03620865-CBE0-4DFD-8EDD-07DC8D4BB190}</Project>
+      <Name>ProjetoOficina.Entidades</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ProjetoOficina.Util\ProjetoOficina.Util.csproj">
+      <Project>{548955F6-657D-4E9A-9366-4EF1BF4AD512}</Project>
+      <Name>ProjetoOficina.Util</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
