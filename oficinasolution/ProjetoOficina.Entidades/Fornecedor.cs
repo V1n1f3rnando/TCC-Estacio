@@ -18,6 +18,9 @@ namespace ProjetoOficina.Entidades
         public string Observacao { get; set; }
         public DateTime DataCadastro { get; set; }
 
+        //Relacionamento
+        public List<Produto> Produtos { get; set; }
+
         public Fornecedor(int idFornecedor, string nome, string cNPJ, string email, string telefone, string site, string ramo, DateTime dataCadastro, string observacao)
         {
             IdFornecedor = idFornecedor;

@@ -16,7 +16,7 @@ namespace ProjetoOficina.Entidades
         public DateTime DataSaida { get; set; }
 
         //Relacionamento
-        public List<Veiculo> Veiculos { get; set; }
+        public Veiculo Veiculo { get; set; }
         public List<Colaborador> Colaboradors { get; set; }
     }
 }

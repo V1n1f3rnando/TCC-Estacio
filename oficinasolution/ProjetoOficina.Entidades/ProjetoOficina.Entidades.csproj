@@ -46,12 +46,15 @@
     <Compile Include="Fornecedor.cs" />
     <Compile Include="HistoricoVeiculo.cs" />
     <Compile Include="Perfil.cs" />
+    <Compile Include="Produto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tipos\Estado.cs" />
     <Compile Include="Tipos\StatusFuncionario.cs" />
     <Compile Include="Tipos\Turno.cs" />
+    <Compile Include="Tipos\TipoVenda.cs" />
     <Compile Include="Usuario.cs" />
     <Compile Include="Veiculo.cs" />
+    <Compile Include="Venda.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

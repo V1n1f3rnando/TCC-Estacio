@@ -26,6 +26,7 @@ namespace ProjetoOficina.Entidades
         //Relacionamento
         public Usuario Usuario { get; set; }
         public Endereco Endereco { get; set; }
+        public List<Venda> Vendas { get; set; }
 
         public Colaborador(int id, string nome, string profissão, Turno turno, decimal salario, string telefone, string email, decimal horasDeTarbalho, StatusFuncionario statusFuncionario, DateTime ferias, DateTime dataDesligamento, DateTime dataNascimento, DateTime dataAdmissao)
         {

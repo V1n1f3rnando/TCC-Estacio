@@ -17,6 +17,6 @@ namespace ProjetoOficina.Entidades
 
         //Relacionamento
         public Cliente Cliente { get; set; }
-        public List<HistoricoVeiculo> historicoVeiculos { get; set; }
+        public List<HistoricoVeiculo> HistoricoVeiculos { get; set; }
     }
 }
