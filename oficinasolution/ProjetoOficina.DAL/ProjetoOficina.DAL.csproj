@@ -55,12 +55,20 @@
     <Compile Include="Generics\GenericRepository.cs" />
     <Compile Include="Mappings\PerfilMap.cs" />
     <Compile Include="Mappings\UsuarioMap.cs" />
+    <Compile Include="Migrations\201903090753590_alteracaomdf.cs" />
+    <Compile Include="Migrations\201903090753590_alteracaomdf.Designer.cs">
+      <DependentUpon>201903090753590_alteracaomdf.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\PerfilRepository.cs" />
     <Compile Include="Repositories\UsuarioRepository.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201903090753590_alteracaomdf.resx">
+      <DependentUpon>201903090753590_alteracaomdf.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
