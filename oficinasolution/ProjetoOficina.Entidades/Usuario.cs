@@ -21,7 +21,9 @@ namespace ProjetoOficina.Entidades
 
         //Relacionamento...
         public List<Perfil> Perfis { get; set; }
-        public Colaborador Colaborador { get; set; }
+        public List<Colaborador> Colaborador { get; set; }
+        public List<Cliente> Clientes { get; set; }
+
 
     }
 }
