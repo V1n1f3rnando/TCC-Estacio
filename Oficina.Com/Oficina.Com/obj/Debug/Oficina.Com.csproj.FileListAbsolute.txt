@@ -457,3 +457,5 @@ C:\Users\INFISCO001011\Source\Repos\oficinarepository\Oficina.Com\Oficina.Com\ob
 C:\Users\INFISCO001011\Source\Repos\oficinarepository\Oficina.Com\Oficina.Com\obj\Debug\Oficina.Com.csproj.CopyComplete
 C:\Users\INFISCO001011\Source\Repos\oficinarepository\Oficina.Com\Oficina.Com\obj\Debug\Oficina.Com.dll
 C:\Users\INFISCO001011\Source\Repos\oficinarepository\Oficina.Com\Oficina.Com\obj\Debug\Oficina.Com.pdb
+C:\Users\Fernando\Source\Repos\oficinarepository\Oficina.Com\Oficina.Com\bin\Oficina.com.Dados.dll
+C:\Users\Fernando\Source\Repos\oficinarepository\Oficina.Com\Oficina.Com\bin\Oficina.com.Dados.pdb

@@ -1,0 +1,6 @@
+C:\Users\Fernando\Source\Repos\oficinarepository\Oficina.Com\Oficina.com.Dados\bin\Debug\Oficina.com.Dados.dll
+C:\Users\Fernando\Source\Repos\oficinarepository\Oficina.Com\Oficina.com.Dados\bin\Debug\Oficina.com.Dados.pdb
+C:\Users\Fernando\Source\Repos\oficinarepository\Oficina.Com\Oficina.com.Dados\obj\Debug\Oficina.com.Dados.csprojAssemblyReference.cache
+C:\Users\Fernando\Source\Repos\oficinarepository\Oficina.Com\Oficina.com.Dados\obj\Debug\Oficina.com.Dados.csproj.CoreCompileInputs.cache
+C:\Users\Fernando\Source\Repos\oficinarepository\Oficina.Com\Oficina.com.Dados\obj\Debug\Oficina.com.Dados.dll
+C:\Users\Fernando\Source\Repos\oficinarepository\Oficina.Com\Oficina.com.Dados\obj\Debug\Oficina.com.Dados.pdb
