@@ -14,5 +14,7 @@ namespace Oficina.Com.Entidades
         public string Bairro { get; set; }
         public string UF { get; set; }
         public string Cep { get; set; }
+
+
     }
 }
