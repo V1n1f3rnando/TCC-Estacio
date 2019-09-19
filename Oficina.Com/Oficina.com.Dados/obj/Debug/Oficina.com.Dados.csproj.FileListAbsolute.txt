@@ -108,3 +108,5 @@ C:\Users\INFISCO001011\source\repos\oficinarepository\Oficina.Com\Oficina.com.Da
 C:\Users\INFISCO001011\source\repos\oficinarepository\Oficina.Com\Oficina.com.Dados\obj\Debug\Oficina.com.Dados.pdb
 C:\Users\INFISCO001011\source\repos\oficinarepository\Oficina.Com\Oficina.com.Dados\obj\Debug\Oficina.com.Dados.Migrations.inicio.resources
 C:\Users\INFISCO001011\source\repos\oficinarepository\Oficina.Com\Oficina.com.Dados\obj\Debug\Oficina.com.Dados.csproj.GenerateResource.cache
+C:\Users\Fernando\Source\Repos\oficinarepository\Oficina.Com\Oficina.com.Dados\obj\Debug\Oficina.com.Dados.Migrations.inicio.resources
+C:\Users\Fernando\Source\Repos\oficinarepository\Oficina.Com\Oficina.com.Dados\obj\Debug\Oficina.com.Dados.csproj.GenerateResource.cache
