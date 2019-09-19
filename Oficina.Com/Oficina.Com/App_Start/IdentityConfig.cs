@@ -10,7 +10,6 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
-using Oficina.com.Dados.Contextos;
 using Oficina.Com.Models;
 
 namespace Oficina.Com

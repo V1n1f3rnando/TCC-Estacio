@@ -5,25 +5,39 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Configuration;
-using System.Data.Entity;
 using Oficina.Com.Entidades;
+using Oficina.com.Dados.Mapeamentos;
 
 namespace Oficina.com.Dados.Contextos
 {
     public class Context : DbContext
     {
         public Context()
-            :base(ConfigurationManager.ConnectionStrings["Banco"].ConnectionString)
+            :base(ConfigurationManager.ConnectionStrings["BancoOficina"].ConnectionString)
         {
 
         }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            //adicionar as classes de mapeamento..
-            //modelBuilder.Configurations.Add(new );
+            //Classe de mapeamento
+            modelBuilder.Configurations.Add(new ClienteMap());
+            modelBuilder.Configurations.Add(new ColaboradorMap());
+            modelBuilder.Configurations.Add(new EnderecoMap());
+            modelBuilder.Configurations.Add(new FornecedorMap());
+            modelBuilder.Configurations.Add(new HistoricoMap());
+            modelBuilder.Configurations.Add(new OrdemServicoMap());
+            modelBuilder.Configurations.Add(new ProdutoMap());
+            modelBuilder.Configurations.Add(new VeiculoMap());
         }
 
-        public DbSet<Cliente> Cliente { get; set; } //LAMBDA..
+        public DbSet<Cliente> Cliente { get; set; } 
+        public DbSet<Colaborador> Colaborador { get; set; } 
+        public DbSet<Endereco> Endereco { get; set; } 
+        public DbSet<Fornecedor> Fornecedor { get; set; } 
+        public DbSet<Historico> Historico { get; set; } 
+        public DbSet<OrdemServico> OrdemServico { get; set; } 
+        public DbSet<Produto> Produto { get; set; } 
+        public DbSet<Veiculo> Veiculo { get; set; } 
     }
 }

@@ -181,6 +181,10 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\BancoOficina.mdf" />
+    <Content Include="App_Data\BancoOficina_log.ldf">
+      <DependentUpon>BancoOficina.mdf</DependentUpon>
+    </Content>
     <Content Include="Assets\images\background\profile-bg.jpg" />
     <Content Include="Assets\images\big\img1.jpg" />
     <Content Include="Assets\images\big\img2.jpg" />
@@ -845,9 +849,7 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Cliente\Consulta.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -860,12 +862,6 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Oficina.com.Dados\Oficina.com.Dados.csproj">
-      <Project>{ab65c2fb-5dac-471e-aa8a-fbf44d6d16e0}</Project>
-      <Name>Oficina.com.Dados</Name>
-    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

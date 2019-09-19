@@ -1,6 +1,7 @@
 ﻿using Oficina.Com.Entidades.Tipos;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,9 +17,12 @@ namespace Oficina.Com.Entidades
         public Cargo Cargo { get; set; }
         public decimal Salario { get; set; }
 
+
+
         //Relacionamento
+        [ForeignKey("IdEndereco")]
         public int IdEndereco { get; set; }
-        public Endereco Endereco { get; set; }
+        public virtual Endereco Endereco { get; set; }
 
     }
 }

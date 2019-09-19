@@ -342,7 +342,6 @@ C:\Users\INFISCO001011\Source\Repos\oficinarepository\Oficina.Com\Oficina.Com\ob
 C:\Users\INFISCO001011\Source\Repos\oficinarepository\Oficina.Com\Oficina.Com\obj\Debug\Oficina.Com.csproj.CopyComplete
 C:\Users\INFISCO001011\Source\Repos\oficinarepository\Oficina.Com\Oficina.Com\obj\Debug\Oficina.Com.dll
 C:\Users\INFISCO001011\Source\Repos\oficinarepository\Oficina.Com\Oficina.Com\obj\Debug\Oficina.Com.pdb
-C:\Users\Fernando\Source\Repos\oficinarepository\Oficina.Com\Oficina.Com\obj\Debug\Oficina.Com.csprojAssemblyReference.cache
 C:\Users\Fernando\Source\Repos\oficinarepository\Oficina.Com\Oficina.Com\obj\Debug\Oficina.Com.csproj.CoreCompileInputs.cache
 C:\Users\Fernando\Source\Repos\oficinarepository\Oficina.Com\Oficina.Com\bin\Oficina.Com.dll.config
 C:\Users\Fernando\Source\Repos\oficinarepository\Oficina.Com\Oficina.Com\bin\Oficina.Com.dll
@@ -411,7 +410,6 @@ C:\Users\Fernando\Source\Repos\oficinarepository\Oficina.Com\Oficina.Com\bin\Mic
 C:\Users\Fernando\Source\Repos\oficinarepository\Oficina.Com\Oficina.Com\bin\Microsoft.Owin.Security.Twitter.dll
 C:\Users\Fernando\Source\Repos\oficinarepository\Oficina.Com\Oficina.Com\bin\Microsoft.Web.Infrastructure.dll
 C:\Users\Fernando\Source\Repos\oficinarepository\Oficina.Com\Oficina.Com\bin\Newtonsoft.Json.dll
-C:\Users\Fernando\Source\Repos\oficinarepository\Oficina.Com\Oficina.Com\bin\Oficina.com.Dados.dll
 C:\Users\Fernando\Source\Repos\oficinarepository\Oficina.Com\Oficina.Com\bin\Owin.dll
 C:\Users\Fernando\Source\Repos\oficinarepository\Oficina.Com\Oficina.Com\bin\System.Web.Helpers.dll
 C:\Users\Fernando\Source\Repos\oficinarepository\Oficina.Com\Oficina.Com\bin\System.Web.Mvc.dll
@@ -421,9 +419,6 @@ C:\Users\Fernando\Source\Repos\oficinarepository\Oficina.Com\Oficina.Com\bin\Sys
 C:\Users\Fernando\Source\Repos\oficinarepository\Oficina.Com\Oficina.Com\bin\System.Web.WebPages.dll
 C:\Users\Fernando\Source\Repos\oficinarepository\Oficina.Com\Oficina.Com\bin\System.Web.WebPages.Razor.dll
 C:\Users\Fernando\Source\Repos\oficinarepository\Oficina.Com\Oficina.Com\bin\WebGrease.dll
-C:\Users\Fernando\Source\Repos\oficinarepository\Oficina.Com\Oficina.Com\bin\Oficina.Com.Entidades.dll
-C:\Users\Fernando\Source\Repos\oficinarepository\Oficina.Com\Oficina.Com\bin\Oficina.com.Dados.pdb
-C:\Users\Fernando\Source\Repos\oficinarepository\Oficina.Com\Oficina.Com\bin\Oficina.com.Dados.dll.config
 C:\Users\Fernando\Source\Repos\oficinarepository\Oficina.Com\Oficina.Com\bin\System.Web.Helpers.xml
 C:\Users\Fernando\Source\Repos\oficinarepository\Oficina.Com\Oficina.Com\bin\System.Web.Mvc.xml
 C:\Users\Fernando\Source\Repos\oficinarepository\Oficina.Com\Oficina.Com\bin\System.Web.Optimization.xml
@@ -448,7 +443,6 @@ C:\Users\Fernando\Source\Repos\oficinarepository\Oficina.Com\Oficina.Com\bin\Mic
 C:\Users\Fernando\Source\Repos\oficinarepository\Oficina.Com\Oficina.Com\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 C:\Users\Fernando\Source\Repos\oficinarepository\Oficina.Com\Oficina.Com\bin\Microsoft.Owin.Security.OAuth.xml
 C:\Users\Fernando\Source\Repos\oficinarepository\Oficina.Com\Oficina.Com\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\Fernando\Source\Repos\oficinarepository\Oficina.Com\Oficina.Com\bin\Oficina.Com.Entidades.pdb
 C:\Users\Fernando\Source\Repos\oficinarepository\Oficina.Com\Oficina.Com\bin\pt-br\System.Web.Helpers.resources.dll
 C:\Users\Fernando\Source\Repos\oficinarepository\Oficina.Com\Oficina.Com\bin\pt-br\System.Web.Mvc.resources.dll
 C:\Users\Fernando\Source\Repos\oficinarepository\Oficina.Com\Oficina.Com\bin\pt-br\System.Web.Optimization.resources.dll
