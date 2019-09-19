@@ -8,7 +8,7 @@ namespace Oficina.Com.Entidades
 {
     public class Fornecedor
     {
-        public int IdFornecedor { get; set; }
+        public int Id { get; set; }
         public string Razao { get; set; }
         public string Cnpj { get; set; }
         public string Telefone { get; set; }

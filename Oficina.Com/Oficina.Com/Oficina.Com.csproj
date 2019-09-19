@@ -181,9 +181,9 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\BancoOficina.mdf" />
-    <Content Include="App_Data\BancoOficina_log.ldf">
-      <DependentUpon>BancoOficina.mdf</DependentUpon>
+    <Content Include="App_Data\Banco.mdf" />
+    <Content Include="App_Data\Banco_log.ldf">
+      <DependentUpon>Banco.mdf</DependentUpon>
     </Content>
     <Content Include="Assets\images\background\profile-bg.jpg" />
     <Content Include="Assets\images\big\img1.jpg" />

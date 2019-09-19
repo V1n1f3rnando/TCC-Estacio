@@ -12,8 +12,7 @@ namespace Oficina.com.Dados.Mapeamentos
     {
         public HistoricoMap()
         {
-            ToTable("Historico")
-                .HasKey(x => x.IdHistorico);
+
         }
     }
 }

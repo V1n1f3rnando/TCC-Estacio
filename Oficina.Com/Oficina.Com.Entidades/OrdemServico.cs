@@ -10,7 +10,7 @@ namespace Oficina.Com.Entidades
 {
     public class OrdemServico
     {
-        public int IdOrdemServico { get; set; }
+        public int Id { get; set; }
         public string Motivo { get; set; }
         public DateTime DataAbertura { get; set; }
         public decimal Orçamento { get; set; }
@@ -18,8 +18,8 @@ namespace Oficina.Com.Entidades
         public string Placa { get; set; }
         public string Obs { get; set; }
 
-        [ForeignKey("IdColaborador")]
-        public int IdColaborador { get; set; }
+
+        public int ColaboradorId { get; set; }
         public virtual Colaborador Colaborador { get; set; }
 
     }

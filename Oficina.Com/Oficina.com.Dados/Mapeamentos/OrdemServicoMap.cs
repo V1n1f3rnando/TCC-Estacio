@@ -12,8 +12,7 @@ namespace Oficina.com.Dados.Mapeamentos
     {
         public OrdemServicoMap()
         {
-            ToTable("OrdemServico")
-                .HasKey(x => x.IdOrdemServico);
+
         }
     }
 }

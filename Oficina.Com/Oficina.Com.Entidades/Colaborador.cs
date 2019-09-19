@@ -10,7 +10,7 @@ namespace Oficina.Com.Entidades
 {
     public class Colaborador
     {
-        public int IdColaborador { get; set; }
+        public int Id { get; set; }
         public string Nome { get; set; }
         public string Email { get; set; }
         public string Telefone { get; set; }
@@ -18,10 +18,8 @@ namespace Oficina.Com.Entidades
         public decimal Salario { get; set; }
 
 
-
         //Relacionamento
-        [ForeignKey("IdEndereco")]
-        public int IdEndereco { get; set; }
+        public int EnderecoId { get; set; }
         public virtual Endereco Endereco { get; set; }
 
     }

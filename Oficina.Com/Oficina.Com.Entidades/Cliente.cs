@@ -9,17 +9,16 @@ namespace Oficina.Com.Entidades
 {
     public class Cliente
     {
-        public int IdCliente { get; set; }
+        public int Id{ get; set; }
         public string Nome { get; set; }
         public DateTime DataNascimento { get; set; }
         public string Cpf { get; set; }
         public string Email { get; set; }
         public string Telefone { get; set; }
 
-        public List<Veiculo> Veiculos { get; set; }
+        public  List<Veiculo> Veiculos { get; set; }
 
-        [ForeignKey("IdEndereco")]
-        public int IdEndereco { get; set; }
+        public int EnderecoId { get; set; }
         public virtual Endereco Endereco { get; set; }
 
     }

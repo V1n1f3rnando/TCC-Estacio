@@ -12,10 +12,7 @@ namespace Oficina.com.Dados.Mapeamentos
     {
         public ClienteMap()
         {
-            ToTable("Cliente")
-                .HasKey(x => x.IdCliente)
-                .HasMany(x => x.Veiculos);
-                 
+               
         }
     }
 }

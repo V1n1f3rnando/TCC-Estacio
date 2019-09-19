@@ -12,8 +12,7 @@ namespace Oficina.com.Dados.Mapeamentos
     {
         public ProdutoMap()
         {
-            ToTable("Produto")
-                .HasKey(x => x.IdProduto);
+
         }
     }
 }

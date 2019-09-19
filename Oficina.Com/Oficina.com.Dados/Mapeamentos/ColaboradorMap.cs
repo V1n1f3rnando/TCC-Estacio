@@ -12,8 +12,7 @@ namespace Oficina.com.Dados.Mapeamentos
     {
         public ColaboradorMap()
         {
-            ToTable("Colaborador")
-                .HasKey(x => x.IdColaborador);
+
         }
     }
 }

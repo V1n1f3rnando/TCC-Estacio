@@ -12,9 +12,7 @@ namespace Oficina.com.Dados.Mapeamentos
     {
         public EnderecoMap()
         {
-            ToTable("Endereco")
-                .HasKey(x => x.IdEndereco);
-                
+
         }
     }
 }

@@ -58,10 +58,13 @@
     <Compile Include="Mapeamentos\OrdemServicoMap.cs" />
     <Compile Include="Mapeamentos\ProdutoMap.cs" />
     <Compile Include="Mapeamentos\VeiculoMap.cs" />
+    <Compile Include="Migrations\201909191556398_inicio.cs" />
+    <Compile Include="Migrations\201909191556398_inicio.Designer.cs">
+      <DependentUpon>201909191556398_inicio.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
@@ -75,6 +78,11 @@
       <Project>{ecd69dd9-a876-45fd-9d60-bafff526187d}</Project>
       <Name>Oficina.Com</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201909191556398_inicio.resx">
+      <DependentUpon>201909191556398_inicio.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

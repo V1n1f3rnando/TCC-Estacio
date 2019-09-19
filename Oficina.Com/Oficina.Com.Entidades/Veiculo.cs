@@ -10,7 +10,7 @@ namespace Oficina.Com.Entidades
 {
     public class Veiculo
     {
-        public int IdVeiculo { get; set; }
+        public int Id { get; set; }
         public string Placa { get; set; }
         public string Ano { get; set; }
         public TipoVeiculo Tipo { get; set; }
@@ -19,8 +19,7 @@ namespace Oficina.Com.Entidades
         public string Motor { get; set; }
         public string Obs { get; set; }
 
-        [ForeignKey("IdVeiculo")]
-        public int IdCliente { get; set; }
+        public int ClienteId { get; set; }
         public virtual Cliente Cliente { get; set; }
 
         public Veiculo()

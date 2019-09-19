@@ -9,7 +9,7 @@ namespace Oficina.com.Dados.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = true;
+            AutomaticMigrationsEnabled = false;
         }
 
         protected override void Seed(Oficina.com.Dados.Contextos.Context context)

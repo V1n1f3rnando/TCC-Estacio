@@ -7,13 +7,14 @@ using System.Threading.Tasks;
 using System.Configuration;
 using Oficina.Com.Entidades;
 using Oficina.com.Dados.Mapeamentos;
+using System.Data.Entity.ModelConfiguration.Conventions;
 
 namespace Oficina.com.Dados.Contextos
 {
     public class Context : DbContext
     {
         public Context()
-            :base(ConfigurationManager.ConnectionStrings["BancoOficina"].ConnectionString)
+            :base(ConfigurationManager.ConnectionStrings["Banco"].ConnectionString)
         {
 
         }
@@ -29,6 +30,11 @@ namespace Oficina.com.Dados.Contextos
             modelBuilder.Configurations.Add(new OrdemServicoMap());
             modelBuilder.Configurations.Add(new ProdutoMap());
             modelBuilder.Configurations.Add(new VeiculoMap());
+
+            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+            modelBuilder.Properties<string>().Configure(p => p.HasColumnType("varchar"));
+            modelBuilder.Conventions.Remove<ManyToManyCascadeDeleteConvention>();
+            modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
         }
 
         public DbSet<Cliente> Cliente { get; set; } 
