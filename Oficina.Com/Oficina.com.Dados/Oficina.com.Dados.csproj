@@ -64,6 +64,15 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositorios\ClienteRepositorio.cs" />
+    <Compile Include="Repositorios\ColaboradorRepositorio.cs" />
+    <Compile Include="Repositorios\EnderecoRepositorio.cs" />
+    <Compile Include="Repositorios\FornecedorRepositorio.cs" />
+    <Compile Include="Repositorios\Generico\RepositorioGenerico.cs" />
+    <Compile Include="Repositorios\HistoricoRepositorio.cs" />
+    <Compile Include="Repositorios\OrdemServicoRepositorio.cs" />
+    <Compile Include="Repositorios\ProdutoRepositorio.cs" />
+    <Compile Include="Repositorios\VeiculoRepositorio.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
