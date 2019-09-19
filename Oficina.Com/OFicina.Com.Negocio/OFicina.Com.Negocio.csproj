@@ -51,5 +51,15 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="VeiculoNegocio.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Oficina.com.Dados\Oficina.com.Dados.csproj">
+      <Project>{AB65C2FB-5DAC-471E-AA8A-FBF44D6D16E0}</Project>
+      <Name>Oficina.com.Dados</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Oficina.Com.Entidades\Oficina.Com.Entidades.csproj">
+      <Project>{3EDC522B-0368-4DB7-BEB0-D7E6C429EBC5}</Project>
+      <Name>Oficina.Com.Entidades</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Oficina.com.Dados.Repositorios;
+using Oficina.Com.Entidades;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,5 +10,36 @@ namespace OFicina.Com.Negocio
 {
     public class ClienteNegocio
     {
+        public void Cadastrar(Cliente c)
+        {
+            ClienteRepositorio rep = new ClienteRepositorio();
+            rep.Insert(c);
+        }
+
+        public void Altualizar(Cliente c)
+        {
+
+            ClienteRepositorio rep = new ClienteRepositorio();
+            rep.Update(c);
+
+        }
+
+        public void Excluir(Cliente c)
+        {
+            ClienteRepositorio rep = new ClienteRepositorio();
+            rep.Delete(c);
+        }
+
+        public List<Cliente> Consulta()
+        {
+            ClienteRepositorio rep = new ClienteRepositorio();
+            return rep.FindAll();
+        }
+
+        public Cliente Consulta(int id)
+        {
+            ClienteRepositorio rep = new ClienteRepositorio();
+            return rep.FindById(id);
+        }
     }
 }
