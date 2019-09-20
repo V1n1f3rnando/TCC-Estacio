@@ -83,10 +83,6 @@
       <Project>{3EDC522B-0368-4DB7-BEB0-D7E6C429EBC5}</Project>
       <Name>Oficina.Com.Entidades</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Oficina.Com\Oficina.Com.csproj">
-      <Project>{ecd69dd9-a876-45fd-9d60-bafff526187d}</Project>
-      <Name>Oficina.Com</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201909191556398_inicio.resx">
