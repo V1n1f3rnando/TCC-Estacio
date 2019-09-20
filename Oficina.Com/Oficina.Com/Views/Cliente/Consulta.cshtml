@@ -16,10 +16,10 @@
             <th>ID</th>
             <th>Nome</th>
             <th>Telefone</th>
+            <th>CPF</th>
             <th>Email</th>
-            <th>Data de Nascimento</th>
             <th>Veículo</th>
-            <th>Operações</th>
+            @*<th>Operações</th>*@
         </tr>
     </thead>
     <tbody>
@@ -30,12 +30,12 @@
             <td>@item.Id</td>
             <td>@item.Nome</td>
             <td>@item.Telefone</td>
+            <td>@item.Cpf</td>
             <td>@item.Email</td>
-            <td>@string.Format("{0:dd/MM/yyyy}", item.DataNascimento)</td>
             <td>@item.Veiculos.First().Placa</td>
             <td>
                 <input type="submit" class="btn-success" value="Editar" />
-                <input type="submit" class="btn-success" value="Consultar" />
+                <input type="submit" class="btn-success" value="Detalhes" />
             </td>
         </tr>
         }
