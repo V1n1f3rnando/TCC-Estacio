@@ -1,0 +1,14 @@
+C:\Users\INFISCO001011\Source\Repos\oficinarepository\Oficina.Com\OFicina.Com.Negocio\bin\Debug\OFicina.Com.Negocio.dll
+C:\Users\INFISCO001011\Source\Repos\oficinarepository\Oficina.Com\OFicina.Com.Negocio\bin\Debug\OFicina.Com.Negocio.pdb
+C:\Users\INFISCO001011\Source\Repos\oficinarepository\Oficina.Com\OFicina.Com.Negocio\bin\Debug\Oficina.com.Dados.dll
+C:\Users\INFISCO001011\Source\Repos\oficinarepository\Oficina.Com\OFicina.Com.Negocio\bin\Debug\Oficina.Com.Entidades.dll
+C:\Users\INFISCO001011\Source\Repos\oficinarepository\Oficina.Com\OFicina.Com.Negocio\bin\Debug\EntityFramework.dll
+C:\Users\INFISCO001011\Source\Repos\oficinarepository\Oficina.Com\OFicina.Com.Negocio\bin\Debug\Oficina.com.Dados.pdb
+C:\Users\INFISCO001011\Source\Repos\oficinarepository\Oficina.Com\OFicina.Com.Negocio\bin\Debug\Oficina.com.Dados.dll.config
+C:\Users\INFISCO001011\Source\Repos\oficinarepository\Oficina.Com\OFicina.Com.Negocio\bin\Debug\Oficina.Com.Entidades.pdb
+C:\Users\INFISCO001011\Source\Repos\oficinarepository\Oficina.Com\OFicina.Com.Negocio\bin\Debug\EntityFramework.xml
+C:\Users\INFISCO001011\Source\Repos\oficinarepository\Oficina.Com\OFicina.Com.Negocio\obj\Debug\OFicina.Com.Negocio.csprojAssemblyReference.cache
+C:\Users\INFISCO001011\Source\Repos\oficinarepository\Oficina.Com\OFicina.Com.Negocio\obj\Debug\OFicina.Com.Negocio.csproj.CoreCompileInputs.cache
+C:\Users\INFISCO001011\Source\Repos\oficinarepository\Oficina.Com\OFicina.Com.Negocio\obj\Debug\OFicina.Com.Negocio.csproj.CopyComplete
+C:\Users\INFISCO001011\Source\Repos\oficinarepository\Oficina.Com\OFicina.Com.Negocio\obj\Debug\OFicina.Com.Negocio.dll
+C:\Users\INFISCO001011\Source\Repos\oficinarepository\Oficina.Com\OFicina.Com.Negocio\obj\Debug\OFicina.Com.Negocio.pdb

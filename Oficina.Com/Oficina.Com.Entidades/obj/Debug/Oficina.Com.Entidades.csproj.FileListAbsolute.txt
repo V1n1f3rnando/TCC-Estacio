@@ -4,8 +4,9 @@ C:\Users\Fernando\Source\Repos\oficinarepository\Oficina.Com\Oficina.Com.Entidad
 C:\Users\Fernando\Source\Repos\oficinarepository\Oficina.Com\Oficina.Com.Entidades\obj\Debug\Oficina.Com.Entidades.csproj.CoreCompileInputs.cache
 C:\Users\Fernando\Source\Repos\oficinarepository\Oficina.Com\Oficina.Com.Entidades\obj\Debug\Oficina.Com.Entidades.dll
 C:\Users\Fernando\Source\Repos\oficinarepository\Oficina.Com\Oficina.Com.Entidades\obj\Debug\Oficina.Com.Entidades.pdb
-C:\Users\INFISCO001011\source\repos\oficinarepository\Oficina.Com\Oficina.Com.Entidades\bin\Debug\Oficina.Com.Entidades.dll
-C:\Users\INFISCO001011\source\repos\oficinarepository\Oficina.Com\Oficina.Com.Entidades\bin\Debug\Oficina.Com.Entidades.pdb
-C:\Users\INFISCO001011\source\repos\oficinarepository\Oficina.Com\Oficina.Com.Entidades\obj\Debug\Oficina.Com.Entidades.csproj.CoreCompileInputs.cache
-C:\Users\INFISCO001011\source\repos\oficinarepository\Oficina.Com\Oficina.Com.Entidades\obj\Debug\Oficina.Com.Entidades.dll
-C:\Users\INFISCO001011\source\repos\oficinarepository\Oficina.Com\Oficina.Com.Entidades\obj\Debug\Oficina.Com.Entidades.pdb
+C:\Users\INFISCO001011\Source\Repos\oficinarepository\Oficina.Com\Oficina.Com.Entidades\bin\Debug\Oficina.Com.Entidades.dll
+C:\Users\INFISCO001011\Source\Repos\oficinarepository\Oficina.Com\Oficina.Com.Entidades\bin\Debug\Oficina.Com.Entidades.pdb
+C:\Users\INFISCO001011\Source\Repos\oficinarepository\Oficina.Com\Oficina.Com.Entidades\obj\Debug\Oficina.Com.Entidades.csprojAssemblyReference.cache
+C:\Users\INFISCO001011\Source\Repos\oficinarepository\Oficina.Com\Oficina.Com.Entidades\obj\Debug\Oficina.Com.Entidades.csproj.CoreCompileInputs.cache
+C:\Users\INFISCO001011\Source\Repos\oficinarepository\Oficina.Com\Oficina.Com.Entidades\obj\Debug\Oficina.Com.Entidades.dll
+C:\Users\INFISCO001011\Source\Repos\oficinarepository\Oficina.Com\Oficina.Com.Entidades\obj\Debug\Oficina.Com.Entidades.pdb
