@@ -175,7 +175,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\ClienteDetalheViewModel.cs" />
     <Compile Include="Models\ClienteViewModel.cs" />
+    <Compile Include="Models\EnderecoViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -269,6 +271,7 @@
     <Content Include="Assets\plugins\jquery\jquery.min.js" />
     <Content Include="Assets\plugins\sticky-kit-master\dist\sticky-kit.js" />
     <Content Include="Assets\plugins\sticky-kit-master\dist\sticky-kit.min.js" />
+    <Content Include="Content\bootstrap-dialog.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -573,6 +576,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Scripts\bootstrap-dialog.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Content\Scss\app.scss" />
@@ -797,11 +801,13 @@
     <Content Include="Assets\plugins\d3\LICENSE" />
     <Content Include="Assets\plugins\d3\README.md" />
     <Content Include="Assets\plugins\gmaps\gmaps.min.js.map" />
+    <Content Include="Content\bootstrap-dialog.less" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\CustomJs\custom.js" />
     <Content Include="Scripts\CustomJs\custom.min.js" />
     <Content Include="Scripts\CustomJs\dashboard1.js" />
     <Content Include="Scripts\CustomJs\jquery.slimscroll.js" />
+    <Content Include="Scripts\CustomJs\nakupanda.js" />
     <Content Include="Scripts\CustomJs\sidebarmenu.js" />
     <Content Include="Scripts\CustomJs\waves.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />

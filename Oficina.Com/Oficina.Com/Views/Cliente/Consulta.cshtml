@@ -5,7 +5,12 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Consulta</h2>
+<h2>Consulta de Clientes</h2>
+<br />
+<a href="" onclick="modalcreate" data-toggle="modal" data-target="#modalExemplo">
+    <span class="mdi mdi-account btn btn-success"> Novo Cliente</span>
+</a>
+<hr />
 
 <div>
     @ViewBag.Mensagem
@@ -18,7 +23,6 @@
             <th>Telefone</th>
             <th>CPF</th>
             <th>Email</th>
-            <th>Veículo</th>
             @*<th>Operações</th>*@
         </tr>
     </thead>
@@ -26,25 +30,332 @@
         <!-- Percorrer o conteudo da lista.. -->
         @foreach (var item in Model)
         {
-        <tr>
-            <td>@item.Id</td>
-            <td>@item.Nome</td>
-            <td>@item.Telefone</td>
-            <td>@item.Cpf</td>
-            <td>@item.Email</td>
-            <td>@item.Veiculos.First().Placa</td>
-            <td>
-                <input type="submit" class="btn-success" value="Editar" />
-                <input type="submit" class="btn-success" value="Detalhes" />
-            </td>
-        </tr>
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.Nome</td>
+                <td>@item.Telefone</td>
+                <td>@item.Cpf</td>
+                <td>@item.Email</td>
+                <td>
+                    <a href="" class="mdi mdi-pencil btn btn-success" onclick="PreencheModalEdit(@item.Id)" data-toggle="modal" data-target="#modaledit">Editar</a>
+                    <a href="#" class="mdi mdi-note btn btn-success" onclick="PreencheModalDetalhes(@item.Id)" data-toggle="modal" data-target="#modaldetalhes">Detalhes</a>
+                </td>
+            </tr>
         }
     </tbody>
     <tfoot>
-        <br />
         <tr>
             <td colspan="5">Quantidade de clientes: @Model.Count() </td>
         </tr>
     </tfoot>
 </table>
 
+<!--Modal Create-->
+
+<div class="modal fade" id="modalExemplo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="exampleModalLabel">Cadastro de Cliente</h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-horizontal col-md-12">
+                    <div class="row" style="align-self:center">
+                        <div class="form-group col-md-6">
+                            <label>Nome:</label>
+                            <input type="text" id="txtnome" class="form-control" />
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label>CPF:</label>
+                            <input type="text" id="txtcpf" class="form-control" />
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label>Email:</label>
+                            <input type="text" id="txtemail" class="form-control" />
+                        </div>
+
+                        <div class="form-group col-md-3">
+                            <label>Data Nasicmento:</label>
+                            <input type="date" id="txtdata" class="form-control" />
+                        </div>
+
+                        <div class="form-group col-md-3">
+                            <label>Telefone:</label>
+                            <input type="text" id="txttelefone" class="form-control" />
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label>Rua:</label>
+                            <input type="text" id="txtrua" class="form-control" />
+                        </div>
+
+                        <div class="form-group col-md-4">
+                            <label>Bairro:</label>
+                            <input type="text" id="txtbairro" class="form-control" />
+                        </div>
+
+                        <div class="form-group col-md-2">
+                            <label>Nº:</label>
+                            <input type="text" id="txtnumero" class="form-control" />
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label>Complemento:</label>
+                            <input type="text" id="txtcomplemento" class="form-control" />
+                        </div>
+
+                        <div class="form-group col-md-3">
+                            <label>UF:</label>
+                            <input type="text" id="txtuf" class="form-control" />
+                        </div>
+
+                        <div class="form-group col-md-3">
+                            <label>Cep:</label>
+                            <input type="text" id="txtcep" class="form-control" />
+                        </div>
+                        <br />
+                        <div class="form-group col-md-12">
+                            <button class="btn btn-success" onclick="Cadastra()" id="btncadastro">
+                                Cadastrar Cliente
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Modal edição-->
+<div class="modal fade" id="modaledit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="edicao">Edição de Cliente</h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <label>Nome:</label>
+                        <input type="text" id="txtnomeedicao" class="form-control" />
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <label>CPF:</label>
+                        <input type="text" id="txtcpfedicao" class="form-control" />
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <label>Email:</label>
+                        <input type="text" id="txtemailedicao" class="form-control" />
+                    </div>
+
+                    <div class="form-group col-md-3">
+                        <label>Data Nasicmento:</label>
+                        <input type="date" id="txtdataedicao" class="form-control" />
+                    </div>
+
+                    <div class="form-group col-md-3">
+                        <label>Telefone:</label>
+                        <input type="text" id="txttelefoneedicao" class="form-control" />
+                    </div>
+
+                    <br />
+                    <div class="form-group col-md-12">
+                        <button class="btn btn-success mdi mdi-floppy" onclick="Cadastra()" id="btncadastro">
+                            Atualizar Cliente
+                        </button>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="modal-footer">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Modal detalhe-->
+<div class="modal fade" id="modaldetalhes" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="edicao">Detalhe do Cliente</h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <label>Nome:</label>
+                        <input type="text" id="txtdetalhenome" class="form-control" readonly />
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <label>Email:</label>
+                        <input type="text" id="txtdetalheemail" class="form-control" readonly />
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <label>CPF:</label>
+                        <input type="text" id="txtdetalhecpf" class="form-control" readonly />
+                    </div>
+
+                    <div class="form-group col-md-3">
+                        <label>Data Nasicmento:</label>
+                        <input type="date" id="txtdetalhedata" class="form-control" readonly />
+                    </div>
+
+                    <div class="form-group col-md-3">
+                        <label>Telefone:</label>
+                        <input type="text" id="txtdetalhetelefone" class="form-control" readonly />
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <label>Rua:</label>
+                        <input type="text" id="txtdetalherua" class="form-control" readonly />
+                    </div>
+
+                    <div class="form-group col-md-2">
+                        <label>Numero:</label>
+                        <input type="text" id="txtdetalhenumero" class="form-control" readonly />
+                    </div>
+
+                    <div class="form-group col-md-2" style="width:18px">
+                        <label>UF:</label>
+                        <input type="text" id="txtdetalheuf" class="form-control" readonly />
+                    </div>
+
+                    <div class="form-group col-md-2">
+                        <label>Cep:</label>
+                        <input type="text" id="txtdetalhecep" class="form-control" readonly />
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <label>Bairro:</label>
+                        <input type="text" id="txtdetalhebairro" class="form-control" readonly />
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <label>Complemento:</label>
+                        <input type="text" id="txtdetalhecomplemento" class="form-control" readonly />
+                    </div>
+
+                    <div class="form-group col-md-12">
+                
+                    </div>
+
+                </div>
+            </div>
+            <div class="modal-footer" >
+                <button class="btn btn-danger mdi mdi-delete" style="margin-right:280px; width:250px" >
+                    Excluir Cliente
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+
+    function Cadastra() {
+
+        var Endereco = {
+
+            Id: null,
+            Rua: $("#txtrua").val(),
+            Numero: $("#txtnumero").val(),
+            Bairro: $("#txtbairro").val(),
+            UF: $("#txtuf").val(),
+            Cep: $("#txtcep").val(),
+        }
+
+        var Cliente = {
+            Id: null,
+            Nome: $("#txtnome").val(),
+            DataNascimento: $("#txtdata").val(),
+            Cpf: $("#txtcpf").val(),
+            Email: $("#txtemail").val(),
+            Telefone: $("#txttelefone").val(),
+            Veiculos: "",
+            Endereco: Endereco
+        }
+
+        $.ajax({
+            type: "POST",
+            url: "/Cliente/Cadastrar",
+            data: Cliente,
+            success: function () {
+            },
+            error: function (e) {
+
+                $("#mensagem").html("Erro: " + e.status);
+            }
+        });
+    }
+
+    function PreencheModalEdit(id) {
+
+        $.ajax({
+            type: "POST",
+            url: "/Cliente/Editar",
+            data: "id=" + id,
+            success: function (obj) {
+                $("#txtnomeedicao").val(obj.Nome);
+                $("#txtcpfedicao").val(obj.Cpf);
+                $("#txtemailedicao").val(obj.Email);
+                $("#txtdataedicao").val(obj.DataNascimento);
+                $("#txttelefoneedicao").val(obj.Telefone);
+            },
+            error: function (e) {
+                $("#mensagem").html("Erro: " + e.status);
+            }
+        });
+
+    }
+
+    function PreencheModalDetalhes(id) {
+
+        $.ajax({
+            type: "POST",
+            url: "/Cliente/Detalhes",
+            data: "id=" + id,
+            success: function (obj) {
+
+                $("#txtdetalhenome").val(obj.Nome);
+                $("#txtdetalhecpf").val(obj.Cpf);
+                $("#txtdetalheemail").val(obj.Email);
+                $("#txtdetalhedata").val(obj.DataNascimento);
+                $("#txtdetalhetelefone").val(obj.Telefone);
+                $("#txtdetalherua").val(obj.Endereco.Rua);
+                $("#txtdetalhenumero").val(obj.Endereco.Numero);
+                $("#txtdetalhebairro").val(obj.Endereco.Bairro);
+                $("#txtdetalheuf").val(obj.Endereco.UF);
+                $("#txtdetalhecep").val(obj.Endereco.Cep);
+
+            },
+            error: function (e) {
+                $("#mensagem").html("Erro: " + e.status);
+            }
+        });
+    };
+
+
+</script>

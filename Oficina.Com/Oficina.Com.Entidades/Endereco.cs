@@ -16,6 +16,5 @@ namespace Oficina.Com.Entidades
         public string UF { get; set; }
         public string Cep { get; set; }
 
-
     }
 }
