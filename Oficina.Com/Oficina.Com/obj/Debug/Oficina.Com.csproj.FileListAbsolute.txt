@@ -463,3 +463,11 @@ C:\Users\Fernando\Source\Repos\oficinarepository\Oficina.Com\Oficina.Com\bin\OFi
 C:\Users\Fernando\Source\Repos\oficinarepository\Oficina.Com\Oficina.Com\bin\Oficina.com.Dados.pdb
 C:\Users\Fernando\Source\Repos\oficinarepository\Oficina.Com\Oficina.Com\bin\Oficina.com.Dados.dll.config
 C:\Users\Fernando\Source\Repos\oficinarepository\Oficina.Com\Oficina.Com\obj\Debug\Oficina.Com.csprojAssemblyReference.cache
+C:\Users\INFISCO001011\Source\Repos\oficinarepository\Oficina.Com\Oficina.Com\bin\Oficina.Com.Entidades.dll
+C:\Users\INFISCO001011\Source\Repos\oficinarepository\Oficina.Com\Oficina.Com\bin\OFicina.Com.Negocio.dll
+C:\Users\INFISCO001011\Source\Repos\oficinarepository\Oficina.Com\Oficina.Com\bin\Oficina.com.Dados.dll
+C:\Users\INFISCO001011\Source\Repos\oficinarepository\Oficina.Com\Oficina.Com\bin\Oficina.Com.Entidades.pdb
+C:\Users\INFISCO001011\Source\Repos\oficinarepository\Oficina.Com\Oficina.Com\bin\OFicina.Com.Negocio.pdb
+C:\Users\INFISCO001011\Source\Repos\oficinarepository\Oficina.Com\Oficina.Com\bin\Oficina.com.Dados.pdb
+C:\Users\INFISCO001011\Source\Repos\oficinarepository\Oficina.Com\Oficina.Com\bin\Oficina.com.Dados.dll.config
+C:\Users\INFISCO001011\Source\Repos\oficinarepository\Oficina.Com\Oficina.Com\obj\Debug\Oficina.Com.csprojAssemblyReference.cache
