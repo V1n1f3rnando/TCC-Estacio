@@ -22,7 +22,6 @@ C:\Users\INFISCO001011\source\repos\oficinarepository\Oficina.Com\Oficina.com.Da
 C:\Users\INFISCO001011\source\repos\oficinarepository\Oficina.Com\Oficina.com.Dados\bin\Debug\EntityFramework.xml
 C:\Users\INFISCO001011\source\repos\oficinarepository\Oficina.Com\Oficina.com.Dados\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\INFISCO001011\source\repos\oficinarepository\Oficina.Com\Oficina.com.Dados\obj\Debug\Oficina.com.Dados.csprojAssemblyReference.cache
-C:\Users\INFISCO001011\source\repos\oficinarepository\Oficina.Com\Oficina.com.Dados\obj\Debug\Oficina.com.Dados.csproj.CoreCompileInputs.cache
 C:\Users\INFISCO001011\source\repos\oficinarepository\Oficina.Com\Oficina.com.Dados\obj\Debug\Oficina.com.Dados.csproj.CopyComplete
 C:\Users\INFISCO001011\source\repos\oficinarepository\Oficina.Com\Oficina.com.Dados\obj\Debug\Oficina.com.Dados.dll
 C:\Users\INFISCO001011\source\repos\oficinarepository\Oficina.Com\Oficina.com.Dados\obj\Debug\Oficina.com.Dados.pdb

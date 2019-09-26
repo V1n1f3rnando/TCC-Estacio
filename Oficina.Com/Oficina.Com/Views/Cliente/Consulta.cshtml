@@ -39,6 +39,7 @@
                 <td>
                     <a href="" class="mdi mdi-pencil btn btn-success" onclick="PreencheModalEdit(@item.Id)" data-toggle="modal" data-target="#modaledit">Editar</a>
                     <a href="#" class="mdi mdi-note btn btn-success" onclick="PreencheModalDetalhes(@item.Id)" data-toggle="modal" data-target="#modaldetalhes">Detalhes</a>
+                    <a href="#" class="mdi mdi-delete btn btn-danger" onclick="PreencheModalDetalhes(@item.Id)" data-toggle="modal" data-target="#modaldelete"></a>
                 </td>
             </tr>
         }
@@ -120,16 +121,16 @@
                         </div>
                         <br />
                         <div class="form-group col-md-12">
-                            <button class="btn btn-success" onclick="Cadastra()" id="btncadastro">
-                                Cadastrar Cliente
-                            </button>
+            
                         </div>
 
                     </div>
                 </div>
             </div>
             <div class="modal-footer">
-
+                <button class="btn btn-success mdi mdi-floppy" style="margin-right:25%; width:50%" onclick="Cadastra()" id="btncadastro">
+                    Cadastrar Cliente
+                </button>
             </div>
         </div>
     </div>
@@ -175,16 +176,16 @@
 
                     <br />
                     <div class="form-group col-md-12">
-                        <button class="btn btn-success mdi mdi-floppy" onclick="Cadastra()" id="btncadastro">
-                            Atualizar Cliente
-                        </button>
+ 
                     </div>
                 </div>
 
 
             </div>
             <div class="modal-footer">
-
+                <button class="btn btn-success mdi mdi-update" style="margin-right:25%; width:50%" onclick="Cadastra()" id="btncadastro">
+                    Atualizar Cliente
+                </button>
             </div>
         </div>
     </div>
@@ -264,9 +265,27 @@
                 </div>
             </div>
             <div class="modal-footer" >
-                <button class="btn btn-danger mdi mdi-delete" style="margin-right:280px; width:250px" >
-                    Excluir Cliente
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Modal Delete-->
+<div class="modal fade" id="modaldelete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="delete">Deseja realmente excluir este cliente?</h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                    <span aria-hidden="true">&times;</span>
                 </button>
+            </div>
+            <div class="modal-body">
+                <p style="color:orangered;text-align:center" > Aviso: Com esta ação os dados do cliente em questão serão excluidos permanentemente!</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-danger mdi mdi-delete" style="margin-right:25%; width:50%">Excluir Cliente</button>
             </div>
         </div>
     </div>

@@ -451,7 +451,6 @@ C:\Users\INFISCO001011\source\repos\oficinarepository\Oficina.Com\Oficina.Com\bi
 C:\Users\INFISCO001011\source\repos\oficinarepository\Oficina.Com\Oficina.Com\bin\pt-br\Microsoft.AspNet.Identity.Core.resources.dll
 C:\Users\INFISCO001011\source\repos\oficinarepository\Oficina.Com\Oficina.Com\bin\pt-br\Microsoft.AspNet.Identity.Owin.resources.dll
 C:\Users\INFISCO001011\source\repos\oficinarepository\Oficina.Com\Oficina.Com\bin\pt-br\Microsoft.AspNet.Identity.EntityFramework.resources.dll
-C:\Users\INFISCO001011\source\repos\oficinarepository\Oficina.Com\Oficina.Com\obj\Debug\Oficina.Com.csproj.CoreCompileInputs.cache
 C:\Users\INFISCO001011\source\repos\oficinarepository\Oficina.Com\Oficina.Com\obj\Debug\Oficina.Com.csproj.CopyComplete
 C:\Users\INFISCO001011\source\repos\oficinarepository\Oficina.Com\Oficina.Com\obj\Debug\Oficina.Com.dll
 C:\Users\INFISCO001011\source\repos\oficinarepository\Oficina.Com\Oficina.Com\obj\Debug\Oficina.Com.pdb
