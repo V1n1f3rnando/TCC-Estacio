@@ -169,8 +169,12 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ClienteController.cs" />
+    <Compile Include="Controllers\FornecedorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\OrdemController.cs" />
+    <Compile Include="Controllers\ProdutoController.cs" />
+    <Compile Include="Controllers\VeiculoController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -859,6 +863,10 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Cliente\Consulta.cshtml" />
+    <Content Include="Views\Veiculo\ConsultarVeiculo.cshtml" />
+    <Content Include="Views\Ordem\ConsultarOrdem.cshtml" />
+    <Content Include="Views\Fornecedor\ConsultarFornecedor.cshtml" />
+    <Content Include="Views\Produto\ConsultarProduto.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Oficina.Com.Entidades\Oficina.Com.Entidades.csproj">
