@@ -47,7 +47,8 @@ namespace Oficina.Com.Controllers
 
         
         }
-
+        
+        [HttpPost]
         public JsonResult Editar(int id)
         {
             ClienteViewModel model = new ClienteViewModel();
@@ -70,6 +71,34 @@ namespace Oficina.Com.Controllers
             
            
             return Json(model);
+        }
+
+        
+        [HttpPost]
+        public JsonResult Edita(ClienteViewModel model)
+        {
+            try
+            {
+                Cliente c = new Cliente();
+                ClienteNegocio clienteNegocio = new ClienteNegocio();
+
+                c = clienteNegocio.Consulta(model.Id);
+                c.Nome = model.Nome;
+                c.Telefone = model.Telefone;
+                c.DataNascimento = Convert.ToDateTime(model.DataNascimento);
+                c.Cpf = model.Cpf;
+                c.Email = model.Email;
+
+                clienteNegocio.Altualizar(c);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+    
+
+            return Json("");
         }
 
         public JsonResult Detalhes(int id)
@@ -130,6 +159,47 @@ namespace Oficina.Com.Controllers
             return Json("Cliente cadastrado com sucesso!!");
         }
         
+        [HttpPost]
+        public JsonResult Delete(int id)
+        {
+            try
+            {
+                Cliente c = new Cliente();
+                ClienteNegocio clienteNegocio = new ClienteNegocio();
 
+                Endereco e = new Endereco();
+                EnderecoNegocio enderecoNegocio = new EnderecoNegocio();
+
+                Veiculo v = new Veiculo();
+                VeiculoNegocio veiculoNegocio = new VeiculoNegocio();
+
+
+                c = clienteNegocio.Consulta(id);
+
+                List<Veiculo> veiculos = new List<Veiculo>();
+                veiculos = veiculoNegocio.Consulta().Where(x => x.ClienteId == c.Id).ToList();
+
+                if (veiculos != null)
+                {
+                    foreach (var veic in veiculos)
+                        veiculoNegocio.Excluir(veic);
+                }
+
+                e = enderecoNegocio.Consulta(c.EnderecoId);
+
+                if (c != null)
+                {
+                    clienteNegocio.Excluir(c);
+                    enderecoNegocio.Excluir(e);
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+            return Json("");
+        }
     }
 }

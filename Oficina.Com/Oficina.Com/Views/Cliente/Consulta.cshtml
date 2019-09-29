@@ -6,50 +6,50 @@
 }
 
 <h2>Consulta de Clientes</h2>
+
+<div class="alert-messages text-center">
+</div>
 <br />
 <a href="" onclick="modalcreate" data-toggle="modal" data-target="#modalExemplo">
     <span class="mdi mdi-account btn btn-success"> Novo Cliente</span>
 </a>
 <hr />
+<div class="col-md-12">
 
-<div>
-    @ViewBag.Mensagem
-</div>
-<table class="table table-hover">
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>Nome</th>
-            <th>Telefone</th>
-            <th>CPF</th>
-            <th>Email</th>
-            @*<th>Operações</th>*@
-        </tr>
-    </thead>
-    <tbody>
-        <!-- Percorrer o conteudo da lista.. -->
-        @foreach (var item in Model)
-        {
+    <table class="table table-striped table-bordered" cellspacing="0" id="tbconsulta" style="width:100%">
+        <thead>
             <tr>
-                <td>@item.Id</td>
-                <td>@item.Nome</td>
-                <td>@item.Telefone</td>
-                <td>@item.Cpf</td>
-                <td>@item.Email</td>
-                <td>
-                    <a href="" class="mdi mdi-pencil btn btn-success" onclick="PreencheModalEdit(@item.Id)" data-toggle="modal" data-target="#modaledit">Editar</a>
-                    <a href="#" class="mdi mdi-note btn btn-success" onclick="PreencheModalDetalhes(@item.Id)" data-toggle="modal" data-target="#modaldetalhes">Detalhes</a>
-                    <a href="#" class="mdi mdi-delete btn btn-danger" onclick="PreencheModalDetalhes(@item.Id)" data-toggle="modal" data-target="#modaldelete"></a>
-                </td>
+                <th>Nome</th>
+                <th>Telefone</th>
+                <th>CPF</th>
+                <th>Email</th>
+                <th>Operações</th>
             </tr>
-        }
-    </tbody>
-    <tfoot>
-        <tr>
-            <td colspan="5">Quantidade de clientes: @Model.Count() </td>
-        </tr>
-    </tfoot>
-</table>
+        </thead>
+        <tbody>
+            <!-- Percorrer o conteudo da lista.. -->
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Nome</td>
+                    <td>@item.Telefone</td>
+                    <td>@item.Cpf</td>
+                    <td>@item.Email</td>
+                    <td>
+                        <a href="#" class="mdi mdi-pencil btn btn-success" style="width:auto" onclick="PreencheModalEdit(@item.Id)" data-toggle="modal" data-target="#modaledit">Editar</a>
+                        <a href="#" class="mdi mdi-note  btn btn-success" onclick="PreencheModalDetalhes(@item.Id)" data-toggle="modal" data-target="#modaldetalhes">Detalhes</a>
+                        <a href="#" class="mdi mdi-delete btn btn-danger" onclick="CarregaIdDelete(@item.Id)" data-toggle="modal" data-target="#modaldelete"></a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+        <tfoot>
+            @*<tr>
+                    <td colspan="5">Quantidade de clientes: @Model.Count() </td>
+                </tr>*@
+        </tfoot>
+    </table>
+</div>
 
 <!--Modal Create-->
 
@@ -121,7 +121,7 @@
                         </div>
                         <br />
                         <div class="form-group col-md-12">
-            
+
                         </div>
 
                     </div>
@@ -149,6 +149,9 @@
             <div class="modal-body">
 
                 <div class="row">
+
+                    <input type="hidden" id="txtidedicao" class="form-control" />
+
                     <div class="form-group col-md-6">
                         <label>Nome:</label>
                         <input type="text" id="txtnomeedicao" class="form-control" />
@@ -176,14 +179,14 @@
 
                     <br />
                     <div class="form-group col-md-12">
- 
+
                     </div>
                 </div>
 
 
             </div>
             <div class="modal-footer">
-                <button class="btn btn-success mdi mdi-update" style="margin-right:25%; width:50%" onclick="Cadastra()" id="btncadastro">
+                <button class="btn btn-success mdi mdi-update" style="margin-right:25%; width:50%" onclick="Editar()" id="btncadastro">
                     Atualizar Cliente
                 </button>
             </div>
@@ -259,12 +262,12 @@
                     </div>
 
                     <div class="form-group col-md-12">
-                
+
                     </div>
 
                 </div>
             </div>
-            <div class="modal-footer" >
+            <div class="modal-footer">
 
             </div>
         </div>
@@ -282,99 +285,195 @@
                 </button>
             </div>
             <div class="modal-body">
-                <p style="color:orangered;text-align:center" > Aviso: Com esta ação os dados do cliente em questão serão excluidos permanentemente!</p>
+                <input type="hidden" class="form-control hidde" id="txtid" />
+                <p style="color:orangered;text-align:center"> Aviso: Com esta ação os dados do cliente em questão serão excluidos permanentemente!</p>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-danger mdi mdi-delete" style="margin-right:25%; width:50%">Excluir Cliente</button>
+                <button class="btn btn-danger mdi mdi-delete" style="margin-right:25%; width:50%" onclick="Delete()">Excluir Cliente</button>
             </div>
         </div>
     </div>
 </div>
 
 
-<script type="text/javascript">
+@section scripts{
 
-    function Cadastra() {
+    <script type="text/javascript">
 
-        var Endereco = {
 
-            Id: null,
-            Rua: $("#txtrua").val(),
-            Numero: $("#txtnumero").val(),
-            Bairro: $("#txtbairro").val(),
-            UF: $("#txtuf").val(),
-            Cep: $("#txtcep").val(),
+        $(document).ready(function () {
+
+            $("#tbconsulta").DataTable({
+                responsive: true,
+                "paging": false,
+                "language": {
+                    "lengthMenu": "",
+                    "search": "Procurar",
+                    "info": "Mostrando página _PAGE_  de _PAGE_ ",
+                    "zeroRecords": "Nenhum registro encontrado !",
+                    "infoFiltered": "",
+                    "info": "",
+                    "infoEmpty": "",
+                    "paginate": {
+                        "first": "Primeiro",
+                        "last": "Ultimo",
+                        "next": "Próximo",
+                        "previous": "Anterior"
+                    }
+                }
+            });
+
+            $("#btncadastro").click(function () {
+
+                showAndDismissAlert('danger', 'Erro !!!');
+
+            });
+        })
+
+        function showAndDismissAlert(type, message) {
+            sleep(2);
+            var htmlAlert = '<div class="alert alert-' + type + '">' + message + '</div>';
+            // Prepend so that alert is on top, could also append if we want new alerts to show below instead of on top.
+            $(".alert-messages").prepend(htmlAlert);
+
+            $(".alert-messages .alert").first().hide().fadeIn(200).delay(3000).fadeOut(4000, function () { $(this).remove(); });
+
         }
 
-        var Cliente = {
-            Id: null,
-            Nome: $("#txtnome").val(),
-            DataNascimento: $("#txtdata").val(),
-            Cpf: $("#txtcpf").val(),
-            Email: $("#txtemail").val(),
-            Telefone: $("#txttelefone").val(),
-            Veiculos: "",
-            Endereco: Endereco
+        function sleep(seconds) {
+            var e = new Date().getTime() + (seconds * 1000);
+            while (new Date().getTime() <= e) { }
         }
 
-        $.ajax({
-            type: "POST",
-            url: "/Cliente/Cadastrar",
-            data: Cliente,
-            success: function () {
-            },
-            error: function (e) {
+        function Cadastra() {
 
-                $("#mensagem").html("Erro: " + e.status);
+            var Endereco = {
+
+                Id: null,
+                Rua: $("#txtrua").val(),
+                Numero: $("#txtnumero").val(),
+                Bairro: $("#txtbairro").val(),
+                UF: $("#txtuf").val(),
+                Cep: $("#txtcep").val(),
             }
-        });
-    }
 
-    function PreencheModalEdit(id) {
-
-        $.ajax({
-            type: "POST",
-            url: "/Cliente/Editar",
-            data: "id=" + id,
-            success: function (obj) {
-                $("#txtnomeedicao").val(obj.Nome);
-                $("#txtcpfedicao").val(obj.Cpf);
-                $("#txtemailedicao").val(obj.Email);
-                $("#txtdataedicao").val(obj.DataNascimento);
-                $("#txttelefoneedicao").val(obj.Telefone);
-            },
-            error: function (e) {
-                $("#mensagem").html("Erro: " + e.status);
+            var Cliente = {
+                Id: null,
+                Nome: $("#txtnome").val(),
+                DataNascimento: $("#txtdata").val(),
+                Cpf: $("#txtcpf").val(),
+                Email: $("#txtemail").val(),
+                Telefone: $("#txttelefone").val(),
+                Veiculos: "",
+                Endereco: Endereco
             }
-        });
 
-    }
+            $.ajax({
+                type: "POST",
+                url: "/Cliente/Cadastrar",
+                data: Cliente,
+                success: function () {
+                    window.location.reload()
+                },
+                error: function (e) {
 
-    function PreencheModalDetalhes(id) {
+                    $("#mensagem").html("Erro: " + e.status);
+                }
+            });
+        };
 
-        $.ajax({
-            type: "POST",
-            url: "/Cliente/Detalhes",
-            data: "id=" + id,
-            success: function (obj) {
+        function PreencheModalEdit(id) {
 
-                $("#txtdetalhenome").val(obj.Nome);
-                $("#txtdetalhecpf").val(obj.Cpf);
-                $("#txtdetalheemail").val(obj.Email);
-                $("#txtdetalhedata").val(obj.DataNascimento);
-                $("#txtdetalhetelefone").val(obj.Telefone);
-                $("#txtdetalherua").val(obj.Endereco.Rua);
-                $("#txtdetalhenumero").val(obj.Endereco.Numero);
-                $("#txtdetalhebairro").val(obj.Endereco.Bairro);
-                $("#txtdetalheuf").val(obj.Endereco.UF);
-                $("#txtdetalhecep").val(obj.Endereco.Cep);
+            $.ajax({
+                type: "POST",
+                url: "/Cliente/Editar",
+                data: "id=" + id,
+                success: function (obj) {
+                    $("#txtnomeedicao").val(obj.Nome);
+                    $("#txtcpfedicao").val(obj.Cpf);
+                    $("#txtemailedicao").val(obj.Email);
+                    $("#txtdataedicao").val(obj.DataNascimento);
+                    $("#txttelefoneedicao").val(obj.Telefone);
+                    $("#txtidedicao").val(obj.Id);
+                },
+                error: function (e) {
+                    $("#mensagem").html("Erro: " + e.status);
+                }
+            });
 
-            },
-            error: function (e) {
-                $("#mensagem").html("Erro: " + e.status);
+        }
+
+        function Editar() {
+            var model = {
+                Id: $("#txtidedicao").val(),
+                Nome: $("#txtnomeedicao").val(),
+                Cpf: $("#txtcpfedicao").val(),
+                Email: $("#txtemailedicao").val(),
+                DataNascimento: $("#txtdataedicao").val(),
+                Telefone: $("#txttelefoneedicao").val(),
             }
-        });
-    };
 
+            $.ajax({
+                type: "POST",
+                url: "/Cliente/Edita",
+                data: model,
+                success: function () {
+                    //window.location.reload()
+                    showAndDismissAlert('success', 'Cliente editado com sucesso!')
+                },
+                error: function (e) {
 
-</script>
+                    $("#mensagem").html("Erro: " + e.status);
+                }
+            });
+
+        };
+
+        function PreencheModalDetalhes(id) {
+
+            $.ajax({
+                type: "POST",
+                url: "/Cliente/Detalhes",
+                data: "id=" + id,
+                success: function (obj) {
+
+                    $("#txtdetalhenome").val(obj.Nome);
+                    $("#txtdetalhecpf").val(obj.Cpf);
+                    $("#txtdetalheemail").val(obj.Email);
+                    $("#txtdetalhedata").val(obj.DataNascimento);
+                    $("#txtdetalhetelefone").val(obj.Telefone);
+                    $("#txtdetalherua").val(obj.Endereco.Rua);
+                    $("#txtdetalhenumero").val(obj.Endereco.Numero);
+                    $("#txtdetalhebairro").val(obj.Endereco.Bairro);
+                    $("#txtdetalheuf").val(obj.Endereco.UF);
+                    $("#txtdetalhecep").val(obj.Endereco.Cep);
+
+                },
+                error: function (e) {
+                    $("#mensagem").html("Erro: " + e.status);
+                }
+            });
+        };
+
+        function Delete() {
+            var id = $("#txtid").val();
+
+            $.ajax({
+                type: "POST",
+                url: "/Cliente/Delete",
+                data: "id=" + id,
+                success: function (obj) {
+                    window.location.reload()
+                },
+                error: function (e) {
+                    $("#mensagem").html("Erro: " + e.status);
+                }
+            });
+        };
+
+        function CarregaIdDelete(id) {
+            $("#txtid").val(id)
+        };
+
+    </script>
+}

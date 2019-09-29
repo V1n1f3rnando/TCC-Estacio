@@ -280,6 +280,7 @@
     <Content Include="Content\CustomCss\colors\blue.css" />
     <Content Include="Content\CustomCss\spinners.css" />
     <Content Include="Content\CustomCss\style.css" />
+    <Content Include="Content\datatable.css" />
     <Content Include="Content\Scss\icons\flag-icon-css\flag-icon.min.css" />
     <Content Include="Content\Scss\icons\flag-icon-css\flags\ad.svg" />
     <Content Include="Content\Scss\icons\flag-icon-css\flags\ae.svg" />
@@ -802,7 +803,6 @@
     <Content Include="Assets\plugins\d3\README.md" />
     <Content Include="Assets\plugins\gmaps\gmaps.min.js.map" />
     <Content Include="Content\bootstrap-dialog.less" />
-    <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\CustomJs\custom.js" />
     <Content Include="Scripts\CustomJs\custom.min.js" />
     <Content Include="Scripts\CustomJs\dashboard1.js" />
@@ -810,10 +810,14 @@
     <Content Include="Scripts\CustomJs\nakupanda.js" />
     <Content Include="Scripts\CustomJs\sidebarmenu.js" />
     <Content Include="Scripts\CustomJs\waves.js" />
-    <Content Include="Scripts\jquery-3.3.1.js" />
-    <Content Include="Scripts\jquery-3.3.1.min.js" />
-    <Content Include="Scripts\jquery-3.3.1.slim.js" />
-    <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
+    <Content Include="Scripts\datatable.js" />
+    <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.4.1.js" />
+    <Content Include="Scripts\jquery-3.4.1.min.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.4.1.min.map" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
@@ -876,8 +880,6 @@
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <None Include="packages.config" />
-    <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
-    <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup />
   <PropertyGroup>
