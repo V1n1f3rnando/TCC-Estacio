@@ -15,9 +15,3 @@ C:\Users\rafael\Documents\GitHub\TCC-Estacio\Oficina.Com\Oficina.Com.Entidades\b
 C:\Users\rafael\Documents\GitHub\TCC-Estacio\Oficina.Com\Oficina.Com.Entidades\obj\Debug\Oficina.Com.Entidades.csprojAssemblyReference.cache
 C:\Users\rafael\Documents\GitHub\TCC-Estacio\Oficina.Com\Oficina.Com.Entidades\obj\Debug\Oficina.Com.Entidades.dll
 C:\Users\rafael\Documents\GitHub\TCC-Estacio\Oficina.Com\Oficina.Com.Entidades\obj\Debug\Oficina.Com.Entidades.pdb
-C:\Users\Fernando\Source\Repos\TCC-Estacio\Oficina.Com\Oficina.Com.Entidades\bin\Debug\Oficina.Com.Entidades.dll
-C:\Users\Fernando\Source\Repos\TCC-Estacio\Oficina.Com\Oficina.Com.Entidades\bin\Debug\Oficina.Com.Entidades.pdb
-C:\Users\Fernando\Source\Repos\TCC-Estacio\Oficina.Com\Oficina.Com.Entidades\obj\Debug\Oficina.Com.Entidades.csprojAssemblyReference.cache
-C:\Users\Fernando\Source\Repos\TCC-Estacio\Oficina.Com\Oficina.Com.Entidades\obj\Debug\Oficina.Com.Entidades.csproj.CoreCompileInputs.cache
-C:\Users\Fernando\Source\Repos\TCC-Estacio\Oficina.Com\Oficina.Com.Entidades\obj\Debug\Oficina.Com.Entidades.dll
-C:\Users\Fernando\Source\Repos\TCC-Estacio\Oficina.Com\Oficina.Com.Entidades\obj\Debug\Oficina.Com.Entidades.pdb
