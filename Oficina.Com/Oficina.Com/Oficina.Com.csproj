@@ -182,8 +182,11 @@
     <Compile Include="Models\ClienteDetalheViewModel.cs" />
     <Compile Include="Models\ClienteViewModel.cs" />
     <Compile Include="Models\EnderecoViewModel.cs" />
+    <Compile Include="Models\FornecedorViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\OrdemServicoViewModels.cs" />
+    <Compile Include="Models\ProdutoViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
