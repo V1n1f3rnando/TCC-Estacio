@@ -107,7 +107,9 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <input type="submit" class=" btn btn-success" onclick="Cadastro()" value="Cadastrar" />
+                <button class="btn btn-success mdi mdi-floppy" style="margin-right:25%; width:50%" onclick="Cadastro()" id="btncadastro">
+                    Cadastrar Veículo
+                </button>
             </div>
         </div>
     </div>
@@ -118,7 +120,7 @@
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h3 class="modal-title" id="exampleModalLabel">Cadastro de Veículos</h3>
+                <h3 class="modal-title" id="exampleModalLabel">Atualização de Veículo</h3>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -126,11 +128,7 @@
             <div class="modal-body">
                 <div class="form-horizontal col-md-12">
                     <div class="row" style="align-self:center">
-
-                        <div class="form-group col-md-4">
-                            <input type="hidden" id="txtedicaoid" class="form-control" />
-                        </div>
-
+                        <input type="hidden" class="hidden" id="txtedicaoid" />
                         <div class="form-group col-md-4">
                             <label>Placa:</label>
                             <input type="text" id="txtedicaoplaca" class="form-control" />
@@ -138,7 +136,7 @@
 
                         <div class="form-group col-md-4">
                             <label>CPF Proprietário:</label>
-                            <input type="text" id="txtedicaocpf" class="form-control" />
+                            <input type="text" id="txtedicaocpf" readonly class="form-control" />
                         </div>
 
                         <div class="form-group col-md-4">
@@ -174,7 +172,9 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <input type="submit" class=" btn btn-success" onclick="Editar()" value="Cadastrar" />
+                <button class="btn btn-success mdi mdi-update" style="margin-right:25%; width:50%" onclick="Editar()" id="btncadastro">
+                    Atualizar Veículo
+                </button>
             </div>
         </div>
     </div>
@@ -208,6 +208,7 @@
 
             var model = {
                 Id: null,
+                CpfCliente: $("#txtcpf").val(),
                 Placa: $("#txtplaca").val(),
                 Ano: $("#txtano").val(),
                 Tipo: $("#txttipo").val(),
@@ -234,7 +235,7 @@
         function PreencheEdit(id) {
             $.ajax({
                 type: "POST",
-                url: "/Veiculo/Editar",
+                url: "/Veiculo/Edit",
                 data: "id=" + id,
                 success: function (obj) {
                     $("#txtedicaoid").val(obj.Id);
@@ -245,7 +246,8 @@
                     $("#txtedicaocor").val(obj.Cor);
                     $("#txtedicaomotor").val(obj.Motor);
                     $("#txtedicaocomplemento").val(obj.Obs);
-                    $("#txtedicaocpf").val(obj.Cpf);
+                    $("#txtedicaocpf").val(obj.CpfCliente);
+                    $("#txtedicaoid").val(obj.ClienteId);
                 },
                 error: function (e) {
 
@@ -265,7 +267,8 @@
                 Cor: $("#txtedicaocor").val(),
                 Motor: $("#txtedicaomotor").val(),
                 Obs: $("#txtedicaocomplemento").val(),
-                ClienteId: $("#txtedicaocpf").val()
+                ClienteId: $("#txtedicaocpf").val(),
+                CpfCliente: null
             }
 
             $.ajax({
@@ -279,5 +282,6 @@
                 }
             });
         }
+
     </script>
 }

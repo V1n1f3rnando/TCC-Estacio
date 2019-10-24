@@ -48,6 +48,14 @@ namespace Oficina.com.Dados.Repositorios
             {
                 return d.Set<TEntity>().Find(id);
             }
+        }
+
+        public virtual TEntity FindById(string cnpj)
+        {
+            using (Context d = new Context())
+            {
+                return d.Set<TEntity>().Find(cnpj);
+            }
         }
     }
 }

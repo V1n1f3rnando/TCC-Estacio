@@ -41,5 +41,18 @@ namespace OFicina.Com.Negocio
             ClienteRepositorio rep = new ClienteRepositorio();
             return rep.FindById(id);
         }
+
+        public Cliente Consulta(string cpf)
+        {
+            ClienteRepositorio rep = new ClienteRepositorio();
+            return rep.FindById(cpf);
+        }
+
+        public bool ExisteCpf(string cpf)
+        {
+            bool existe = Consulta().Any(x => x.Cpf == cpf);
+
+            return existe;
+        }
     }
 }

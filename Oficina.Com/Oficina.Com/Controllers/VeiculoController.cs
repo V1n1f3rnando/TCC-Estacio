@@ -19,8 +19,13 @@ namespace Oficina.Com.Controllers
                 List<VeiculoViewModel> lstVeiculos = new List<VeiculoViewModel>();
                 VeiculoNegocio veiculoNegocio = new VeiculoNegocio();
 
+         
                 foreach (Veiculo veiculo in veiculoNegocio.Consulta())
                 {
+                    ClienteNegocio clienteNegocio = new ClienteNegocio();
+                    Cliente cliente = new Cliente();
+                    cliente = clienteNegocio.Consulta(veiculo.ClienteId);
+
                     VeiculoViewModel model = new VeiculoViewModel();
                     model.Id = veiculo.Id;
                     model.Placa = veiculo.Placa;
@@ -29,7 +34,6 @@ namespace Oficina.Com.Controllers
                     model.Obs = veiculo.Obs;
                     model.Tipo = veiculo.Tipo;
                     model.Ano = veiculo.Ano;
-                    model.ClienteId = Convert.ToString(veiculo.ClienteId);
                     model.Cor = veiculo.Cor;
 
                     lstVeiculos.Add(model);
@@ -47,14 +51,18 @@ namespace Oficina.Com.Controllers
         }
 
         [HttpPost]
-        public JsonResult Cadastrar(VeiculoViewModel model)
+        public ActionResult Cadastrar(VeiculoViewModel model)
         {
             try
             {
                 Veiculo veiculo = new Veiculo();
                 ClienteNegocio clienteNegocio =  new ClienteNegocio();
                 Cliente cliente = new Cliente();
-                cliente = clienteNegocio.Consulta().First(x => x.Cpf == model.ClienteId);
+
+                if (!clienteNegocio.ExisteCpf(model.CpfCliente))
+                    throw new Exception("O cpf informado não existe em nossas bases !");
+
+                cliente = clienteNegocio.Consulta().Single(x => x.Cpf == model.CpfCliente);
                 veiculo.Ano = model.Ano;
                 veiculo.ClienteId = cliente.Id;
                 veiculo.Cor = model.Cor;
@@ -74,52 +82,72 @@ namespace Oficina.Com.Controllers
                 throw;
             }
        
-            return Json("");
-        }
-        public JsonResult Editar(int id)
-        {
-            VeiculoNegocio veiculoNegocio = new VeiculoNegocio();
-            Veiculo veiculo = veiculoNegocio.Consulta(id);
-            VeiculoViewModel model = new VeiculoViewModel();
-            model.Id = veiculo.Id;
-            model.Modelo = veiculo.Modelo;
-            model.Motor = veiculo.Motor;
-            model.Obs = veiculo.Obs;
-            model.Placa = veiculo.Placa;
-            model.Tipo = veiculo.Tipo;
-            model.Ano = veiculo.Ano;
-            model.ClienteId = Convert.ToString(veiculo.ClienteId);
-            model.Cor = veiculo.Cor;
-
-            return Json(model);
+            return View("Consulta");
         }
 
         [HttpPost]
-        public ActionResult Editar(VeiculoViewModel model)
+        public JsonResult Edit(int id)
         {
             try
             {
+                VeiculoViewModel model = new VeiculoViewModel();
                 VeiculoNegocio veiculoNegocio = new VeiculoNegocio();
-                Veiculo veiculo = veiculoNegocio.Consulta(model.Id);
+                Veiculo veiculo = veiculoNegocio.Consulta(id);
 
-                veiculo.Ano = model.Ano;
-                veiculo.Id = model.Id;
-                veiculo.Cor = model.Cor;
-                veiculo.Modelo = model.Modelo;
-                veiculo.Motor = model.Motor;
-                veiculo.Obs = model.Obs;
-                veiculo.Placa = model.Placa;
-                veiculo.Tipo = model.Tipo;
-                veiculo.ClienteId = Convert.ToInt32(model.ClienteId);
+                ClienteNegocio clienteNegocio = new ClienteNegocio();
+                Cliente cliente = clienteNegocio.Consulta().Single(x => x.Id == veiculo.ClienteId);
 
-                veiculoNegocio.Altualizar(veiculo);
+                model.Id = veiculo.Id;
+                model.Placa = veiculo.Placa;
+                
+                model.Ano = veiculo.Ano;
+                model.Tipo = veiculo.Tipo;
+                model.Modelo = veiculo.Modelo;
+                model.Cor = veiculo.Cor;
+                model.Motor = veiculo.Motor;
+                model.Obs = veiculo.Obs;
+                model.CpfCliente = cliente.Cpf;
+                model.IdCliente = veiculo.ClienteId;
+
+                return Json(model);
+                
             }
             catch (Exception)
             {
 
                 throw;
             }
-            return View("ConsultarVeiculo");
+        }
+
+        [HttpPost]
+        public JsonResult Editar(VeiculoViewModel model)
+        {
+            try
+            { 
+                VeiculoNegocio negocio = new VeiculoNegocio();
+                Veiculo v = new Veiculo();
+                v = negocio.Consulta(model.Id);
+
+                if (ModelState.IsValid)
+                {
+                    v.Placa = model.Placa;
+                    v.Ano = model.Ano;
+                    v.Tipo = model.Tipo;
+                    v.Modelo = model.Modelo;
+                    v.Cor = model.Cor;
+                    v.Motor = model.Motor;
+                    v.Obs = model.Obs;
+
+                    negocio.Altualizar(v);
+                }
+
+                return Json("Consulta");
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
     }
 }

@@ -17,6 +17,7 @@ namespace Oficina.Com.Models
         public string Motor { get; set; }
         public string Obs { get; set; }
 
-        public string ClienteId { get; set; }
+        public int IdCliente { get; set; }
+        public string CpfCliente { get; set; }
     }
 }
