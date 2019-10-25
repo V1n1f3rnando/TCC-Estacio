@@ -128,7 +128,10 @@
             <div class="modal-body">
                 <div class="form-horizontal col-md-12">
                     <div class="row" style="align-self:center">
-                        <input type="hidden" class="hidden" id="txtedicaoid" />
+                        <div class="form-group col-md-12 hidden">
+                            <input type="hidden" id="txteditid" class="form-control" />
+                        </div>
+
                         <div class="form-group col-md-4">
                             <label>Placa:</label>
                             <input type="text" id="txtedicaoplaca" class="form-control" />
@@ -146,7 +149,13 @@
 
                         <div class="form-group col-md-4">
                             <label>Categoria:</label>
-                            <input type="text" id="txtedicaotipo" class="form-control" />
+                            <select class="form-control" id="txtedicaotipo">
+                                <option value="0">Carro</option>
+                                <option value="1">Moto</option>
+                                <option value="2">Caminhão</option>
+                                <option value="3">Outros</option>
+                            </select>
+                            @*<input type="text" id="txtedicaotipo" class="form-control" />*@
                         </div>
 
                         <div class="form-group col-md-4">
@@ -238,7 +247,7 @@
                 url: "/Veiculo/Edit",
                 data: "id=" + id,
                 success: function (obj) {
-                    $("#txtedicaoid").val(obj.Id);
+                    $("#txteditid").val(obj.Id);
                     $("#txtedicaoplaca").val(obj.Placa);
                     $("#txtedicaoano").val(obj.Ano);
                     $("#txtedicaotipo").val(obj.Tipo);
@@ -247,7 +256,6 @@
                     $("#txtedicaomotor").val(obj.Motor);
                     $("#txtedicaocomplemento").val(obj.Obs);
                     $("#txtedicaocpf").val(obj.CpfCliente);
-                    $("#txtedicaoid").val(obj.ClienteId);
                 },
                 error: function (e) {
 
@@ -259,7 +267,7 @@
 
             var model = {
 
-                Id: $("#txtedicaoid"),
+                Id: $("#txteditid").val(),
                 Placa: $("#txtedicaoplaca").val(),
                 Ano: $("#txtedicaoano").val(),
                 Tipo: $("#txtedicaotipo").val(),

@@ -19,7 +19,7 @@ namespace Oficina.Com.Controllers
                 List<VeiculoViewModel> lstVeiculos = new List<VeiculoViewModel>();
                 VeiculoNegocio veiculoNegocio = new VeiculoNegocio();
 
-         
+
                 foreach (Veiculo veiculo in veiculoNegocio.Consulta())
                 {
                     ClienteNegocio clienteNegocio = new ClienteNegocio();
@@ -46,23 +46,23 @@ namespace Oficina.Com.Controllers
 
                 throw;
             }
-           
+
 
         }
-
         [HttpPost]
         public ActionResult Cadastrar(VeiculoViewModel model)
         {
             try
             {
                 Veiculo veiculo = new Veiculo();
-                ClienteNegocio clienteNegocio =  new ClienteNegocio();
+                ClienteNegocio clienteNegocio = new ClienteNegocio();
                 Cliente cliente = new Cliente();
+                string cpf = model.CpfCliente.Replace(@"\t", "").Trim();
 
-                if (!clienteNegocio.ExisteCpf(model.CpfCliente))
+                if (!clienteNegocio.ExisteCpf(cpf))
                     throw new Exception("O cpf informado não existe em nossas bases !");
 
-                cliente = clienteNegocio.Consulta().Single(x => x.Cpf == model.CpfCliente);
+                cliente = clienteNegocio.Consulta().Single(x => x.Cpf == cpf);
                 veiculo.Ano = model.Ano;
                 veiculo.ClienteId = cliente.Id;
                 veiculo.Cor = model.Cor;
@@ -81,10 +81,9 @@ namespace Oficina.Com.Controllers
 
                 throw;
             }
-       
+
             return View("Consulta");
         }
-
         [HttpPost]
         public JsonResult Edit(int id)
         {
@@ -99,7 +98,6 @@ namespace Oficina.Com.Controllers
 
                 model.Id = veiculo.Id;
                 model.Placa = veiculo.Placa;
-                
                 model.Ano = veiculo.Ano;
                 model.Tipo = veiculo.Tipo;
                 model.Modelo = veiculo.Modelo;
@@ -110,7 +108,7 @@ namespace Oficina.Com.Controllers
                 model.IdCliente = veiculo.ClienteId;
 
                 return Json(model);
-                
+
             }
             catch (Exception)
             {
@@ -120,13 +118,13 @@ namespace Oficina.Com.Controllers
         }
 
         [HttpPost]
-        public JsonResult Editar(VeiculoViewModel model)
+        public ActionResult Editar(VeiculoViewModel model)
         {
             try
-            { 
+            {
                 VeiculoNegocio negocio = new VeiculoNegocio();
-                Veiculo v = new Veiculo();
-                v = negocio.Consulta(model.Id);
+                Veiculo v = negocio.Consulta(model.Id);
+
 
                 if (ModelState.IsValid)
                 {
@@ -141,7 +139,7 @@ namespace Oficina.Com.Controllers
                     negocio.Altualizar(v);
                 }
 
-                return Json("Consulta");
+                return View("ConsultaVeiculo");
             }
             catch (Exception)
             {
