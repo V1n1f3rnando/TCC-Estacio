@@ -2,10 +2,8 @@
   "ExpandedNodes": [
     "",
     "\\Oficina.Com",
-    "\\Oficina.Com\\Oficina.Com",
-    "\\Oficina.Com\\Oficina.Com\\Views",
-    "\\Oficina.Com\\Oficina.Com\\Views\\Shared"
+    "\\Oficina.Com\\Oficina.Com"
   ],
-  "SelectedNode": "\\Oficina.Com\\Oficina.Com\\Views\\Shared\\_Layout.cshtml",
+  "SelectedNode": "\\Oficina.Com\\Oficina.Com\\Views",
   "PreviewInSolutionExplorer": false
 }

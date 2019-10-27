@@ -116,7 +116,6 @@ namespace Oficina.Com.Controllers
                 throw;
             }
         }
-
         [HttpPost]
         public ActionResult Editar(VeiculoViewModel model)
         {
@@ -146,6 +145,46 @@ namespace Oficina.Com.Controllers
 
                 throw;
             }
+        }
+        public JsonResult Delete(int id)
+        {
+            try
+            {
+                VeiculoNegocio veiculoNegocio = new VeiculoNegocio();
+                Veiculo veiculo = veiculoNegocio.Consulta(id);
+                veiculoNegocio.Excluir(veiculo);
+
+                return Json("");
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public JsonResult Detalhes(int id)
+        {
+            VeiculoNegocio veiculoNegocio = new VeiculoNegocio();
+            Veiculo veiculo = veiculoNegocio.Consulta(id);
+
+            ClienteNegocio cn = new ClienteNegocio();
+            Cliente cliente = cn.Consulta(veiculo.ClienteId);
+
+            VeiculoViewModel model = new VeiculoViewModel();
+            model.Id = veiculo.Id;
+            model.Ano = veiculo.Ano;
+            model.Cor = veiculo.Cor;
+            model.IdCliente = veiculo.ClienteId;
+            model.Modelo = veiculo.Modelo;
+            model.Motor = veiculo.Motor;
+            model.Obs = veiculo.Obs;
+            model.Placa = veiculo.Placa;
+            model.Tipo = veiculo.Tipo;
+            model.CpfCliente = cliente.Cpf;
+            model.Nome = cliente.Nome;
+   
+            return Json(model);
         }
     }
 }

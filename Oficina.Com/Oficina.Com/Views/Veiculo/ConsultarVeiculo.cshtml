@@ -37,8 +37,8 @@
                     <td>@v.Motor</td>
                     <td>
                         <a href="#" class="mdi mdi-pencil btn btn-success" onclick="PreencheEdit(@v.Id)" style="width:auto" data-toggle="modal" data-target="#modaleditveiculo">Editar</a>
-                        <a href="#" class="mdi mdi-note  btn btn-success" data-toggle="modal" data-target="#modaldetalhes">Detalhes</a>
-                        <a href="#" class="mdi mdi-delete btn btn-danger" onclick="" data-toggle="modal" data-target="#modaldelete"></a>
+                        <a href="#" class="mdi mdi-note  btn btn-success" onclick="PreencheModalDetalhes(@v.Id)" data-toggle="modal" data-target="#modaldetalhes">Detalhes</a>
+                        <a href="#" class="mdi mdi-delete btn btn-danger" onclick="CarregaIdDelete(@v.Id)" data-toggle="modal" data-target="#modaldelete"></a>
                     </td>
                 </tr>
             }
@@ -155,7 +155,6 @@
                                 <option value="2">Caminhão</option>
                                 <option value="3">Outros</option>
                             </select>
-                            @*<input type="text" id="txtedicaotipo" class="form-control" />*@
                         </div>
 
                         <div class="form-group col-md-4">
@@ -189,6 +188,94 @@
     </div>
 </div>
 
+<!--Modal Detalhes-->
+<div class="modal fade" id="modaldetalhes" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="detalhes">Detalhes</h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <label>Proprietário:</label>
+                        <input type="text" id="txtdetalhenome" class="form-control" readonly />
+                    </div>
+
+                    <div class="form-group col-md-3">
+                        <label>CPF:</label>
+                        <input type="text" id="txtdetalhecpf" class="form-control" readonly />
+                    </div>
+
+                    <div class="form-group col-md-3" style="width:18px">
+                        <label>Placa:</label>
+                        <input type="text" id="txtdetalheplaca" class="form-control" readonly />
+                    </div>
+
+                    <div class="form-group col-md-3" readonly>
+                        <label>Categoria:</label>
+                        <input type="text" id="txtdetalhetipo" class="form-control" readonly />
+                    </div>
+
+                    <div class="form-group col-md-3">
+                        <label>Modelo:</label>
+                        <input type="text" id="txtdetalhemodelo" class="form-control" readonly />
+                    </div>
+
+                    <div class="form-group col-md-3">
+                        <label>Cor:</label>
+                        <input type="text" id="txtdetalhecor" class="form-control" readonly />
+                    </div>
+
+                    <div class="form-group col-md-3">
+                        <label>Motor:</label>
+                        <input type="text" id="txtdetalhemotor" class="form-control" readonly />
+                    </div>
+
+                    <div class="form-group col-md-3" style="width:18px">
+                        <label>Ano:</label>
+                        <input type="text" id="txtdetalheano" class="form-control" readonly />
+                    </div>
+
+                    <div class="form-group col-md-9">
+                        <label>Obs:</label>
+                        <input type="text" id="txtdetalheobs" class="form-control" readonly />
+                    </div>
+
+
+                </div>
+            </div>
+            <div class="modal-footer">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Modal Exclusão-->
+<div class="modal fade" id="modaldelete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="delete">Deseja realmente excluir este Veículo?</h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" class="form-control hidde" id="txtid" />
+                <p style="color:orangered;text-align:center"> Aviso: Com esta ação os dados do Veículo em questão serão excluidos permanentemente!</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-danger mdi mdi-delete" style="margin-right:25%; width:50%" onclick="Delete()">Excluir Veículo</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 @section scripts{
     <script type="text/javascript">
         $(document).ready(function () {
@@ -212,7 +299,6 @@
                 }
             });
         });
-
         function Cadastro() {
 
             var model = {
@@ -240,7 +326,6 @@
             });
             alert('Entrei');
         }
-
         function PreencheEdit(id) {
             $.ajax({
                 type: "POST",
@@ -262,7 +347,30 @@
                 }
             });
         }
+        function PreencheModalDetalhes(id) {
 
+            $.ajax({
+                type: "POST",
+                url: "/Veiculo/Detalhes",
+                data: "id=" + id,
+                success: function (obj) {
+
+                    var tipo = VerificaTipo(obj.Tipo);
+                    $("#txtdetalhenome").val(obj.Nome);
+                    $("#txtdetalhecpf").val(obj.CpfCliente);
+                    $("#txtdetalheplaca").val(obj.Placa);
+                    $("#txtdetalhetipo").val(tipo);
+                    $("#txtdetalhemodelo").val(obj.Modelo);
+                    $("#txtdetalhecor").val(obj.Cor);
+                    $("#txtdetalhemotor").val(obj.Motor);
+                    $("#txtdetalheano").val(obj.Ano);
+                    $("#txtdetalheobs").val(obj.Obs);
+                },
+                error: function (e) {
+                    $("#mensagem").html("Erro: " + e.status);
+                }
+            });
+        };
         function Editar() {
 
             var model = {
@@ -289,6 +397,34 @@
 
                 }
             });
+        }
+        function CarregaIdDelete(id) {
+            $("#txtid").val(id)
+        };
+        function Delete() {
+            var id = $("#txtid").val();
+            $.ajax({
+                type: "POST",
+                url: "/Veiculo/Delete",
+                data: "id=" + id,
+                success: function (obj) {
+                    window.location.reload()
+                },
+                error: function (e) {
+                    $("#mensagem").html("Erro: " + e.status);
+                }
+            });
+        };
+        function VerificaTipo(tipo) {
+            if (tipo = '0') {
+                return 'Carro';
+            } else if (tipo = '1') {
+                return 'Moto';
+            } else if (tipo = '2') {
+                return 'Caminhão';
+            } else if (tipo = '3') {
+                return 'Outros';
+            }
         }
 
     </script>

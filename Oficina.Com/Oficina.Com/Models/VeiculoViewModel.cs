@@ -19,5 +19,6 @@ namespace Oficina.Com.Models
 
         public int IdCliente { get; set; }
         public string CpfCliente { get; set; }
+        public string Nome { get; set; }
     }
 }
