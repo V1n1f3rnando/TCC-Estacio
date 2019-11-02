@@ -9,7 +9,7 @@
 <div class="alert-messages text-center">
 </div>
 <br />
-<a href="" onclick="modalcreate" data-toggle="modal" data-target="#modalExemplo">
+<a href="" onclick="modalcreate" data-toggle="modal" data-target="#modalcreateordem">
     <span class="mdi mdi-account btn btn-success"> Nova Ordem de Serviço</span>
 </a>
 <hr />
@@ -18,12 +18,10 @@
     <table class="table table-striped table-bordered" cellspacing="0" id="tbconsulta" style="width:100%">
         <thead>
             <tr>
-                <th>Motivo</th>
                 <th>Data de Abertura</th>
                 <th>Orçamento</th>
                 <th>Status</th>
                 <th>Placa</th>
-                <th>Observação</th>
                 <th>Colaborador</th>
             </tr>
         </thead>
@@ -35,13 +33,11 @@
                 <td></td>
                 <td></td>
                 <td></td>
-                <td></td>
-                <td></td>
 
                 <td>
-                    <a href="#" class="mdi mdi-pencil btn btn-success" style="width:auto" data-toggle="modal" data-target="#modaledit">Editar</a>
-                    <a href="#" class="mdi mdi-note  btn btn-success" data-toggle="modal" data-target="#modaldetalhes">Detalhes</a>
-                    <a href="#" class="mdi mdi-delete btn btn-danger" onclick="" data-toggle="modal" data-target="#modaldelete"></a>
+                    <a href="#" class="mdi mdi-pencil btn btn-success" style="width:auto" data-toggle="modal" data-target="#modaleditordem">Editar</a>
+                    <a href="#" class="mdi mdi-note  btn btn-success" data-toggle="modal" data-target="#modaldetalhesordem">Detalhes</a>
+                    <a href="#" class="mdi mdi-delete btn btn-danger" data-toggle="modal" data-target="#modaldeleteordem"></a>
                 </td>
             </tr>
 
@@ -52,4 +48,218 @@
                 </tr>*@
         </tfoot>
     </table>
+</div>
+
+<!--Modal Create-->
+
+<div class="modal fade" id="modalcreateordem" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="exampleModalLabel">Cadastro de Ordem de Serviço</h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-horizontal col-md-12">
+                    <div class="row" style="align-self:center">
+                        <div class="form-group col-md-6">
+                            <label>Motivo:</label>
+                            <input type="text" id="txtmotivo" class="form-control" />
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label>Data de Abertura:</label>
+                            <input type="date" id="txtdataabertura" class="form-control" />
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label>Orçamento:</label>
+                            <input type="text" id="txtorçamento" class="form-control" />
+                        </div>
+
+                        <div class="form-group col-md-3">
+                            <label>Status:</label>
+                            <input type="text" id="txtstatus" class="form-control" />
+                        </div>
+
+                        <div class="form-group col-md-3">
+                            <label>Placa:</label>
+                            <input type="text" id="txtplaca" class="form-control" />
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label>Observação:</label>
+                            <input type="text" id="txtobservação" class="form-control" />
+                        </div>
+
+                        <div class="form-group col-md-4">
+                            <label>Colaborador:</label>
+                            <input type="text" id="txtcolaborador" class="form-control" />
+                        </div>
+
+                        <br />
+                        <div class="form-group col-md-12">
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-success mdi mdi-floppy" style="margin-right:25%; width:50%" onclick="Cadastra()" id="btncadastro">
+                    Cadastrar Ordem de Serviço
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Modal edição-->
+<div class="modal fade" id="modaleditordem" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="edicao">Edição de Ordem de Serviço</h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <div class="row">
+
+                    <div class="form-group col-md-6">
+                        <label>Motivo:</label>
+                        <input type="text" id="txtmotivo" class="form-control" />
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <label>Data de Abertura:</label>
+                        <input type="date" id="txtdataabertura" class="form-control" />
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <label>Orçamento:</label>
+                        <input type="text" id="txtorçamento" class="form-control" />
+                    </div>
+
+                    <div class="form-group col-md-3">
+                        <label>Status:</label>
+                        <input type="text" id="txtstatus" class="form-control" />
+                    </div>
+
+                    <div class="form-group col-md-3">
+                        <label>Placa:</label>
+                        <input type="text" id="txtplaca" class="form-control" />
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <label>Observação:</label>
+                        <input type="text" id="txtobservação" class="form-control" />
+                    </div>
+
+                    <div class="form-group col-md-4">
+                        <label>Colaborador:</label>
+                        <input type="text" id="txtcolaborador" class="form-control" />
+                    </div>
+                </div>
+
+                    <br />
+                    <div class="form-group col-md-12">
+
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-success mdi mdi-update" style="margin-right:25%; width:50%" onclick="Editar()" id="btncadastro">
+                    Atualizar Ordem de Serviço
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Modal detalhe-->
+<div class="modal fade" id="modaldetalhesordem" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="edicao">Detalhe da Ordem de Serviço</h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <label>Motivo:</label>
+                        <input type="text" id="txtmotivo" class="form-control" />
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <label>Data de Abertura:</label>
+                        <input type="date" id="txtdataabertura" class="form-control" />
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <label>Orçamento:</label>
+                        <input type="text" id="txtorçamento" class="form-control" />
+                    </div>
+
+                    <div class="form-group col-md-3">
+                        <label>Status:</label>
+                        <input type="text" id="txtstatus" class="form-control" />
+                    </div>
+
+                    <div class="form-group col-md-3">
+                        <label>Placa:</label>
+                        <input type="text" id="txtplaca" class="form-control" />
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <label>Observação:</label>
+                        <input type="text" id="txtobservação" class="form-control" />
+                    </div>
+
+                    <div class="form-group col-md-4">
+                        <label>Colaborador:</label>
+                        <input type="text" id="txtcolaborador" class="form-control" />
+                    </div>
+
+                    <div class="form-group col-md-12">
+
+                    </div>
+
+                </div>
+            </div>
+            <div class="modal-footer">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Modal Delete-->
+<div class="modal fade" id="modaldeleteordem" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="delete">Deseja realmente excluir este Ordem de Serviço?</h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" class="form-control hidde" id="txtid" />
+                <p style="color:orangered;text-align:center"> Aviso: Com esta ação os dados da Ordem de Serviço em questão serão excluidos permanentemente!</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-danger mdi mdi-delete" style="margin-right:25%; width:50%" onclick="Delete()">Excluir Ordem de Serviço</button>
+            </div>
+        </div>
+    </div>
 </div>
