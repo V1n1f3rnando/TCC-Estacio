@@ -1,4 +1,5 @@
-﻿
+﻿@model IEnumerable<Oficina.Com.Models.OrdemServicoViewModel>
+
 @{
     ViewBag.Title = "ConsultarOrdem";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -27,19 +28,22 @@
         </thead>
         <tbody>
             <!-- Percorrer o conteudo da lista.. -->
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.DataAbertura</td>
+                    <td>@item.Status.ToString()</td>
+                    <td>@item.Placa</td>
+                    <td>@item.Colaborador.Nome</td>
 
-                <td>
-                    <a href="#" class="mdi mdi-pencil btn btn-success" style="width:auto" data-toggle="modal" data-target="#modaleditordem">Editar</a>
-                    <a href="#" class="mdi mdi-note  btn btn-success" data-toggle="modal" data-target="#modaldetalhesordem">Detalhes</a>
-                    <a href="#" class="mdi mdi-delete btn btn-danger" data-toggle="modal" data-target="#modaldeleteordem"></a>
-                </td>
-            </tr>
+                    <td>
+                        <a href="#" class="mdi mdi-pencil btn btn-success" style="width:auto" data-toggle="modal" data-target="#modaleditordem">Editar</a>
+                        <a href="#" class="mdi mdi-note  btn btn-success" data-toggle="modal" data-target="#modaldetalhesordem">Detalhes</a>
+                        <a href="#" class="mdi mdi-delete btn btn-danger" data-toggle="modal" data-target="#modaldeleteordem"></a>
+                    </td>
+                </tr>
+            }
 
         </tbody>
         <tfoot>
@@ -64,50 +68,27 @@
             <div class="modal-body">
                 <div class="form-horizontal col-md-12">
                     <div class="row" style="align-self:center">
-                        <div class="form-group col-md-6">
-                            <label>Codigo:</label>
-                            <input type="text" id="txtmotivo" class="form-control" />
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label>Motivo:</label>
-                            <input type="text" id="txtmotivo" class="form-control" />
-                        </div>
 
-                        <div class="form-group col-md-6">
-                            <label>Data de Abertura:</label>
-                            <input type="date" id="txtdataabertura" class="form-control" />
-                        </div>
-
-                        <div class="form-group col-md-6">
-                            <label>Orçamento:</label>
+                        <div class="form-group col-md-3">
+                            <label>Valor:</label>
                             <input type="text" id="txtorçamento" class="form-control" />
                         </div>
 
                         <div class="form-group col-md-3">
-                            <label>Status:</label>
-                            <input type="text" id="txtstatus" class="form-control" />
-                        </div>
-
-                        <div class="form-group col-md-3">
-                            <label>Placa:</label>
+                            <label>Veículo:</label>
                             <input type="text" id="txtplaca" class="form-control" />
                         </div>
 
                         <div class="form-group col-md-6">
-                            <label>Observação:</label>
-                            <input type="text" id="txtobservação" class="form-control" />
-                        </div>
-
-                        <div class="form-group col-md-4">
                             <label>Colaborador:</label>
                             <input type="text" id="txtcolaborador" class="form-control" />
                         </div>
 
-                        <br />
-                        <div class="form-group col-md-12">
-
+                        <div class="form-group col-md-12" style="">
+                            <label>Motivo:</label>
+                            <input type="text" id="txtmotivo" class="form-control" />
                         </div>
-
+                        <br />
                     </div>
                 </div>
             </div>
@@ -278,3 +259,66 @@
         </div>
     </div>
 </div>
+
+@section scripts{
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $("#tbconsulta").DataTable({
+                responsive: true,
+                "paging": false,
+                "language": {
+                    "lengthMenu": "",
+                    "search": "Procurar",
+                    "info": "Mostrando página _PAGE_  de _PAGE_ ",
+                    "zeroRecords": "Nenhum registro encontrado !",
+                    "infoFiltered": "",
+                    "info": "",
+                    "infoEmpty": "",
+                    "paginate": {
+                        "first": "Primeiro",
+                        "last": "Ultimo",
+                        "next": "Próximo",
+                        "previous": "Anterior"
+                    }
+                }
+            });
+
+            $("#btncadastro").click(function () {
+
+                showAndDismissAlert('danger', 'Erro !!!');
+
+            });
+        })
+
+        function Cadastra() {
+            var Ordem = {
+                Id: null,
+                Motivo: $("#txtmotivo").val(),
+                DataAbertura: null,
+                Orçamento: $("#txtorçamento").val(),
+                Status: 0,
+                Placa: $("#txtplaca").val(),
+                Obs: null,
+                ColaboradorId: $("#txtcolaborador").val()
+            }
+
+            $.ajax({
+                type: "POST",
+                url: "/Ordem/Cadastrar",
+                data: Ordem,
+                success: function () {
+                    window.location.reload()
+                },
+                error: function (e) {
+
+                    $("#mensagem").html("Erro: " + e.status);
+                }
+            });
+        }
+
+    </script>
+
+
+}

@@ -162,7 +162,6 @@ namespace Oficina.Com.Controllers
                 throw;
             }
         }
-
         public JsonResult Detalhes(int id)
         {
             VeiculoNegocio veiculoNegocio = new VeiculoNegocio();
