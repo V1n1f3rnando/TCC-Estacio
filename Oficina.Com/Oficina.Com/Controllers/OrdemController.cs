@@ -14,8 +14,24 @@ namespace Oficina.Com.Controllers
         // GET: Ordem
         public ActionResult ConsultarOrdem()
         {
-            
-            return View();
+            OrdemServicoNegocio servicoNegocio = new OrdemServicoNegocio();
+            List<OrdemServicoViewModel> lstOrdem = new List<OrdemServicoViewModel>();
+            OrdemServicoViewModel model = new OrdemServicoViewModel();
+
+            foreach (var ordem in servicoNegocio.Consulta())
+            {
+                model.Id = ordem.Id;
+                model.Motivo = ordem.Motivo;
+                model.Obs = ordem.Obs;
+                model.Orçamento = ordem.Orçamento;
+                model.Placa = ordem.Placa;
+                model.Status = ordem.Status;
+                model.DataAbertura = ordem.DataAbertura;
+                model.ColaboradorId = ordem.ColaboradorId;
+
+                lstOrdem.Add(model);
+            }
+            return View(lstOrdem);
         }
         public JsonResult Cadastrar(OrdemServicoViewModel model)
         {
