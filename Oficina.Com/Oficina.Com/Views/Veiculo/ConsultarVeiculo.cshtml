@@ -8,7 +8,7 @@
 <div class="alert-messages text-center">
 </div>
 <br />
-<a href="" onclick="RetornaCliente()" data-toggle="modal" data-target="#modalcreateveiculo">
+<a href="" onclick="CarregaCampos()" data-toggle="modal" data-target="#modalcreateveiculo">
     <span class="mdi mdi-account btn btn-success"> Novo Veiculo</span>
 </a>
 <hr />
@@ -70,7 +70,7 @@
                         </div>
 
                         <div class="form-group col-md-4">
-                            <label>CPF proprietário:</label>
+                            <label>Proprietário:</label>
                             <select id="clienteselect" class="form-control">
                             </select>
                         </div>
@@ -356,7 +356,6 @@
             });
         }
         function PreencheModalDetalhes(id) {
-
             $.ajax({
                 type: "POST",
                 url: "/Veiculo/Detalhes",
@@ -434,14 +433,18 @@
                 return 'Outros';
             }
         }
+        function CarregaCampos() {
+            RetornaCliente();
+        }
         function RetornaCliente() {
             $.ajax({
                 type: "POST",
                 url: "/Cliente/RetornaListaCliente",
                 data: null,
                 success: function (data) {
+                    $("#clienteselect option").remove();
                     data.forEach(function (item) {
-                        $("#clienteselect").append('<option value="'+'0">' + item + '</option>');
+                        $("#clienteselect").append('<option value="' + item[1] + '">' + item[0] + '</option>');
                     });
                 },
                 error: function (e) {
@@ -449,5 +452,22 @@
                 }
             });
         }
+        function RetornaPlaca() {
+            $.ajax({
+                type: "POST",
+                url: "/Veiculo/RetornaListaVeiculo",
+                data: null,
+                success: function (data) {
+                    $("#placaselect option").remove();
+                    data.forEach(function (item) {
+                        $("#placaselect").append('<option value="' + item[1] + '">' + item[1] + '</option>');
+                    });
+                },
+                error: function (e) {
+
+                }
+            });
+        }
+
     </script>
 }

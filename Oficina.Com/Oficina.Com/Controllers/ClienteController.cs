@@ -203,13 +203,16 @@ namespace Oficina.Com.Controllers
         [HttpPost]
         public JsonResult RetornaListaCliente()
         {
-            List<string> lstCliente = new List<string>();
+            List<string[]> lstCliente = new List<string[]>();
+            string[] nomeCfp; 
             ClienteNegocio negocio = new ClienteNegocio();
             List<Cliente> c = new List<Cliente>();
             foreach (var cliente in negocio.Consulta())
             {
-                lstCliente.Add(cliente.Nome);
+                nomeCfp = (cliente.Nome + "|" + cliente.Cpf).Split('|');
+                lstCliente.Add(nomeCfp);
             }
+
             return Json(lstCliente);
         }
     }

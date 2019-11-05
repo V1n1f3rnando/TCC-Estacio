@@ -185,5 +185,20 @@ namespace Oficina.Com.Controllers
    
             return Json(model);
         }
+        [HttpPost]
+        public JsonResult RetornaListaVeiculo()
+        {
+            List<string[]> lstplaca = new List<string[]>();
+            string[] modeloPlaca;
+            VeiculoNegocio negocio = new VeiculoNegocio();
+            List<Veiculo> v = new List<Veiculo>();
+            foreach (var veiculo in negocio.Consulta())
+            {
+                modeloPlaca = (veiculo.Modelo+"|"+veiculo.Placa).Split('|');
+                lstplaca.Add(modeloPlaca);
+            }
+
+            return Json(lstplaca);
+        }
     }
 }
