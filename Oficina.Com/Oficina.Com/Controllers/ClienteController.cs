@@ -43,9 +43,7 @@ namespace Oficina.Com.Controllers
             {
 
                 throw;
-            }
-
-        
+            }        
         }
         
         [HttpPost]
@@ -200,6 +198,19 @@ namespace Oficina.Com.Controllers
             }
 
             return Json("");
+        }
+
+        [HttpPost]
+        public JsonResult RetornaListaCliente()
+        {
+            List<string> lstCliente = new List<string>();
+            ClienteNegocio negocio = new ClienteNegocio();
+            List<Cliente> c = new List<Cliente>();
+            foreach (var cliente in negocio.Consulta())
+            {
+                lstCliente.Add(cliente.Nome);
+            }
+            return Json(lstCliente);
         }
     }
 }

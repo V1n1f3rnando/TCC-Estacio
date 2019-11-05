@@ -8,7 +8,7 @@
 <div class="alert-messages text-center">
 </div>
 <br />
-<a href="" onclick="modalcreateveiculo" data-toggle="modal" data-target="#modalcreateveiculo">
+<a href="" onclick="RetornaCliente()" data-toggle="modal" data-target="#modalcreateveiculo">
     <span class="mdi mdi-account btn btn-success"> Novo Veiculo</span>
 </a>
 <hr />
@@ -71,7 +71,8 @@
 
                         <div class="form-group col-md-4">
                             <label>CPF proprietário:</label>
-                            <input type="text" id="txtcpf" class="form-control" />
+                            <select id="clienteselect" class="form-control">
+                            </select>
                         </div>
 
                         <div class="form-group col-md-4">
@@ -110,6 +111,8 @@
                         </div>
                     </div>
                 </div>
+
+
             </div>
             <div class="modal-footer">
                 <button class="btn btn-success mdi mdi-floppy" style="margin-right:25%; width:50%" onclick="Cadastro()" id="btncadastro">
@@ -431,6 +434,20 @@
                 return 'Outros';
             }
         }
+        function RetornaCliente() {
+            $.ajax({
+                type: "POST",
+                url: "/Cliente/RetornaListaCliente",
+                data: null,
+                success: function (data) {
+                    data.forEach(function (item) {
+                        $("#clienteselect").append('<option value="'+'0">' + item + '</option>');
+                    });
+                },
+                error: function (e) {
 
+                }
+            });
+        }
     </script>
 }
