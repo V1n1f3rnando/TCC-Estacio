@@ -292,6 +292,8 @@
                 url: "/Fornecedor/Editar",
                 data: "id=" + id,
                 success: function (model) {
+
+                    $("#txtidedicao").val(id);
                     $("#txteditrazao").val(model.Razao);
                     $("#txteditcnpj").val(model.Cnpj);
                     $("#txtedittelefone").val(model.Telefone);
@@ -323,6 +325,29 @@
                 }
             });
         }
+        function Editar() {
+            model = {
+                Id: $("#txtidedicao").val(),
+                Razao: $("#txteditrazao").val(),
+                Cnpj:  $("#txteditcnpj").val(),
+                Telefone: $("#txtedittelefone").val(),
+                Email:   $("#txteditemail").val(),
+                Endereco: $("#txteditendereco").val(),
+            }
+
+            $.ajax({
+                type: "POST",
+                url: "/Fornecedor/Edit",
+                data: model,
+                success: function () {
+                    window.location.reload()
+                },
+                error: function (e) {
+
+                    $("#mensagem").html("Erro: " + e.status);
+                }
+            });
+        }
         function Delete() {
             id = $("#txtdeleteid").val();
             $.ajax({
@@ -330,7 +355,7 @@
                 url: "/Fornecedor/Excluir",
                 data: "id=" + id,
                 success: function () {
-                     window.location.reload()
+                    window.location.reload()
                 },
                 error: function (e) {
 

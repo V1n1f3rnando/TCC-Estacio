@@ -55,6 +55,28 @@ namespace Oficina.Com.Controllers
 
         }
         [HttpPost]
+        public JsonResult Edit(FornecedorViewModel model)
+        {
+            try
+            {
+                FornecedorNegocio fornecedorNegocio = new FornecedorNegocio();
+                Fornecedor f = fornecedorNegocio.Consulta(model.Id);
+
+                f.Cnpj = model.Cnpj;
+                f.Email = model.Email;
+                f.Endereco = model.Endereco;
+                f.Razao = model.Razao;
+                f.Telefone = model.Telefone; 
+
+                fornecedorNegocio.Altualizar(f);
+                return Json("");
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
         public JsonResult Editar(int id)
         {
             try
