@@ -44,8 +44,7 @@ namespace Oficina.Com.Controllers
 
                 throw;
             }        
-        }
-        
+        }       
         [HttpPost]
         public JsonResult Editar(int id)
         {
@@ -69,9 +68,7 @@ namespace Oficina.Com.Controllers
             
            
             return Json(model);
-        }
-
-        
+        }  
         [HttpPost]
         public JsonResult Edita(ClienteViewModel model)
         {
@@ -98,7 +95,6 @@ namespace Oficina.Com.Controllers
 
             return Json("");
         }
-
         public JsonResult Detalhes(int id)
         {
             Cliente cliente = new Cliente();

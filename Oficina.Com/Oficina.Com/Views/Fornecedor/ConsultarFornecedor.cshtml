@@ -1,4 +1,4 @@
-﻿
+﻿@model IEnumerable<Oficina.Com.Models.FornecedorViewModel>
 @{
     ViewBag.Title = "ConsultarFornecedor";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -13,8 +13,8 @@
     <span class="mdi mdi-account btn btn-success"> Nova Fornecedor</span>
 </a>
 <hr />
-<div class="col-md-12">
 
+<div class="col-md-12">
     <table class="table table-striped table-bordered" cellspacing="0" id="tbconsulta" style="width:100%">
         <thead>
             <tr>
@@ -22,25 +22,24 @@
                 <th>Razão</th>
                 <th>Telefone</th>
                 <th>Email</th>
-                <th>Endereço</th>
+                <th>Operações</th>
             </tr>
         </thead>
         <tbody>
-            <!-- Percorrer o conteudo da lista.. -->
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-
-                <td>
-                    <a href="#" class="mdi mdi-pencil btn btn-success" style="width:auto" data-toggle="modal" data-target="#modaleditFornecedor">Editar</a>
-                    <a href="#" class="mdi mdi-note  btn btn-success" data-toggle="modal" data-target="#modaldetalhesFornecedor">Detalhes</a>
-                    <a href="#" class="mdi mdi-delete btn btn-danger" onclick="" data-toggle="modal" data-target="#modaldeleteFornecedor"></a>
-                </td>
-            </tr>
-
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Cnpj</td>
+                    <td>@item.Razao</td>
+                    <td>@item.Telefone</td>
+                    <td>@item.Email</td>
+                    <td>
+                        <a href="#" class="mdi mdi-pencil btn btn-success" onclick="PreencheEdit(@item.Id)" style="width:auto" data-toggle="modal" data-target="#modaleditFornecedor">Editar</a>
+                        <a href="#" class="mdi mdi-note  btn btn-success" onclick="PreencheDetalhe(@item.Id)" data-toggle="modal" data-target="#modaldetalhesFornecedor">Detalhes</a>
+                        <a href="#" class="mdi mdi-delete btn btn-danger" onclick="PreencheDelete(@item.Id)" data-toggle="modal" data-target="#modaldeleteFornecedor"></a>
+                    </td>
+                </tr>
+            }
         </tbody>
         <tfoot>
             @*<tr>
@@ -64,29 +63,29 @@
             <div class="modal-body">
                 <div class="form-horizontal col-md-12">
                     <div class="row" style="align-self:center">
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-4">
                             <label>Razão:</label>
-                            <input type="text" id="txtmotivo" class="form-control" />
+                            <input type="text" id="txtrazao" class="form-control" />
                         </div>
 
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-4">
                             <label>Cnpj:</label>
-                            <input type="text" id="txtdataabertura" class="form-control" />
+                            <input type="text" id="txtcnpj" class="form-control" />
                         </div>
 
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-4">
                             <label>Telefone:</label>
-                            <input type="text" id="txtorçamento" class="form-control" />
+                            <input type="text" id="txttelefone" class="form-control" />
                         </div>
 
-                        <div class="form-group col-md-3">
+                        <div class="form-group col-md-4">
                             <label>Email:</label>
-                            <input type="text" id="txtstatus" class="form-control" />
+                            <input type="text" id="txtemail" class="form-control" />
                         </div>
 
-                        <div class="form-group col-md-3">
+                        <div class="form-group col-md-8">
                             <label>Endereço:</label>
-                            <input type="text" id="txtplaca" class="form-control" />
+                            <input type="text" id="txtendereco" class="form-control" />
                         </div>
 
                         <br />
@@ -98,7 +97,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-success mdi mdi-floppy" style="margin-right:25%; width:50%" onclick="Cadastra()" id="btncadastro">
+                <button class="btn btn-success mdi mdi-floppy" style="margin-right:25%; width:50%" onclick="Cadastrar()" id="btncadastro">
                     Cadastrar Fornecedor
                 </button>
             </div>
@@ -122,29 +121,29 @@
 
                     <input type="hidden" id="txtidedicao" class="form-control" />
 
-                    <div class="form-group col-md-6">
+                    <div class="form-group col-md-4">
                         <label>Razão:</label>
-                        <input type="text" id="txtmotivo" class="form-control" />
+                        <input type="text" id="txteditrazao" class="form-control" />
                     </div>
 
-                    <div class="form-group col-md-6">
+                    <div class="form-group col-md-4">
                         <label>Cnpj:</label>
-                        <input type="text" id="txtdataabertura" class="form-control" />
+                        <input type="text" id="txteditcnpj" class="form-control" />
                     </div>
 
-                    <div class="form-group col-md-6">
+                    <div class="form-group col-md-4">
                         <label>Telefone:</label>
-                        <input type="text" id="txtorçamento" class="form-control" />
+                        <input type="text" id="txtedittelefone" class="form-control" />
                     </div>
 
-                    <div class="form-group col-md-3">
+                    <div class="form-group col-md-4">
                         <label>Email:</label>
-                        <input type="text" id="txtstatus" class="form-control" />
+                        <input type="text" id="txteditemail" class="form-control" />
                     </div>
 
-                    <div class="form-group col-md-3">
+                    <div class="form-group col-md-8">
                         <label>Endereço:</label>
-                        <input type="text" id="txtplaca" class="form-control" />
+                        <input type="text" id="txteditendereco" class="form-control" />
                     </div>
 
                     <br />
@@ -175,29 +174,29 @@
             </div>
             <div class="modal-body">
                 <div class="row">
-                    <div class="form-group col-md-6">
+                    <div class="form-group col-md-4">
                         <label>Razão:</label>
-                        <input type="text" id="txtmotivo" class="form-control" />
+                        <input type="text" id="txtdtrazao" class="form-control" readonly />
                     </div>
 
-                    <div class="form-group col-md-6">
+                    <div class="form-group col-md-4">
                         <label>Cnpj:</label>
-                        <input type="text" id="txtdataabertura" class="form-control" />
+                        <input type="text" id="txtdtcnpj" class="form-control" readonly />
                     </div>
 
-                    <div class="form-group col-md-6">
+                    <div class="form-group col-md-4">
                         <label>Telefone:</label>
-                        <input type="text" id="txtorçamento" class="form-control" />
+                        <input type="text" id="txtdttelefone" class="form-control" readonly />
                     </div>
 
-                    <div class="form-group col-md-3">
+                    <div class="form-group col-md-4">
                         <label>Email:</label>
-                        <input type="text" id="txtstatus" class="form-control" />
+                        <input type="text" id="txtdtemail" class="form-control" readonly />
                     </div>
 
-                    <div class="form-group col-md-3">
+                    <div class="form-group col-md-8">
                         <label>Endereço:</label>
-                        <input type="text" id="txtplaca" class="form-control" />
+                        <input type="text" id="txtdtendereco" class="form-control" readonly />
                     </div>
 
                     <div class="form-group col-md-12">
@@ -224,7 +223,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <input type="hidden" class="form-control hidde" id="txtid" />
+                <input type="hidden" class="form-control hidde" id="txtdeleteid" />
                 <p style="color:orangered;text-align:center"> Aviso: Com esta ação os dados do Fornecedor em questão serão excluidos permanentemente!</p>
             </div>
             <div class="modal-footer">
@@ -233,3 +232,115 @@
         </div>
     </div>
 </div>
+@section scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $("#tbconsulta").DataTable({
+                responsive: true,
+                "paging": false,
+                "language": {
+                    "lengthMenu": "",
+                    "search": "Procurar",
+                    "info": "Mostrando página _PAGE_  de _PAGE_ ",
+                    "zeroRecords": "Nenhum registro encontrado !",
+                    "infoFiltered": "",
+                    "info": "",
+                    "infoEmpty": "",
+                    "paginate": {
+                        "first": "Primeiro",
+                        "last": "Ultimo",
+                        "next": "Próximo",
+                        "previous": "Anterior"
+                    }
+                }
+            });
+
+            $("#btncadastro").click(function () {
+
+                showAndDismissAlert('danger', 'Erro !!!');
+
+            });
+        })
+
+        function Cadastrar() {
+            model = {
+                Id: null,
+                Razao: $("#txtrazao").val(),
+                Cnpj: $("#txtcnpj").val(),
+                Telefone: $("#txttelefone").val(),
+                Email: $("#txtemail").val(),
+                Endereco: $("#txtendereco").val()
+            }
+
+            $.ajax({
+                type: "POST",
+                url: "/Fornecedor/Cadastrar",
+                data: model,
+                success: function () {
+                    window.location.reload()
+                },
+                error: function (e) {
+
+                    $("#mensagem").html("Erro: " + e.status);
+                }
+            });
+        }
+        function PreencheEdit(id) {
+            $.ajax({
+                type: "POST",
+                url: "/Fornecedor/Editar",
+                data: "id=" + id,
+                success: function (model) {
+                    $("#txteditrazao").val(model.Razao);
+                    $("#txteditcnpj").val(model.Cnpj);
+                    $("#txtedittelefone").val(model.Telefone);
+                    $("#txteditemail").val(model.Email);
+                    $("#txteditendereco").val(model.Endereco);
+                },
+                error: function (e) {
+
+                    $("#mensagem").html("Erro: " + e.status);
+                }
+            });
+        }
+        function PreencheDetalhe(id) {
+            $.ajax({
+                type: "POST",
+                url: "/Fornecedor/Detalhe",
+                data: "id=" + id,
+                success: function (model) {
+                    $("#txtdtrazao").val(model.Razao);
+                    $("#txtdtcnpj").val(model.Cnpj);
+                    $("#txtdttelefone").val(model.Telefone);
+                    $("#txtdtemail").val(model.Email);
+                    $("#txtdtendereco").val(model.Endereco);
+
+                },
+                error: function (e) {
+
+                    $("#mensagem").html("Erro: " + e.status);
+                }
+            });
+        }
+        function Delete() {
+            id = $("#txtdeleteid").val();
+            $.ajax({
+                type: "POST",
+                url: "/Fornecedor/Excluir",
+                data: "id=" + id,
+                success: function () {
+                     window.location.reload()
+                },
+                error: function (e) {
+
+                    $("#mensagem").html("Erro: " + e.status);
+                }
+            });
+        }
+        function PreencheDelete(id) {
+
+            $("#txtdeleteid").val(id);
+        }
+    </script>
+} 
