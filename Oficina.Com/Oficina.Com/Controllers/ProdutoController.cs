@@ -16,10 +16,12 @@ namespace Oficina.Com.Controllers
         {
             ProdutoNegocio produtoNegocio = new ProdutoNegocio();
             List<ProdutoViewModel> lstproduto = new List<ProdutoViewModel>();
-            ProdutoViewModel model = new ProdutoViewModel();
+         
 
             foreach (var produto in produtoNegocio.Consulta())
             {
+                ProdutoViewModel model = new ProdutoViewModel();
+
                 model.Id = produto.Id;
                 model.Imagem = produto.Imagem;
                 model.Nome = produto.Nome;
@@ -35,18 +37,18 @@ namespace Oficina.Com.Controllers
         {
             try
             {
-                Produto p = new Produto();
-                p.Id = model.Id;
-                p.Imagem = model.Imagem;
-                p.Nome = model.Nome;
-                p.Quantidade = model.Quantidade;
-                p.ValorUnitario = model.ValorUnitario;
-                FornecedorNegocio fornecedorNegocio = new FornecedorNegocio();
-                Fornecedor f = fornecedorNegocio.Consulta().Single(x => x.Cnpj == model.CnpjFornecedor);
-                p.FornecedorId = f.Id;
+                ProdutoNegocio prodNegocio = new ProdutoNegocio();
+                FornecedorNegocio fornecNegocio = new FornecedorNegocio();
+                int idFornecedor = fornecNegocio.Consulta().First(x => x.Cnpj == model.CnpjFornecedor).Id;
 
-                ProdutoNegocio produtoNegocio = new ProdutoNegocio();
-                produtoNegocio.Cadastrar(p);
+                Produto produto = new Produto();
+                produto.FornecedorId = idFornecedor;
+                produto.Imagem = model.Imagem;
+                produto.Nome = model.Nome;
+                produto.Quantidade = model.Quantidade;
+                produto.ValorUnitario = model.ValorUnitario;
+
+                prodNegocio.Cadastrar(produto);
 
                 return Json("");
             }
