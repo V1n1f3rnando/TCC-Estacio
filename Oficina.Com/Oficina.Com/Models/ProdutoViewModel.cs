@@ -14,5 +14,6 @@ namespace Oficina.Com.Models
         public decimal Quantidade { get; set; }
         public int FornecedorId { get; set; }
         public string CnpjFornecedor { get; set; }
+        public string NomeFornecedor { get; set; }
     }
 }

@@ -83,7 +83,6 @@ namespace Oficina.Com.Controllers
                 throw;
             }
         }
-
         public JsonResult Edit(int id)
         {
             try
@@ -114,13 +113,13 @@ namespace Oficina.Com.Controllers
                 ProdutoNegocio produtoNegocio = new ProdutoNegocio();
                 Produto p = produtoNegocio.Consulta(id);
                 ProdutoViewModel model = new ProdutoViewModel();
-
+                FornecedorNegocio fornecedorNegocio = new FornecedorNegocio();
+                Fornecedor f = fornecedorNegocio.Consulta(p.FornecedorId);
                 model.Id = p.Id;
-                model.Imagem = p.Imagem;
                 model.Nome = p.Nome;
                 model.Quantidade = p.Quantidade;
                 model.ValorUnitario = p.ValorUnitario;
-                model.FornecedorId = p.FornecedorId;
+                model.NomeFornecedor = f.Razao;
                 
                 return Json(model);
             }

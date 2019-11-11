@@ -35,8 +35,8 @@
                     <td>@item.Quantidade</td>
                     <td>
                         <a href="#" class="mdi mdi-pencil btn btn-success" onclick="CarregaCampos(@item.Id)" style="width:auto" data-toggle="modal" data-target="#modaleditProduto">Editar</a>
-                        <a href="#" class="mdi mdi-note  btn btn-success" data-toggle="modal" data-target="#modaldetalhesProduto">Detalhes</a>
-                        <a href="#" class="mdi mdi-delete btn btn-danger" onclick="" data-toggle="modal" data-target="#modaldeleteProduto"></a>
+                        <a href="#" class="mdi mdi-note  btn btn-success" onclick="Detalhe(@item.Id)" data-toggle="modal" data-target="#modaldetalhesProduto">Detalhes</a>
+                        <a href="#" class="mdi mdi-delete btn btn-danger" onclick="PreencheIdExclusao(@item.Id)" data-toggle="modal" data-target="#modaldeleteProduto"></a>
                     </td>
                 </tr>
 
@@ -183,22 +183,22 @@
 
                     <div class="form-group col-md-8">
                         <label>Nome:</label>
-                        <input type="text" id="txtmotivo" class="form-control" readonly />
+                        <input type="text" id="txtdtnome" class="form-control" readonly />
                     </div>
 
                     <div class="form-group col-md-12">
                         <label>Fornecedor:</label>
-                        <input type="text" id="txtplaca" class="form-control" readonly />
+                        <input type="text" id="txtdtfornecedor" class="form-control" readonly />
                     </div>
 
                     <div class="form-group col-md-6">
                         <label>Quantidade:</label>
-                        <input type="text" id="txtstatus" class="form-control" readonly />
+                        <input type="text" id="txtdtquantidade" class="form-control" readonly />
                     </div>
 
                     <div class="form-group col-md-6">
                         <label>Valor Unitario:</label>
-                        <input type="text" id="txtdataabertura" class="form-control" readonly />
+                        <input type="text" id="txtdtvalorunitario" class="form-control" readonly />
                     </div>
 
                     <div class="form-group col-md-12">
@@ -228,7 +228,7 @@
                 <p style="color:orangered;text-align:center"> Aviso: Com esta ação os dados do Produto em questão serão excluidos permanentemente!</p>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-danger mdi mdi-delete" style="margin-right:25%; width:50%" onclick="Delete()">Excluir Produto</button>
+                <button class="btn btn-danger mdi mdi-delete" style="margin-right:25%; width:50%" onclick="Excluir()">Excluir Produto</button>
             </div>
         </div>
     </div>
@@ -284,7 +284,7 @@
                 url: "/Produto/Cadastrar",
                 data: model,
                 success: function () {
-                    
+
                 },
                 error: function (e) {
 
@@ -312,7 +312,7 @@
             $.ajax({
                 type: "POST",
                 url: "/Produto/Edit",
-                data: "id="+id,
+                data: "id=" + id,
                 success: function (data) {
                     $("#txteditcodigo").val(data.Id);
                     $("#txteditnome").val(data.Nome);
@@ -320,6 +320,42 @@
                     $("#txtfornecedor").val(data.C);
                     $("#txteditquantidade").val(data.Quantidade);
                     $("#txteditvalor").val(data.ValorUnitario);
+                },
+                error: function (e) {
+
+                    $("#mensagem").html("Erro: " + e.status);
+                }
+            });
+        }
+        function Detalhe(id) {
+            $.ajax({
+                type: "POST",
+                url: "/Produto/Detalhe",
+                data: "id=" + id,
+                success: function (modal) {
+                    $("#txtdtcodigo").val(modal.Id);
+                    $("#txtdtnome").val(modal.Nome);
+                    $("#txtdtfornecedor").val(modal.NomeFornecedor);
+                    $("#txtdtquantidade").val(modal.Quantidade);
+                    $("#txtdtvalorunitario").val(modal.ValorUnitario);
+                },
+                error: function (e) {
+
+                    $("#mensagem").html("Erro: " + e.status);
+                }
+            });
+        }
+        function PreencheIdExclusao(id) {
+            $("#txtid").val(id);
+        }
+        function Excluir() {
+            var id = $("#txtid").val();
+            $.ajax({
+                type: "POST",
+                url: "/Produto/Excluir",
+                data: "id=" + id,
+                success: function (modal) {
+                    
                 },
                 error: function (e) {
 
