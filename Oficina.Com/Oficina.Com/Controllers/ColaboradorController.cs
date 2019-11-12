@@ -12,9 +12,36 @@ namespace Oficina.Com.Controllers
     public class ColaboradorController : Controller
     {
         // GET: Colaborador
-        public ActionResult Cadastro()
+        [HttpPost]
+        public JsonResult Cadastro(ColaboradorViewModel model)
         {
-            return View();
+            EnderecoNegocio enderecoNegocio = new EnderecoNegocio();
+            Endereco e = new Endereco();
+
+            e.Numero = model.Endereco.Numero;
+            e.Rua = model.Endereco.Rua;
+            e.UF = model.Endereco.UF;
+            e.Cep = model.Endereco.Cep;
+            e.Bairro = model.Endereco.Bairro;
+
+            enderecoNegocio.Cadastrar(e);
+
+            ColaboradorNegocio colaboradorNegocio = new ColaboradorNegocio();
+            Colaborador c = new Colaborador();
+
+            c.Nome = model.Nome;
+            c.Salario = model.Salario;
+            c.Telefone = model.Telefone;
+            c.EstadoCivil = model.EstadoCivil;
+            c.EnderecoId = e.Id;
+            c.Email = model.Email;
+            c.DataNascimento = model.DataNascimento;
+            c.Cpf = model.Cpf;
+            c.Cargo = model.Cargo;
+
+            colaboradorNegocio.Cadastrar(c);
+            
+            return Json("");
         }
         public ActionResult Consulta()
         {
