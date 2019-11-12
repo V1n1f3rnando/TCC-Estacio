@@ -179,19 +179,6 @@
 
         function Cadastrar() {
 
-            var model = {
-                Id: null,
-                Nome: $("#txtnome").val(),
-                Cpf: $("#txtcpf").val(),
-                EstadoCivil: $("#txtestadocivil").val(),
-                Email: $("#txtemail").val(),
-                Telefone: $("#txttelefone").val(),
-                DataNascimento: $("#txtdatanascimento").val(),
-                Cargo: $("#txtcargo").val(),
-                Salario: $("#txtsalario").val(),
-                Endereco = { Endereco } // Verificarrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr
-   
-            }
             var Endereco = {
                 Id: null,
                 Rua: $("#txtrua").val(),
@@ -202,10 +189,33 @@
                 Cep: $("#txtcep").val()
             }
 
+            var model = {
+                Id: null,
+                Nome: $("#txtnome").val(),
+                Cpf: $("#txtcpf").val(),
+                EstadoCivil: $("#txtestadocivil").val(),
+                Email: $("#txtemail").val(),
+                Telefone: $("#txttelefone").val(),
+                DataNascimento: $("#txtdatanascimento").val(),
+                Cargo: $("#txtcargo").val(),
+                Salario: $("#txtsalario").val(),
+                Endereco: {
+                    Id: Endereco.Id,
+                    Rua: Endereco.Rua,
+                    Numero: Endereco.Numero,
+                    Bairro: Endereco.Bairro,
+                    Complemento: Endereco.Complemento,
+                    Uf: Endereco.Uf,
+                    Cep: Endereco.Cep
+                } // Verificarrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr
+   
+            }
+
+
             $.ajax({
                 type: "POST",
-                url: "/Fornecedor/Cadastro",
-                data: model,
+                url: "/Colaborador/Cadastro",
+                data:model,
                 success: function () {
                     window.location.reload()
                 },
