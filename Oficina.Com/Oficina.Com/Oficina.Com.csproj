@@ -169,6 +169,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ClienteController.cs" />
+    <Compile Include="Controllers\ColaboradorController.cs" />
     <Compile Include="Controllers\FornecedorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -181,6 +182,7 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ClienteDetalheViewModel.cs" />
     <Compile Include="Models\ClienteViewModel.cs" />
+    <Compile Include="Models\ColaboradorViewModel.cs" />
     <Compile Include="Models\EnderecoViewModel.cs" />
     <Compile Include="Models\FornecedorViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -871,6 +873,7 @@
     <Content Include="Views\Ordem\ConsultarOrdem.cshtml" />
     <Content Include="Views\Fornecedor\ConsultarFornecedor.cshtml" />
     <Content Include="Views\Produto\ConsultarProduto.cshtml" />
+    <Content Include="Views\Colaborador\Consulta.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Oficina.Com.Entidades\Oficina.Com.Entidades.csproj">

@@ -70,11 +70,6 @@
                         </div>
 
                         <div class="form-group col-md-12">
-                            <label>Imagem:</label>
-                            <input type="file" id="txtimagem" class="form-control fileinput" />
-                        </div>
-
-                        <div class="form-group col-md-12">
                             <label>Fornecedor:</label>
                             <select id="txtfornecedor" class="form-control">
                             </select>
@@ -122,17 +117,12 @@
                     <input type="hidden" id="txtidedicao" class="form-control" />
                     <div class="form-group col-md-4">
                         <label>Código:</label>
-                        <input type="text" id="txteditcodigo" class="form-control" />
+                        <input type="text" id="txteditcodigo" class="form-control" readonly />
                     </div>
 
                     <div class="form-group col-md-8">
                         <label>Nome:</label>
                         <input type="text" id="txteditnome" class="form-control" />
-                    </div>
-
-                    <div class="form-group col-md-12">
-                        <label>Imagem:</label>
-                        <input type="file" id="txteditimagem" class="form-control fileinput" />
                     </div>
 
                     <div class="form-group col-md-12">
@@ -284,7 +274,7 @@
                 url: "/Produto/Cadastrar",
                 data: model,
                 success: function () {
-
+                    window.location.reload()
                 },
                 error: function (e) {
 
@@ -355,7 +345,7 @@
                 url: "/Produto/Excluir",
                 data: "id=" + id,
                 success: function (modal) {
-                    
+                    window.location.reload()
                 },
                 error: function (e) {
 
