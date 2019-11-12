@@ -51,6 +51,7 @@
     <Compile Include="Produto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tipos\Cargo.cs" />
+    <Compile Include="Tipos\EstadoCivil.cs" />
     <Compile Include="Tipos\StatusOrdemServico.cs" />
     <Compile Include="Tipos\TipoVeiculo.cs" />
     <Compile Include="Veiculo.cs" />
