@@ -1,4 +1,5 @@
-﻿using Oficina.Com.Entidades.Tipos;
+﻿using Oficina.Com.Entidades;
+using Oficina.Com.Entidades.Tipos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,7 +18,7 @@ namespace Oficina.Com.Models
         public string Telefone { get; set; }
         public Cargo Cargo { get; set; }
         public decimal Salario { get; set; }
-        public EnderecoViewModel Endereco { get; set; }
+        public Endereco Endereco { get; set; }
         public int EnderecoId { get; set; }
     }
 }

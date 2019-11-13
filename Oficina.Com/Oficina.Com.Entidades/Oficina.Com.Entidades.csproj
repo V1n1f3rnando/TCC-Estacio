@@ -54,6 +54,7 @@
     <Compile Include="Tipos\EstadoCivil.cs" />
     <Compile Include="Tipos\StatusOrdemServico.cs" />
     <Compile Include="Tipos\TipoVeiculo.cs" />
+    <Compile Include="Tipos\Uf.cs" />
     <Compile Include="Veiculo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

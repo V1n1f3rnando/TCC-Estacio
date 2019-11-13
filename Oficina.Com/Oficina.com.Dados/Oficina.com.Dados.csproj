@@ -66,6 +66,10 @@
     <Compile Include="Migrations\201911121120219_alteracaoColaborador.Designer.cs">
       <DependentUpon>201911121120219_alteracaoColaborador.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201911130000087_Endereco.cs" />
+    <Compile Include="Migrations\201911130000087_Endereco.Designer.cs">
+      <DependentUpon>201911130000087_Endereco.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositorios\ClienteRepositorio.cs" />
@@ -94,6 +98,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201911121120219_alteracaoColaborador.resx">
       <DependentUpon>201911121120219_alteracaoColaborador.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911130000087_Endereco.resx">
+      <DependentUpon>201911130000087_Endereco.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

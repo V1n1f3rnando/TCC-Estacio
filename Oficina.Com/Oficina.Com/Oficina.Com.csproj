@@ -175,6 +175,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\OrdemController.cs" />
     <Compile Include="Controllers\ProdutoController.cs" />
+    <Compile Include="Controllers\RelatorioController.cs" />
     <Compile Include="Controllers\VeiculoController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -874,6 +875,7 @@
     <Content Include="Views\Fornecedor\ConsultarFornecedor.cshtml" />
     <Content Include="Views\Produto\ConsultarProduto.cshtml" />
     <Content Include="Views\Colaborador\Consulta.cshtml" />
+    <Content Include="Views\Relatorio\Consulta.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Oficina.Com.Entidades\Oficina.Com.Entidades.csproj">

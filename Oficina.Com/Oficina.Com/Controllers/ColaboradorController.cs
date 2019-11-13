@@ -23,6 +23,8 @@ namespace Oficina.Com.Controllers
             e.UF = model.Endereco.UF;
             e.Cep = model.Endereco.Cep;
             e.Bairro = model.Endereco.Bairro;
+            e.Complemento = model.Endereco.Complemento;
+
 
             enderecoNegocio.Cadastrar(e);
 
@@ -45,13 +47,15 @@ namespace Oficina.Com.Controllers
         }
         public ActionResult Consulta()
         {
-            ColaboradorViewModel model = new ColaboradorViewModel();
+
             ColaboradorNegocio colaboradorNegocio = new ColaboradorNegocio();
             List<Colaborador> lstColaborador = colaboradorNegocio.Consulta();
             List<ColaboradorViewModel> lstModel = new List<ColaboradorViewModel>();
 
             foreach (var c in lstColaborador)
             {
+                ColaboradorViewModel model = new ColaboradorViewModel();
+
                 model.Id = c.Id;
                 model.Nome = c.Nome;
                 model.Salario = c.Salario;
@@ -65,6 +69,35 @@ namespace Oficina.Com.Controllers
 
             return View(lstModel);
 
+        }
+        [HttpPost]
+        public JsonResult Editar(int id)
+        {
+            ColaboradorViewModel model = new ColaboradorViewModel();
+            ColaboradorNegocio colaboradorNegocio = new ColaboradorNegocio();
+            Colaborador c = colaboradorNegocio.Consulta(id);
+            EnderecoNegocio enderecoNegocio = new EnderecoNegocio();
+            Endereco e = enderecoNegocio.Consulta(c.EnderecoId);
+
+            model.Cargo = c.Cargo;
+            model.Cpf = c.Cpf;
+            model.DataNascimento = c.DataNascimento;
+            model.Email = c.Email;
+            model.EnderecoId = e.Id;
+            model.Endereco = e;
+            model.Nome = c.Nome;
+            model.Salario = c.Salario;
+            model.Telefone = c.Telefone;
+            model.EstadoCivil = c.EstadoCivil;
+            
+            return Json(model);
+        }
+        public JsonResult Excluir(int id)
+        {
+            ColaboradorNegocio colaboradorNegocio = new ColaboradorNegocio();
+            Colaborador c = colaboradorNegocio.Consulta(id);
+            colaboradorNegocio.Excluir(c);
+            return Json("");
         }
     }
 }
