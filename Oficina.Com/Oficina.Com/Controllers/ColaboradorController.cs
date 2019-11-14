@@ -81,7 +81,7 @@ namespace Oficina.Com.Controllers
 
             model.Cargo = c.Cargo;
             model.Cpf = c.Cpf;
-            model.DataNascimento = c.DataNascimento.ToString("yyyy/MM/dd");
+            model.DataNascimento = c.DataNascimento.ToString("yyyy-MM-dd");
             model.Email = c.Email;
             model.EnderecoId = e.Id;
             model.Endereco = e;

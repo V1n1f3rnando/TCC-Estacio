@@ -382,7 +382,6 @@
             });
 
         })
-
         function Cadastrar() {
 
             var Endereco = {
@@ -459,6 +458,41 @@
                 }
             });
         }
+        function Edit() {
+
+            var modelEdit = {
+
+                Id: $("#txtidedicao").val(),
+                Nome: $("#txteditnome").val(),
+                Cpf: $("#txteditcpf").val(),
+                EstadoCivil: $("#txteditestadocivil").val(),
+                Email: $("#txteditemail").val(),
+                Telefone: $("#txtedittelefone").val(),
+                DataNascimento: $("#txteditdatanascimento").val(),
+                Cargo: $("#txteditcargo").val(),
+                Salario: $("#txteditsalario").val(),
+                Endereco: {
+                    Id: null,
+                    Rua: $("#txteditrua").val(),
+                    Numero: $("#txteditnumero").val(),
+                    Bairro: $("#txteditbairro").val(),
+                    Complemento: $("#txteditcomplemento").val(),
+                    UF: $("#txtedituf").val(),
+                    Cep: $("#txteditcep").val()
+                }
+            };
+
+            $.ajax({
+                type: "POST",
+                url: "/Colaborador/Edit",
+                data: modelEdit,
+                success: function () {
+                    window.location.reload()
+                }, error: function () {
+
+                }
+            });
+        }
         function PreencheDetalhe(id) {
             $.ajax({
                 type: "POST",
@@ -507,42 +541,6 @@
             });
         }
 
-        
-        function Edit() {
-
-            var modelEdit = {
-
-                Id: $("#txtidedicao").val(),
-                Nome: $("#txteditnome").val(),
-                Cpf: $("#txteditcpf").val(),
-                EstadoCivil: $("#txteditestadocivil").val(),
-                Email: $("#txteditemail").val(),
-                Telefone: $("#txtedittelefone").val(),
-                DataNascimento: $("#txteditdatanascimento").val(),
-                Cargo: $("#txteditcargo").val(),
-                Salario: $("#txteditsalario").val(),
-                Endereco: {
-                    Id: null,
-                    Rua: $("#txteditrua").val(),
-                    Numero: $("#txteditnumero").val(),
-                    Bairro: $("#txteditbairro").val(),
-                    Complemento: $("#txteditcomplemento").val(),
-                    UF: $("#txtedituf").val(),
-                    Cep: $("#txteditcep").val()
-                }
-            };
-
-            $.ajax({
-                type: "POST",
-                url: "/Colaborador/Edit",
-                data: modelEdit,
-                success: function () {
-                    window.location.reload()
-                }, error: function () {
-
-                }
-            });
-        }
 
     </script>
 }
