@@ -13,7 +13,7 @@ namespace Oficina.Com.Models
         public string Nome { get; set; }
         public string Cpf { get; set; }
         public string Email { get; set; }
-        public DateTime DataNascimento { get; set; }
+        public string DataNascimento { get; set; }
         public EstadoCivil EstadoCivil { get; set; }
         public string Telefone { get; set; }
         public Cargo Cargo { get; set; }

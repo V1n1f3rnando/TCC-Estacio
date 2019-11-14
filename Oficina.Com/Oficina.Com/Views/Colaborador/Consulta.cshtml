@@ -161,6 +161,9 @@
             <div class="modal-body">
                 <div class="form-horizontal col-md-12">
                     <div class="row" style="align-self:center">
+
+                        <input type="hidden" id="txtidedicao" class="form-control" />
+
                         <div class="form-group col-md-6">
                             <label>Nome:</label>
                             <input type="text" id="txteditnome" class="form-control" />
@@ -235,7 +238,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-success mdi mdi-floppy" style="margin-right:25%; width:50%" onclick="Cadastrar()" id="btncadastro">
+                <button class="btn btn-success mdi mdi-floppy" style="margin-right:25%; width:50%" onclick="Edit()" id="btncadastro">
                     Editar Colaborador
                 </button>
             </div>
@@ -434,6 +437,7 @@
                 data: "id=" + id,
                 success: function (data) {
 
+                    $("#txtidedicao").val(id);
                     $("#txteditnome").val(data.Nome);
                     $("#txteditcpf").val(data.Cpf);
                     $("#txteditestadocivil").val(data.EstadoCivil);
@@ -502,5 +506,43 @@
                 }
             });
         }
+
+        
+        function Edit() {
+
+            var modelEdit = {
+
+                Id: $("#txtidedicao").val(),
+                Nome: $("#txteditnome").val(),
+                Cpf: $("#txteditcpf").val(),
+                EstadoCivil: $("#txteditestadocivil").val(),
+                Email: $("#txteditemail").val(),
+                Telefone: $("#txtedittelefone").val(),
+                DataNascimento: $("#txteditdatanascimento").val(),
+                Cargo: $("#txteditcargo").val(),
+                Salario: $("#txteditsalario").val(),
+                Endereco: {
+                    Id: null,
+                    Rua: $("#txteditrua").val(),
+                    Numero: $("#txteditnumero").val(),
+                    Bairro: $("#txteditbairro").val(),
+                    Complemento: $("#txteditcomplemento").val(),
+                    UF: $("#txtedituf").val(),
+                    Cep: $("#txteditcep").val()
+                }
+            };
+
+            $.ajax({
+                type: "POST",
+                url: "/Colaborador/Edit",
+                data: modelEdit,
+                success: function () {
+                    window.location.reload()
+                }, error: function () {
+
+                }
+            });
+        }
+
     </script>
 }

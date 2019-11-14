@@ -37,7 +37,7 @@ namespace Oficina.Com.Controllers
             c.EstadoCivil = model.EstadoCivil;
             c.EnderecoId = e.Id;
             c.Email = model.Email;
-            c.DataNascimento = model.DataNascimento;
+            c.DataNascimento = Convert.ToDateTime(model.DataNascimento);
             c.Cpf = model.Cpf;
             c.Cargo = model.Cargo;
 
@@ -81,7 +81,7 @@ namespace Oficina.Com.Controllers
 
             model.Cargo = c.Cargo;
             model.Cpf = c.Cpf;
-            model.DataNascimento = c.DataNascimento;
+            model.DataNascimento = c.DataNascimento.ToString("yyyy/MM/dd");
             model.Email = c.Email;
             model.EnderecoId = e.Id;
             model.Endereco = e;
@@ -91,6 +91,43 @@ namespace Oficina.Com.Controllers
             model.EstadoCivil = c.EstadoCivil;
             
             return Json(model);
+        }
+        public JsonResult Edit(ColaboradorViewModel model)
+        {
+            try
+            {
+                ColaboradorNegocio colaboradorNegocio = new ColaboradorNegocio();
+                Colaborador c = colaboradorNegocio.Consulta(model.Id);
+
+                EnderecoNegocio enderecoNegocio = new EnderecoNegocio();
+                Endereco e = enderecoNegocio.Consulta(c.EnderecoId);
+
+                c.Nome = model.Nome;
+                c.Salario = model.Salario;
+                c.Telefone = model.Telefone;
+                c.Cargo = model.Cargo;
+                c.Cpf = model.Cpf;
+                c.DataNascimento = Convert.ToDateTime(model.DataNascimento);
+                c.Endereco = e;
+                c.Email = model.Email;
+                e.Numero = model.Endereco.Numero;
+                e.Rua = model.Endereco.Rua;
+                e.UF = model.Endereco.UF;
+                e.Bairro = model.Endereco.Bairro;
+                e.Cep = model.Endereco.Cep;
+                e.Complemento = model.Endereco.Cep;
+
+                colaboradorNegocio.Altualizar(c);
+                enderecoNegocio.Altualizar(e);
+
+                return Json("");
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
         }
         public JsonResult Excluir(int id)
         {
