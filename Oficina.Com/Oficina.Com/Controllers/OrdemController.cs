@@ -36,16 +36,20 @@ namespace Oficina.Com.Controllers
         public JsonResult Cadastrar(OrdemServicoViewModel model)
         {
             OrdemServico ordemServico = new OrdemServico();
-            ColaboradorNegocio negocio = new ColaboradorNegocio();
-            ordemServico.Colaborador = negocio.Consulta(1);
-            ordemServico.DataAbertura = DateTime.Now;
-            ordemServico.Motivo = model.Motivo;
-            ordemServico.Orçamento = model.Orçamento;
-            ordemServico.Placa = model.Placa;
-            ordemServico.Status = model.Status;
+            ColaboradorNegocio colaboradorNegocio = new ColaboradorNegocio();
+            Colaborador c = colaboradorNegocio.Consulta(model.ColaboradorId);
+            OrdemServico o = new OrdemServico();
+            o.Colaborador = c;
+            o.ColaboradorId = c.Id;
+            o.DataAbertura = DateTime.Now;
+            o.Motivo = model.Motivo;
+            o.Obs = model.Obs;
+            o.Orçamento = model.Orçamento;
+            o.Placa = model.Placa;
+            o.Status = model.Status;
 
             OrdemServicoNegocio ordemNegocio = new OrdemServicoNegocio();
-            ordemNegocio.Cadastrar(ordemServico);
+            ordemNegocio.Cadastrar(o);
 
             return Json("");
         }

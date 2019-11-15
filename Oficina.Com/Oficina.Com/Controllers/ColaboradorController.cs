@@ -70,6 +70,20 @@ namespace Oficina.Com.Controllers
             return View(lstModel);
 
         }
+
+        [HttpPost]
+        public JsonResult RetornaColaborador()
+        {
+            ColaboradorNegocio colaboradorNegocio = new ColaboradorNegocio();
+            List<string[]> lstColaborador = new List<string[]>();
+
+            foreach (var colaborador in colaboradorNegocio.Consulta())
+            {
+                lstColaborador.Add((colaborador.Id.ToString()+"|"+colaborador.Nome).Split('|'));
+            }
+
+            return Json(lstColaborador);
+        }
         [HttpPost]
         public JsonResult Editar(int id)
         {

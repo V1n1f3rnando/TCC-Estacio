@@ -19,6 +19,6 @@ namespace Oficina.Com.Models
 
 
         public int ColaboradorId { get; set; }
-        public virtual Colaborador Colaborador { get; set; }
+
     }
 }
