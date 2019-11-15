@@ -29,17 +29,18 @@ namespace Oficina.Com.Controllers
             enderecoNegocio.Cadastrar(e);
 
             ColaboradorNegocio colaboradorNegocio = new ColaboradorNegocio();
-            Colaborador c = new Colaborador();
-
-            c.Nome = model.Nome;
-            c.Salario = model.Salario;
-            c.Telefone = model.Telefone;
-            c.EstadoCivil = model.EstadoCivil;
-            c.EnderecoId = e.Id;
-            c.Email = model.Email;
-            c.DataNascimento = Convert.ToDateTime(model.DataNascimento);
-            c.Cpf = model.Cpf;
-            c.Cargo = model.Cargo;
+            Colaborador c = new Colaborador
+            {
+                Nome = model.Nome,
+                Salario = model.Salario,
+                Telefone = model.Telefone,
+                EstadoCivil = model.EstadoCivil,
+                EnderecoId = e.Id,
+                Email = model.Email,
+                DataNascimento = Convert.ToDateTime(model.DataNascimento),
+                Cpf = model.Cpf,
+                Cargo = model.Cargo
+            };
 
             colaboradorNegocio.Cadastrar(c);
             
@@ -145,8 +146,15 @@ namespace Oficina.Com.Controllers
         }
         public JsonResult Excluir(int id)
         {
+  
             ColaboradorNegocio colaboradorNegocio = new ColaboradorNegocio();
             Colaborador c = colaboradorNegocio.Consulta(id);
+
+            OrdemServicoNegocio ordemServicoNegocio = new OrdemServicoNegocio();
+            OrdemServico o = ordemServicoNegocio.Consulta().Single(x => x.ColaboradorId == c.Id);
+
+            ordemServicoNegocio.Excluir(o);
+
             colaboradorNegocio.Excluir(c);
             return Json("");
         }

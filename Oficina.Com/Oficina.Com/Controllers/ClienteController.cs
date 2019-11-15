@@ -1,4 +1,5 @@
 ﻿using Oficina.Com.Entidades;
+using Oficina.Com.Entidades.Tipos;
 using Oficina.Com.Models;
 using OFicina.Com.Negocio;
 using System;
@@ -118,7 +119,6 @@ namespace Oficina.Com.Controllers
             
             return Json(model);
         }
-
         [HttpPost]
         public JsonResult Cadastrar(ClienteViewModel model)
         {
@@ -211,5 +211,12 @@ namespace Oficina.Com.Controllers
 
             return Json(lstCliente);
         }
+        [HttpPost]
+        public JsonResult RetornaEnum()
+        {
+            Uf uf = new Uf();
+            return Json(uf);
+        }
+        
     }
 }

@@ -39,7 +39,7 @@ namespace Oficina.Com.Controllers
             ColaboradorNegocio colaboradorNegocio = new ColaboradorNegocio();
             Colaborador c = colaboradorNegocio.Consulta(model.ColaboradorId);
             OrdemServico o = new OrdemServico();
-            o.Colaborador = c;
+            //o.Colaborador = c;
             o.ColaboradorId = c.Id;
             o.DataAbertura = DateTime.Now;
             o.Motivo = model.Motivo;
