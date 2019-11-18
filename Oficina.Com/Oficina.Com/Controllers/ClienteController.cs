@@ -152,7 +152,6 @@ namespace Oficina.Com.Controllers
 
             return Json("Cliente cadastrado com sucesso!!");
         }
-        
         [HttpPost]
         public JsonResult Delete(int id)
         {
@@ -195,7 +194,6 @@ namespace Oficina.Com.Controllers
 
             return Json("");
         }
-
         [HttpPost]
         public JsonResult RetornaListaCliente()
         {
@@ -210,13 +208,11 @@ namespace Oficina.Com.Controllers
             }
 
             return Json(lstCliente);
-        }
-        [HttpPost]
-        public JsonResult RetornaEnum()
+        }    
+        public Uf RetornaEnum()
         {
             Uf uf = new Uf();
-            return Json(uf);
+            return uf;
         }
-        
     }
 }

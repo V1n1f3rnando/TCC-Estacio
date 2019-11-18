@@ -24,6 +24,7 @@
                 <th>Status</th>
                 <th>Placa</th>
                 <th>Colaborador</th>
+                <th>Operações</th>
             </tr>
         </thead>
         <tbody>
@@ -118,44 +119,39 @@
 
                     <input type="hidden" id="txtidedicao" class="form-control" />
 
-                    <div class="form-group col-md-6">
-                        <label>Codigo:</label>
-                        <input type="text" id="txtmotivo" class="form-control" />
-                    </div>
-
-                    <div class="form-group col-md-6">
-                        <label>Motivo:</label>
-                        <input type="text" id="txtmotivo" class="form-control" />
-                    </div>
-
-                    <div class="form-group col-md-6">
-                        <label>Data de Abertura:</label>
-                        <input type="date" id="txtdataabertura" class="form-control" />
-                    </div>
-
-                    <div class="form-group col-md-6">
-                        <label>Orçamento:</label>
-                        <input type="text" id="txtorçamento" class="form-control" />
-                    </div>
-
-                    <div class="form-group col-md-3">
-                        <label>Status:</label>
-                        <input type="text" id="txtstatus" class="form-control" />
-                    </div>
-
-                    <div class="form-group col-md-3">
+                    <div class="form-group col-md-4">
                         <label>Placa:</label>
                         <input type="text" id="txtplaca" class="form-control" />
                     </div>
 
-                    <div class="form-group col-md-6">
+                    <div class="form-group col-md-3">
+                        <label>Data de Abertura:</label>
+                        <input type="date" id="txtdataabertura" class="form-control" />
+                    </div>
+
+                    <div class="form-group col-md-4">
+                        <label>Orçamento:</label>
+                        <input type="text" id="txtorçamento" class="form-control" />
+                    </div>
+
+                    <div class="form-group col-md-4">
+                        <label>Status:</label>
+                        <input type="text" id="txtstatus" class="form-control" />
+                    </div>
+
+                    <div class="form-group col-md-7">
+                        <label>Colaborador:</label>
+                        <input type="text" id="txtcolaborador" class="form-control" />
+                    </div>
+
+                    <div class="form-group col-md-11">
                         <label>Observação:</label>
                         <input type="text" id="txtobservação" class="form-control" />
                     </div>
 
-                    <div class="form-group col-md-4">
-                        <label>Colaborador:</label>
-                        <input type="text" id="txtcolaborador" class="form-control" />
+                    <div class="form-group col-md-11">
+                        <label>Motivo:</label>
+                        <input type="text" id="txtmotivo" class="form-control" />
                     </div>
 
                     <br />
@@ -186,179 +182,175 @@
             </div>
             <div class="modal-body">
                 <div class="row">
+                    <input type="hidden" id="txtidedicao" class="form-control" />
 
-                    <div class="form-group col-md-6">
-                        <label>Codigo:</label>
-                        <input type="text" id="txtmotivo" class="form-control" />
-                    </div>
-
-                    <div class="form-group col-md-6">
-                        <label>Motivo:</label>
-                        <input type="text" id="txtmotivo" class="form-control" />
-                    </div>
-
-                    <div class="form-group col-md-6">
-                        <label>Data de Abertura:</label>
-                        <input type="date" id="txtdataabertura" class="form-control" />
-                    </div>
-
-                    <div class="form-group col-md-6">
-                        <label>Orçamento:</label>
-                        <input type="text" id="txtorçamento" class="form-control" />
-                    </div>
-
-                    <div class="form-group col-md-3">
-                        <label>Status:</label>
-                        <input type="text" id="txtstatus" class="form-control" />
-                    </div>
-
-                    <div class="form-group col-md-3">
+                    <div class="form-group col-md-4">
                         <label>Placa:</label>
                         <input type="text" id="txtplaca" class="form-control" />
                     </div>
 
-                    <div class="form-group col-md-6">
-                        <label>Observação:</label>
-                        <input type="text" id="txtobservação" class="form-control" />
+                    <div class="form-group col-md-3">
+                        <label>Data de Abertura:</label>
+                        <input type="date" id="txtdataabertura" class="form-control" />
                     </div>
 
                     <div class="form-group col-md-4">
+                        <label>Orçamento:</label>
+                        <input type="text" id="txtorçamento" class="form-control" />
+                    </div>
+
+                    <div class="form-group col-md-4">
+                        <label>Status:</label>
+                        <input type="text" id="txtstatus" class="form-control" />
+                    </div>
+
+                    <div class="form-group col-md-7">
                         <label>Colaborador:</label>
                         <input type="text" id="txtcolaborador" class="form-control" />
                     </div>
 
+                    <div class="form-group col-md-11">
+                        <label>Observação:</label>
+                        <input type="text" id="txtobservação" class="form-control" />
+                    </div>
+
+                    <div class="form-group col-md-11">
+                        <label>Motivo:</label>
+                        <input type="text" id="txtmotivo" class="form-control" />
+                    </div>
+
+                    <br />
                     <div class="form-group col-md-12">
 
                     </div>
+                </div>
+                <div class="modal-footer">
 
                 </div>
             </div>
-            <div class="modal-footer">
-
+        </div>
+        </div> 
+    </div>
+    <!--Modal Delete-->
+    <div class="modal fade" id="modaldeleteordem" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title" id="delete">Deseja realmente excluir este Ordem de Serviço?</h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" class="form-control hidde" id="txtid" />
+                    <p style="color:orangered;text-align:center"> Aviso: Com esta ação os dados da Ordem de Serviço em questão serão excluidos permanentemente!</p>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-danger mdi mdi-delete" style="margin-right:25%; width:50%" onclick="Delete()">Excluir Ordem de Serviço</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
-<!--Modal Delete-->
-<div class="modal fade" id="modaldeleteordem" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 class="modal-title" id="delete">Deseja realmente excluir este Ordem de Serviço?</h3>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <input type="hidden" class="form-control hidde" id="txtid" />
-                <p style="color:orangered;text-align:center"> Aviso: Com esta ação os dados da Ordem de Serviço em questão serão excluidos permanentemente!</p>
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-danger mdi mdi-delete" style="margin-right:25%; width:50%" onclick="Delete()">Excluir Ordem de Serviço</button>
-            </div>
-        </div>
-    </div>
-</div>
 
-@section scripts{
+    @section scripts{
 
-    <script type="text/javascript">
-        $(document).ready(function () {
+        <script type="text/javascript">
+            $(document).ready(function () {
 
-            $("#tbconsulta").DataTable({
-                responsive: true,
-                "paging": false,
-                "language": {
-                    "lengthMenu": "",
-                    "search": "Procurar",
-                    "info": "Mostrando página _PAGE_  de _PAGE_ ",
-                    "zeroRecords": "Nenhum registro encontrado !",
-                    "infoFiltered": "",
-                    "info": "",
-                    "infoEmpty": "",
-                    "paginate": {
-                        "first": "Primeiro",
-                        "last": "Ultimo",
-                        "next": "Próximo",
-                        "previous": "Anterior"
+                $("#tbconsulta").DataTable({
+                    responsive: true,
+                    "paging": false,
+                    "language": {
+                        "lengthMenu": "",
+                        "search": "Procurar",
+                        "info": "Mostrando página _PAGE_  de _PAGE_ ",
+                        "zeroRecords": "Nenhum registro encontrado !",
+                        "infoFiltered": "",
+                        "info": "",
+                        "infoEmpty": "",
+                        "paginate": {
+                            "first": "Primeiro",
+                            "last": "Ultimo",
+                            "next": "Próximo",
+                            "previous": "Anterior"
+                        }
                     }
+                });
+
+                $("#btncadastro").click(function () {
+
+                    showAndDismissAlert('danger', 'Erro !!!');
+
+                });
+            })
+
+            function Cadastrar() {
+                var Ordem = {
+                    Id: null,
+                    Motivo: $("#txtmotivo").val(),
+                    DataAbertura: null,
+                    Orçamento: $("#txtorçamento").val(),
+                    Status: 0,
+                    Placa: $("#txtveiculo").val(),
+                    Obs: null,
+                    ColaboradorId: $("#txtcolaborador").val()
                 }
-            });
 
-            $("#btncadastro").click(function () {
+                $.ajax({
+                    type: "POST",
+                    url: "/Ordem/Cadastrar",
+                    data: Ordem,
+                    success: function () {
+                        window.location.reload()
+                    },
+                    error: function (e) {
 
-                showAndDismissAlert('danger', 'Erro !!!');
+                        $("#mensagem").html("Erro: " + e.status);
+                    }
+                });
+            }
+            function PreencheCampos() {
+                PreencheVeiculo();
+                PreencheColaborador();
+            }
+            function PreencheColaborador() {
 
-            });
-        })
+                $.ajax({
+                    type: "POST",
+                    url: "/Colaborador/RetornaColaborador",
+                    data: null,
+                    success: function (data) {
+                        $("#txtcolaborador option").remove();
+                        data.forEach(function (item) {
+                            $("#txtcolaborador").append('<option value="' + item[0] + '">' + item[1] + '</option>');
+                        });
+                    },
+                    error: function (e) {
 
-        function Cadastrar() {
-            var Ordem = {
-                Id: null,
-                Motivo: $("#txtmotivo").val(),
-                DataAbertura: null,
-                Orçamento: $("#txtorçamento").val(),
-                Status: 0,
-                Placa: $("#txtveiculo").val(),
-                Obs: null,
-                ColaboradorId: $("#txtcolaborador").val()
+                        $("#mensagem").html("Erro: " + e.status);
+                    }
+                });
+            }
+            function PreencheVeiculo() {
+
+                $.ajax({
+                    type: "POST",
+                    url: "/Veiculo/RetornaListaVeiculo",
+                    data: null,
+                    success: function (data) {
+                        $("#txtveiculo option").remove();
+                        data.forEach(function (item) {
+                            $("#txtveiculo").append('<option value="' + item[1] + '">' + item[1] + '</option>');
+                        });
+                    },
+                    error: function (e) {
+
+                        $("#mensagem").html("Erro: " + e.status);
+                    }
+                });
             }
 
-            $.ajax({
-                type: "POST",
-                url: "/Ordem/Cadastrar",
-                data: Ordem,
-                success: function () {
-                    window.location.reload()
-                },
-                error: function (e) {
-
-                    $("#mensagem").html("Erro: " + e.status);
-                }
-            });
-        }
-        function PreencheCampos() {
-            PreencheVeiculo();
-            PreencheColaborador();
-        }
-        function PreencheColaborador() {
-
-            $.ajax({
-                type: "POST",
-                url: "/Colaborador/RetornaColaborador",
-                data: null,
-                success: function (data) {
-                    $("#txtcolaborador option").remove();
-                    data.forEach(function (item) {
-                        $("#txtcolaborador").append('<option value="' + item[0] + '">' + item[1] + '</option>');
-                    });
-                },
-                error: function (e) {
-
-                    $("#mensagem").html("Erro: " + e.status);
-                }
-            });
-        }
-        function PreencheVeiculo() {
-
-            $.ajax({
-                type: "POST",
-                url: "/Veiculo/RetornaListaVeiculo",
-                data: null,
-                success: function (data) {
-                    $("#txtveiculo option").remove();
-                    data.forEach(function (item) {
-                        $("#txtveiculo").append('<option value="' + item[1] + '">' + item[1] + '</option>');
-                    });
-                },
-                error: function (e) {
-
-                    $("#mensagem").html("Erro: " + e.status);
-                }
-            });
-        }
-
-    </script>
+        </script>
 
 
-}
+    }
