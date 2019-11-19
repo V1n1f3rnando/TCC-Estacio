@@ -52,6 +52,25 @@
 </div>
 
 <!--Modal Create -->
+
+<script type="text/javascript">
+    function fMasc(objeto, mascara) {
+        obj = objeto
+        masc = mascara
+        setTimeout("fMascEx()", 1)
+    }
+    function fMascEx() {
+        obj.value = masc(obj.value)
+    }
+    function mCPF(cpf) {
+        cpf = cpf.replace(/\D/g, "")
+        cpf = cpf.replace(/(\d{3})(\d)/, "$1.$2")
+        cpf = cpf.replace(/(\d{3})(\d)/, "$1.$2")
+        cpf = cpf.replace(/(\d{3})(\d{1,2})$/, "$1-$2")
+        return cpf
+    }
+</script>
+
 <div class="modal fade" id="modalcreateveiculo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
@@ -66,7 +85,7 @@
                     <div class="row" style="align-self:center">
                         <div class="form-group col-md-4">
                             <label>Placa:</label>
-                            <input type="text" id="txtplaca" class="form-control" />
+                            <input type="text" maxlength='7' id="txtplaca" class="form-control" />
                         </div>
 
                         <div class="form-group col-md-4">
@@ -142,12 +161,12 @@
 
                         <div class="form-group col-md-4">
                             <label>Placa:</label>
-                            <input type="text" id="txtedicaoplaca" class="form-control" />
+                            <input type="text" maxlength='7' id="txtedicaoplaca" class="form-control" />
                         </div>
 
                         <div class="form-group col-md-4">
                             <label>CPF Proprietário:</label>
-                            <input type="text" id="txtedicaocpf" readonly class="form-control" />
+                            <input type="text" minlength='14' maxlength='14' name="cpf" onkeydown="javascript: fMasc( this, mCPF );" id="txtedicaocpf" readonly class="form-control" />
                         </div>
 
                         <div class="form-group col-md-4">
