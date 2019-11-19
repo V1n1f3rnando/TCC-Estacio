@@ -23,7 +23,7 @@ namespace Oficina.Com.Controllers
                 model.Id = ordem.Id;
                 model.Motivo = ordem.Motivo;
                 model.Obs = ordem.Obs;
-                model.Orçamento = ordem.Orçamento;
+                model.Orcamento = ordem.Orçamento;
                 model.Placa = ordem.Placa;
                 model.Status = ordem.Status;
                 model.DataAbertura = ordem.DataAbertura;
@@ -44,7 +44,7 @@ namespace Oficina.Com.Controllers
             o.DataAbertura = DateTime.Now;
             o.Motivo = model.Motivo;
             o.Obs = model.Obs;
-            o.Orçamento = model.Orçamento;
+            o.Orçamento = model.Orcamento;
             o.Placa = model.Placa;
             o.Status = model.Status;
 
@@ -53,5 +53,58 @@ namespace Oficina.Com.Controllers
 
             return Json("");
         }
+        [HttpPost]
+        public JsonResult Editar(int id)
+        {
+            try
+            {
+                OrdemServicoNegocio ordemServico = new OrdemServicoNegocio();
+                OrdemServico o = ordemServico.Consulta(id);
+                OrdemServicoViewModel model = new OrdemServicoViewModel();
+
+                model.Id = o.Id;
+                model.Motivo = o.Motivo;
+                model.Obs = o.Obs;
+                model.Orcamento = o.Orçamento;
+                model.Placa = o.Placa;
+                model.Status = o.Status;
+                model.ColaboradorId = o.ColaboradorId;
+                model.DataAbertura = o.DataAbertura;
+
+                return Json(model);
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+
+        }
+        public JsonResult Edit(OrdemServicoViewModel model)
+        {
+            try
+            {
+                OrdemServicoNegocio ordemServicoNegocio = new OrdemServicoNegocio();
+                OrdemServico o = ordemServicoNegocio.Consulta(model.Id);
+                o.Motivo = model.Motivo;
+                o.Obs = model.Obs;
+                o.Orçamento = model.Orcamento;
+                o.Placa = model.Placa;
+                o.Status = model.Status;
+                o.ColaboradorId = model.ColaboradorId;
+                o.DataAbertura = model.DataAbertura;
+
+                ordemServicoNegocio.Altualizar(o);
+                return Json("");
+
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+
+        }
+
     }
 }

@@ -39,7 +39,7 @@
                     <td>@item.ColaboradorId</td>
 
                     <td>
-                        <a href="#" class="mdi mdi-pencil btn btn-success" style="width:auto" data-toggle="modal" data-target="#modaleditordem">Editar</a>
+                        <a href="#" class="mdi mdi-pencil btn btn-success" onclick="PreencheEdit(@item.Id)" style="width:auto" data-toggle="modal" data-target="#modaleditordem">Editar</a>
                         <a href="#" class="mdi mdi-note  btn btn-success" data-toggle="modal" data-target="#modaldetalhesordem">Detalhes</a>
                         <a href="#" class="mdi mdi-delete btn btn-danger" data-toggle="modal" data-target="#modaldeleteordem"></a>
                     </td>
@@ -77,14 +77,12 @@
 
                         <div class="form-group col-md-3">
                             <label>Veículo:</label>
-                            <select id="txtveiculo" class="form-control">
-                            </select>
+                            <select id="txtveiculo" class="form-control"></select>
                         </div>
 
                         <div class="form-group col-md-6">
                             <label>Colaborador:</label>
-                            <select id="txtcolaborador" class="form-control">
-                            </select>
+                            <select id="txtcolaborador" class="form-control"></select>
                         </div>
 
                         <div class="form-group col-md-12" style="">
@@ -229,128 +227,179 @@
                 </div>
             </div>
         </div>
-        </div> 
     </div>
-    <!--Modal Delete-->
-    <div class="modal fade" id="modaldeleteordem" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h3 class="modal-title" id="delete">Deseja realmente excluir este Ordem de Serviço?</h3>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <input type="hidden" class="form-control hidde" id="txtid" />
-                    <p style="color:orangered;text-align:center"> Aviso: Com esta ação os dados da Ordem de Serviço em questão serão excluidos permanentemente!</p>
-                </div>
-                <div class="modal-footer">
-                    <button class="btn btn-danger mdi mdi-delete" style="margin-right:25%; width:50%" onclick="Delete()">Excluir Ordem de Serviço</button>
-                </div>
+</div>
+<!--Modal Delete-->
+<div class="modal fade" id="modaldeleteordem" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="delete">Deseja realmente excluir este Ordem de Serviço?</h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" class="form-control hidde" id="txtid" />
+                <p style="color:orangered;text-align:center"> Aviso: Com esta ação os dados da Ordem de Serviço em questão serão excluidos permanentemente!</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-danger mdi mdi-delete" style="margin-right:25%; width:50%" onclick="Delete()">Excluir Ordem de Serviço</button>
             </div>
         </div>
     </div>
+</div>
 
-    @section scripts{
+@section scripts{
 
-        <script type="text/javascript">
-            $(document).ready(function () {
-
-                $("#tbconsulta").DataTable({
-                    responsive: true,
-                    "paging": false,
-                    "language": {
-                        "lengthMenu": "",
-                        "search": "Procurar",
-                        "info": "Mostrando página _PAGE_  de _PAGE_ ",
-                        "zeroRecords": "Nenhum registro encontrado !",
-                        "infoFiltered": "",
-                        "info": "",
-                        "infoEmpty": "",
-                        "paginate": {
-                            "first": "Primeiro",
-                            "last": "Ultimo",
-                            "next": "Próximo",
-                            "previous": "Anterior"
-                        }
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#tbconsulta").DataTable({
+                dom: 'Bfrtip',
+                buttons: [
+                    'copy', 'csv', 'excel', 'pdf', 'print'
+                ],
+                responsive: true,
+                "paging": false,
+                "language": {
+                    "lengthMenu": "",
+                    "search": "Procurar",
+                    "info": "Mostrando página _PAGE_  de _PAGE_ ",
+                    "zeroRecords": "Nenhum registro encontrado !",
+                    "infoFiltered": "",
+                    "info": "",
+                    "infoEmpty": "",
+                    "paginate": {
+                        "first": "Primeiro",
+                        "last": "Ultimo",
+                        "next": "Próximo",
+                        "previous": "Anterior"
                     }
-                });
-
-                $("#btncadastro").click(function () {
-
-                    showAndDismissAlert('danger', 'Erro !!!');
-
-                });
-            })
-
-            function Cadastrar() {
-                var Ordem = {
-                    Id: null,
-                    Motivo: $("#txtmotivo").val(),
-                    DataAbertura: null,
-                    Orçamento: $("#txtorçamento").val(),
-                    Status: 0,
-                    Placa: $("#txtveiculo").val(),
-                    Obs: null,
-                    ColaboradorId: $("#txtcolaborador").val()
                 }
+            });
 
-                $.ajax({
-                    type: "POST",
-                    url: "/Ordem/Cadastrar",
-                    data: Ordem,
-                    success: function () {
-                        window.location.reload()
-                    },
-                    error: function (e) {
+            $("#btncadastro").click(function () {
 
-                        $("#mensagem").html("Erro: " + e.status);
-                    }
-                });
-            }
-            function PreencheCampos() {
-                PreencheVeiculo();
-                PreencheColaborador();
-            }
-            function PreencheColaborador() {
+                showAndDismissAlert('danger', 'Erro !!!');
 
-                $.ajax({
-                    type: "POST",
-                    url: "/Colaborador/RetornaColaborador",
-                    data: null,
-                    success: function (data) {
-                        $("#txtcolaborador option").remove();
-                        data.forEach(function (item) {
-                            $("#txtcolaborador").append('<option value="' + item[0] + '">' + item[1] + '</option>');
-                        });
-                    },
-                    error: function (e) {
-
-                        $("#mensagem").html("Erro: " + e.status);
-                    }
-                });
-            }
-            function PreencheVeiculo() {
-
-                $.ajax({
-                    type: "POST",
-                    url: "/Veiculo/RetornaListaVeiculo",
-                    data: null,
-                    success: function (data) {
-                        $("#txtveiculo option").remove();
-                        data.forEach(function (item) {
-                            $("#txtveiculo").append('<option value="' + item[1] + '">' + item[1] + '</option>');
-                        });
-                    },
-                    error: function (e) {
-
-                        $("#mensagem").html("Erro: " + e.status);
-                    }
-                });
+            });
+        })
+        function Cadastrar() {
+            var Ordem = {
+                Id: null,
+                Motivo: $("#txtmotivo").val(),
+                DataAbertura: null,
+                Orçamento: $("#txtorçamento").val(),
+                Status: 0,
+                Placa: $("#txtveiculo").val(),
+                Obs: null,
+                ColaboradorId: $("#txtcolaborador").val()
             }
 
-        </script>
+            $.ajax({
+                type: "POST",
+                url: "/Ordem/Cadastrar",
+                data: Ordem,
+                success: function () {
+                    window.location.reload()
+                },
+                error: function (e) {
+
+                    $("#mensagem").html("Erro: " + e.status);
+                }
+            });
+        }
+        function PreencheCampos() {
+            PreencheVeiculo();
+            PreencheColaborador();
+        }
+        function PreencheColaborador() {
+
+            $.ajax({
+                type: "POST",
+                url: "/Colaborador/RetornaColaborador",
+                data: null,
+                success: function (data) {
+                    $("#txtcolaborador option").remove();
+                    data.forEach(function (item) {
+                        $("#txtcolaborador").append('<option value="' + item[0] + '">' + item[1] + '</option>');
+                    });
+                },
+                error: function (e) {
+
+                    $("#mensagem").html("Erro: " + e.status);
+                }
+            });
+        }
+        function PreencheVeiculo() {
+
+            $.ajax({
+                type: "POST",
+                url: "/Veiculo/RetornaListaVeiculo",
+                data: null,
+                success: function (data) {
+                    $("#txtveiculo option").remove();
+                    data.forEach(function (item) {
+                        $("#txtveiculo").append('<option value="' + item[1] + '">' + item[1] + '</option>');
+                    });
+                },
+                error: function (e) {
+
+                    $("#mensagem").html("Erro: " + e.status);
+                }
+            });
+        }
+
+        function PreencheEdit(id) {
+            $.ajax({
+                type: "POST",
+                url: "/Ordem/Editar",
+                data: "id="+id,
+                success: function (model) {
+
+                    $("#txtidedicao").val(model.Id);
+                    $("#txtplaca").val(model.Placa);
+                    $("#txtdataabertura").val(model.DataAbertura);
+                    $("#txtorçamento").val(model.Orcamento);
+                    $("#txtstatus").val(model.Status);
+                    $("#txtcolaborador").val(model.ColaboradorId);
+                    $("#txtobservação").val(model.Obs);
+                    $("#txtmotivo").val(model.Motivo);
+                },
+                error: function (e) {
+
+                    $("#mensagem").html("Erro: " + e.status);
+                }
+            });
+        }
+        function Editar() {
+            var model = {
+                Id: $("#txtidedicao").val(),
+                Placa: $("#txtplaca").val(),
+                DataAbertura: $("#txtdataabertura").val(),//verificar
+                Orcamento: $("#txtorçamento").val(),
+                Status: $("#txtstatus").val(),
+                ColaboradorId: $("#txtcolaborador").val(),
+                Obs: $("#txtobservação").val(),
+                Motivo: $("#txtmotivo").val(),
+            }
+
+            $.ajax({
+                type: "POST",
+                url: "/Ordem/Edit",
+                data: model,
+                success: function () {
+                    window.location.reload();
+                },
+                error: function (e) {
+
+                    $("#mensagem").html("Erro: " + e.status);
+                }
+            });
+        }
 
 
-    }
+
+    </script>
+
+}

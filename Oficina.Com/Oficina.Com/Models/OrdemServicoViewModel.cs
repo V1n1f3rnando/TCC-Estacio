@@ -12,7 +12,7 @@ namespace Oficina.Com.Models
         public int Id { get; set; }
         public string Motivo { get; set; }
         public DateTime DataAbertura { get; set; }
-        public decimal Orçamento { get; set; }
+        public decimal Orcamento { get; set; }
         public StatusOrdemServico Status { get; set; }
         public string Placa { get; set; }
         public string Obs { get; set; }
