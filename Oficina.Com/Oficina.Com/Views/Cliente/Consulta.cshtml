@@ -13,7 +13,7 @@
 </div>
 
 
-<a href="" onclick="modalcreate" data-toggle="modal" data-target="#modalExemplo">
+<a href="" onclick="PreencheUf()" data-toggle="modal" data-target="#modalExemplo">
     <span class="mdi mdi-account btn btn-success"> Novo Cliente</span>
 </a>
 
@@ -159,7 +159,12 @@
 
                         <div class="form-group col-md-3">
                             <label>UF:</label>
-                            <input type="text" id="txtuf" class="form-control" />
+                            <select id="txtuf" class="form-control">
+                                <option value="0">RJ</option>
+                                <option value="1">SP</option>
+                                <option value="2">MG</option>
+                                <option selected value="default">Selecione um estado...</option>
+                            </select>
                         </div>
 
                         <div class="form-group col-md-3">
@@ -491,6 +496,24 @@
                 }
             });
         };
+
+        function PreencheUf() {
+            $.ajax({
+                type: "POST",
+                url: "/Cliente/RetornaEnum",
+                data: null,
+                success: function (data) {
+                    $("#txtuf option").remove();
+                    data.forEach(function (item) {
+                        $("#txtuf").append('<option value="' + item.val() + '">' + item + '</option>');
+                    });
+                },
+                error: function (e) {
+
+                    $("#mensagem").html("Erro: " + e.status);
+                }
+            });
+        }
 
         function Delete() {
             var id = $("#txtid").val();

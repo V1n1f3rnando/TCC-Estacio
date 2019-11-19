@@ -1,4 +1,5 @@
 ﻿using Oficina.Com.Entidades;
+using Oficina.Com.Entidades.Tipos;
 using Oficina.Com.Models;
 using OFicina.Com.Negocio;
 using System;
@@ -118,7 +119,6 @@ namespace Oficina.Com.Controllers
             
             return Json(model);
         }
-
         [HttpPost]
         public JsonResult Cadastrar(ClienteViewModel model)
         {
@@ -152,7 +152,6 @@ namespace Oficina.Com.Controllers
 
             return Json("Cliente cadastrado com sucesso!!");
         }
-        
         [HttpPost]
         public JsonResult Delete(int id)
         {
@@ -195,7 +194,6 @@ namespace Oficina.Com.Controllers
 
             return Json("");
         }
-
         [HttpPost]
         public JsonResult RetornaListaCliente()
         {
@@ -210,6 +208,11 @@ namespace Oficina.Com.Controllers
             }
 
             return Json(lstCliente);
+        }    
+        public Uf RetornaEnum()
+        {
+            Uf uf = new Uf();
+            return uf;
         }
     }
 }
