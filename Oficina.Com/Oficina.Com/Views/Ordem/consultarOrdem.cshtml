@@ -37,26 +37,21 @@
                     <td>@item.Status.ToString()</td>
                     <td>@item.Placa</td>
                     <td>@item.ColaboradorId</td>
-
                     <td>
                         <a href="#" class="mdi mdi-pencil btn btn-success" onclick="PreencheEdit(@item.Id)" style="width:auto" data-toggle="modal" data-target="#modaleditordem">Editar</a>
-                        <a href="#" class="mdi mdi-note  btn btn-success" data-toggle="modal" data-target="#modaldetalhesordem">Detalhes</a>
-                        <a href="#" class="mdi mdi-delete btn btn-danger" data-toggle="modal" data-target="#modaldeleteordem"></a>
+                        <a href="#" class="mdi mdi-note  btn btn-success" onclick="PreencheDetalhe(@item.Id)" data-toggle="modal" data-target="#modaldetalhesordem">Detalhes</a>
+                        <a href="#" class="mdi mdi-delete btn btn-danger" onclick="PreencheIdExclusao(@item.Id)" data-toggle="modal" data-target="#modaldeleteordem"></a>
                     </td>
                 </tr>
             }
-
         </tbody>
         <tfoot>
-            @*<tr>
-                    <td colspan="5">Quantidade de clientes: @Model.Count() </td>
-                </tr>*@
+
         </tfoot>
     </table>
 </div>
 
 <!--Modal Create-->
-
 <div class="modal fade" id="modalcreateordem" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
@@ -79,12 +74,10 @@
                             <label>Veículo:</label>
                             <select id="txtveiculo" class="form-control"></select>
                         </div>
-
                         <div class="form-group col-md-6">
                             <label>Colaborador:</label>
                             <select id="txtcolaborador" class="form-control"></select>
                         </div>
-
                         <div class="form-group col-md-12" style="">
                             <label>Motivo:</label>
                             <input type="text" id="txtmotivo" class="form-control" />
@@ -119,37 +112,41 @@
 
                     <div class="form-group col-md-4">
                         <label>Placa:</label>
-                        <input type="text" id="txtplaca" class="form-control" />
+                        <input type="text" id="txteditplaca" class="form-control" />
                     </div>
 
                     <div class="form-group col-md-3">
                         <label>Data de Abertura:</label>
-                        <input type="date" id="txtdataabertura" class="form-control" />
+                        <input type="date" id="txteditdataabertura" class="form-control" />
                     </div>
 
                     <div class="form-group col-md-4">
                         <label>Orçamento:</label>
-                        <input type="text" id="txtorçamento" class="form-control" />
+                        <input type="text" id="txteditorçamento" class="form-control" />
                     </div>
 
                     <div class="form-group col-md-4">
                         <label>Status:</label>
-                        <input type="text" id="txtstatus" class="form-control" />
+                        <select name="txteditstatus" class="form-control">
+                            <option value="0">Aberto</option>
+                            <option value="1">Aguardando</option>
+                            <option value="2">Finalizada</option>
+                            <option value="2">Cancelada</option>
+                        </select>
                     </div>
-
                     <div class="form-group col-md-7">
                         <label>Colaborador:</label>
-                        <input type="text" id="txtcolaborador" class="form-control" />
+                        <select id="txteditcolaborador" class="form-control"></select>
                     </div>
 
                     <div class="form-group col-md-11">
                         <label>Observação:</label>
-                        <input type="text" id="txtobservação" class="form-control" />
+                        <input type="text" id="txteditobservação" class="form-control" />
                     </div>
 
                     <div class="form-group col-md-11">
                         <label>Motivo:</label>
-                        <input type="text" id="txtmotivo" class="form-control" />
+                        <input type="text" id="txteditmotivo" class="form-control" />
                     </div>
 
                     <br />
@@ -157,7 +154,6 @@
 
                     </div>
                 </div>
-
 
             </div>
             <div class="modal-footer">
@@ -180,41 +176,41 @@
             </div>
             <div class="modal-body">
                 <div class="row">
-                    <input type="hidden" id="txtidedicao" class="form-control" />
+                    <input type="hidden" id="txtiddetalhe" class="form-control" readonly />
 
                     <div class="form-group col-md-4">
                         <label>Placa:</label>
-                        <input type="text" id="txtplaca" class="form-control" />
+                        <input type="text" id="txtdtplaca" class="form-control" readonly />
                     </div>
 
                     <div class="form-group col-md-3">
                         <label>Data de Abertura:</label>
-                        <input type="date" id="txtdataabertura" class="form-control" />
+                        <input type="date" id="txtdtdataabertura" class="form-control" readonly />
                     </div>
 
                     <div class="form-group col-md-4">
                         <label>Orçamento:</label>
-                        <input type="text" id="txtorçamento" class="form-control" />
+                        <input type="text" id="txtdtorçamento" class="form-control" readonly />
                     </div>
 
                     <div class="form-group col-md-4">
                         <label>Status:</label>
-                        <input type="text" id="txtstatus" class="form-control" />
+                        <input type="text" id="txtdtstatus" class="form-control" readonly />
                     </div>
 
                     <div class="form-group col-md-7">
                         <label>Colaborador:</label>
-                        <input type="text" id="txtcolaborador" class="form-control" />
+                        <input type="text" class="form-control" id="txtdtcolaborador" readonly />
                     </div>
 
                     <div class="form-group col-md-11">
                         <label>Observação:</label>
-                        <input type="text" id="txtobservação" class="form-control" />
+                        <input type="text" id="txtdtobservação" class="form-control" readonly />
                     </div>
 
                     <div class="form-group col-md-11">
                         <label>Motivo:</label>
-                        <input type="text" id="txtmotivo" class="form-control" />
+                        <input type="text" id="txtdtmotivo" class="form-control" readonly />
                     </div>
 
                     <br />
@@ -244,7 +240,7 @@
                 <p style="color:orangered;text-align:center"> Aviso: Com esta ação os dados da Ordem de Serviço em questão serão excluidos permanentemente!</p>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-danger mdi mdi-delete" style="margin-right:25%; width:50%" onclick="Delete()">Excluir Ordem de Serviço</button>
+                <button class="btn btn-danger mdi mdi-delete" style="margin-right:25%; width:50%" onclick="Excluir()">Excluir Ordem de Serviço</button>
             </div>
         </div>
     </div>
@@ -278,6 +274,8 @@
                 }
             });
 
+            PreencheColaborador();
+
             $("#btncadastro").click(function () {
 
                 showAndDismissAlert('danger', 'Erro !!!');
@@ -285,6 +283,7 @@
             });
         })
         function Cadastrar() {
+
             var Ordem = {
                 Id: null,
                 Motivo: $("#txtmotivo").val(),
@@ -321,8 +320,13 @@
                 data: null,
                 success: function (data) {
                     $("#txtcolaborador option").remove();
+                    $("#txtcolaborador option").remove();
+                    //$("#txtdtcolaborador option").remove();
                     data.forEach(function (item) {
+
                         $("#txtcolaborador").append('<option value="' + item[0] + '">' + item[1] + '</option>');
+                        $("#txteditcolaborador").append('<option value="' + item[0] + '">' + item[1] + '</option>');
+                        //$("#txtdtcolaborador").append('<option value="' + item[0] + '">' + item[1] + '</option>');
                     });
                 },
                 error: function (e) {
@@ -349,22 +353,43 @@
                 }
             });
         }
-
         function PreencheEdit(id) {
             $.ajax({
                 type: "POST",
                 url: "/Ordem/Editar",
-                data: "id="+id,
+                data: "id=" + id,
                 success: function (model) {
 
                     $("#txtidedicao").val(model.Id);
-                    $("#txtplaca").val(model.Placa);
-                    $("#txtdataabertura").val(model.DataAbertura);
-                    $("#txtorçamento").val(model.Orcamento);
-                    $("#txtstatus").val(model.Status);
-                    $("#txtcolaborador").val(model.ColaboradorId);
-                    $("#txtobservação").val(model.Obs);
-                    $("#txtmotivo").val(model.Motivo);
+                    $("#txteditplaca").val(model.Placa);
+                    $("#txteditdataabertura").val(model.DataAbertura);
+                    $("#txteditorçamento").val(model.Orcamento);
+                    $("#txteditstatus").val(model.Status);
+                    $("#txteditcolaborador").val(model.ColaboradorId);
+                    $("#txteditobservação").val(model.Obs);
+                    $("#txteditmotivo").val(model.Motivo);
+                },
+                error: function (e) {
+
+                    $("#mensagem").html("Erro: " + e.status);
+                }
+            });
+        }
+        function PreencheDetalhe(id) {
+            $.ajax({
+                type: "POST",
+                url: "/Ordem/Detalhe",
+                data: "id=" + id,
+                success: function (model) {
+
+                    $("#txtiddetalhe").val(model.Id);
+                    $("#txtdtplaca").val(model.Placa);
+                    $("#txtdtdataabertura").val(model.DataAbertura);
+                    $("#txtdtorçamento").val(model.Orcamento);
+                    $("#txtdtstatus").val(model.Status);
+                    $("#txtdtcolaborador").val(model.NomeColaborador);
+                    $("#txtdtobservação").val(model.Obs);
+                    $("#txtdtmotivo").val(model.Motivo);
                 },
                 error: function (e) {
 
@@ -397,9 +422,25 @@
                 }
             });
         }
+        function PreencheIdExclusao(id) {
+            $("#txtid").val(id)
+        }
+        function Excluir() {
 
+            var id = $("#txtid").val();
+            $.ajax({
+                type: "POST",
+                url: "/Ordem/Excluir",
+                data: "id=" + id,
+                success: function () {
+                    window.location.reload();
+                },
+                error: function (e) {
 
-
+                    $("#mensagem").html("Erro: " + e.status);
+                }
+            });
+        }
     </script>
 
 }

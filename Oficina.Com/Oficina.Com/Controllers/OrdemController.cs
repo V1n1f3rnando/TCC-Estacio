@@ -26,7 +26,7 @@ namespace Oficina.Com.Controllers
                 model.Orcamento = ordem.Orçamento;
                 model.Placa = ordem.Placa;
                 model.Status = ordem.Status;
-                model.DataAbertura = ordem.DataAbertura;
+                model.DataAbertura = ordem.DataAbertura.ToString("dd-MM-yyyy");
                 model.ColaboradorId = ordem.ColaboradorId;
 
                 lstOrdem.Add(model);
@@ -69,13 +69,12 @@ namespace Oficina.Com.Controllers
                 model.Placa = o.Placa;
                 model.Status = o.Status;
                 model.ColaboradorId = o.ColaboradorId;
-                model.DataAbertura = o.DataAbertura;
+                model.DataAbertura = o.DataAbertura.ToString("yyyy-MM-dd");
 
                 return Json(model);
             }
             catch (Exception ex)
             {
-
                 throw;
             }
 
@@ -92,7 +91,7 @@ namespace Oficina.Com.Controllers
                 o.Placa = model.Placa;
                 o.Status = model.Status;
                 o.ColaboradorId = model.ColaboradorId;
-                o.DataAbertura = model.DataAbertura;
+                o.DataAbertura = Convert.ToDateTime(model.DataAbertura);
 
                 ordemServicoNegocio.Altualizar(o);
                 return Json("");
@@ -104,6 +103,40 @@ namespace Oficina.Com.Controllers
                 throw;
             }
 
+        }
+        public JsonResult Detalhe(int id)
+        {
+            try
+            {
+                OrdemServicoNegocio ordemServico = new OrdemServicoNegocio();
+                OrdemServico o = ordemServico.Consulta(id);
+                OrdemServicoViewModel model = new OrdemServicoViewModel();
+                ColaboradorNegocio colaboradorNegocio = new ColaboradorNegocio();
+                Colaborador c = colaboradorNegocio.Consulta(o.ColaboradorId);
+
+                model.Id = o.Id;
+                model.Motivo = o.Motivo;
+                model.Obs = o.Obs;
+                model.Orcamento = o.Orçamento;
+                model.Placa = o.Placa;
+                model.Status = o.Status;
+                model.NomeColaborador = c.Nome;
+                model.DataAbertura = o.DataAbertura.ToString("yyyy-MM-dd");
+
+                return Json(model);
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+
+        }
+        public JsonResult Excluir(int id)
+        {
+            OrdemServicoNegocio ordemServicoNegocio = new OrdemServicoNegocio();
+            OrdemServico o = ordemServicoNegocio.Consulta(id);
+            ordemServicoNegocio.Excluir(o);
+            return Json("");
         }
 
     }

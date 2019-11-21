@@ -11,7 +11,7 @@ namespace Oficina.Com.Models
     {
         public int Id { get; set; }
         public string Motivo { get; set; }
-        public DateTime DataAbertura { get; set; }
+        public string DataAbertura { get; set; }
         public decimal Orcamento { get; set; }
         public StatusOrdemServico Status { get; set; }
         public string Placa { get; set; }
@@ -19,6 +19,7 @@ namespace Oficina.Com.Models
 
 
         public int ColaboradorId { get; set; }
+        public string NomeColaborador { get; set; }
 
     }
 }

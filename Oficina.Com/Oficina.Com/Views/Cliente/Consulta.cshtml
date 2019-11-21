@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
 
 <h2>Consulta de Clientes</h2>
 
@@ -57,8 +57,6 @@
 
 
 <!--Modal Create-->
-
-
 
 <div class="modal fade" id="modalExemplo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <script type="text/javascript">
@@ -159,11 +157,11 @@
 
                         <div class="form-group col-md-3">
                             <label>UF:</label>
-                            <select id="txtuf" class="form-control">
-                                <option value="0">RJ</option>
-                                <option value="1">SP</option>
-                                <option value="2">MG</option>
-                                <option selected value="default">Selecione um estado...</option>
+                            <select name="txtuf" class="form-control">
+                                <option value="0">Aberto</option>
+                                <option value="1" selected>Aguardando</option>
+                                <option value="2">Finalizada</option>
+                                <option value="3">Cancelada</option>
                             </select>
                         </div>
 
@@ -175,7 +173,6 @@
                         <div class="form-group col-md-12">
 
                         </div>
-
                     </div>
                 </div>
             </div>

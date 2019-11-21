@@ -31,7 +31,7 @@ namespace Oficina.Com.Controllers
                     model.Nome = item.Nome;
                     model.Telefone = item.Telefone;
                     model.Cpf = item.Cpf;
-                    model.DataNascimento = item.DataNascimento.ToString("dd/mm/yyyy");
+                    model.DataNascimento = item.DataNascimento.ToString("dd-mm-yyyy");
                     model.Email = item.Email;
                     model.Endereco = enderecoNegocio.Consulta(item.EnderecoId);
                     model.Veiculos = veiculoNegocio.Consulta().Where(x => x.ClienteId == item.Id).ToList();
