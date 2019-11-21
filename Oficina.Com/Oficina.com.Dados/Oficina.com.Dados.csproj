@@ -58,17 +58,9 @@
     <Compile Include="Mapeamentos\OrdemServicoMap.cs" />
     <Compile Include="Mapeamentos\ProdutoMap.cs" />
     <Compile Include="Mapeamentos\VeiculoMap.cs" />
-    <Compile Include="Migrations\201909191556398_inicio.cs" />
-    <Compile Include="Migrations\201909191556398_inicio.Designer.cs">
-      <DependentUpon>201909191556398_inicio.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201911121120219_alteracaoColaborador.cs" />
-    <Compile Include="Migrations\201911121120219_alteracaoColaborador.Designer.cs">
-      <DependentUpon>201911121120219_alteracaoColaborador.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201911130000087_Endereco.cs" />
-    <Compile Include="Migrations\201911130000087_Endereco.Designer.cs">
-      <DependentUpon>201911130000087_Endereco.cs</DependentUpon>
+    <Compile Include="Migrations\201911211900330_inicio.cs" />
+    <Compile Include="Migrations\201911211900330_inicio.Designer.cs">
+      <DependentUpon>201911211900330_inicio.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -93,14 +85,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201909191556398_inicio.resx">
-      <DependentUpon>201909191556398_inicio.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201911121120219_alteracaoColaborador.resx">
-      <DependentUpon>201911121120219_alteracaoColaborador.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201911130000087_Endereco.resx">
-      <DependentUpon>201911130000087_Endereco.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201911211900330_inicio.resx">
+      <DependentUpon>201911211900330_inicio.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

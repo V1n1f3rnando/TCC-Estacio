@@ -31,8 +31,9 @@ namespace Oficina.com.Dados.Migrations
                         Rua = c.String(maxLength: 8000, unicode: false),
                         Numero = c.String(maxLength: 8000, unicode: false),
                         Bairro = c.String(maxLength: 8000, unicode: false),
-                        UF = c.String(maxLength: 8000, unicode: false),
+                        UF = c.Int(nullable: false),
                         Cep = c.String(maxLength: 8000, unicode: false),
+                        Complemento = c.String(maxLength: 8000, unicode: false),
                     })
                 .PrimaryKey(t => t.Id);
             
@@ -62,6 +63,9 @@ namespace Oficina.com.Dados.Migrations
                         Nome = c.String(maxLength: 8000, unicode: false),
                         Email = c.String(maxLength: 8000, unicode: false),
                         Telefone = c.String(maxLength: 8000, unicode: false),
+                        Cpf = c.String(maxLength: 8000, unicode: false),
+                        DataNascimento = c.DateTime(nullable: false),
+                        EstadoCivil = c.Int(nullable: false),
                         Cargo = c.Int(nullable: false),
                         Salario = c.Decimal(nullable: false, precision: 18, scale: 2),
                         EnderecoId = c.Int(nullable: false),

@@ -21,7 +21,7 @@ namespace Oficina.Com.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+            : base("Banco", throwIfV1Schema: false)
         {
         }
 
