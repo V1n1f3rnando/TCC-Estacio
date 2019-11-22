@@ -1,14 +1,46 @@
-﻿@model Oficina.Com.Models.RegisterViewModel
+﻿@model List<Oficina.Com.Models.ApplicationUser>
 @{
     ViewBag.Title = "Registrar";
 }
 
-<h2>@ViewBag.Title.</h2>
+<a href="" onclick="PreencheUf()" data-toggle="modal" data-target="#modalExemplo">
+    <span class="mdi mdi-account btn btn-success"> Novo Usuário</span>
+</a>
 
-@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+<hr />
+<div class="col-md-12">
+
+    <table class="table table-striped table-bordered" cellspacing="0" id="tbconsulta" style="width:100%">
+        <thead>
+            <tr>
+                <th>Email</th>
+                <th>Operações</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Percorrer o conteudo da lista.. -->
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td>@item.Email</td>
+                <td>
+                    <a href="#" class="mdi mdi-pencil btn btn-success" style="width:auto" onclick="" data-toggle="modal" data-target="#modaledit">Editar</a>
+                    <a href="#" class="mdi mdi-note  btn btn-success" onclick="" data-toggle="modal" data-target="#modaldetalhes">Detalhes</a>
+                    <a href="#" class="mdi mdi-delete btn btn-danger" onclick="" data-toggle="modal" data-target="#modaldelete"></a>
+                </td>
+            </tr>
+            }
+        </tbody>
+        <tfoot>
+
+        </tfoot>
+    </table>
+</div>
+
+@*@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
     @Html.AntiForgeryToken()
-    <h4>Criar uma nova conta.</h4>
+    <h4>Novo Usuário</h4>
     <hr />
     @Html.ValidationSummary("", new { @class = "text-danger" })
     <div class="form-group">
@@ -31,10 +63,10 @@
     </div>
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
-            <input type="submit" class="btn btn-default" value="Registrar" />
+            <input type="submit" class="btn btn-success" value="Registrar" />
         </div>
     </div>
-}
+}*@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

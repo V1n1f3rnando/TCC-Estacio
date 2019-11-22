@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Data.Entity;
 using System.Globalization;
 using System.Linq;
 using System.Security.Claims;
@@ -139,9 +141,11 @@ namespace Oficina.Com.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
-            return View();
-        }
+            List<ApplicationUser> lstUsuarios = UserManager.Users.ToList();
+            //lstUsuarios.Remove(lstUsuarios.First(x => x.Id == User.Identity.GetUserId()));
 
+            return View(lstUsuarios);
+        }
         //
         // POST: /Account/Register
         [HttpPost]
@@ -387,7 +391,7 @@ namespace Oficina.Com.Controllers
 
         //
         // POST: /Account/LogOff
-        [HttpPost]
+        [HttpGet]
         [ValidateAntiForgeryToken]
         public ActionResult LogOff()
         {

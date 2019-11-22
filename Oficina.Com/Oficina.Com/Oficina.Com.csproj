@@ -211,6 +211,7 @@
     <Content Include="Assets\images\logo-light-icon.png" />
     <Content Include="Assets\images\logo-light-text.png" />
     <Content Include="Assets\images\logo1.PNG" />
+    <Content Include="Assets\images\logonovo.jpeg" />
     <Content Include="Assets\images\users\1.jpg" />
     <Content Include="Assets\images\users\2.jpg" />
     <Content Include="Assets\images\users\3.jpg" />
@@ -271,6 +272,7 @@
     <Content Include="Assets\login\vendor\select2\select2.js" />
     <Content Include="Assets\login\vendor\select2\select2.min.css" />
     <Content Include="Assets\login\vendor\select2\select2.min.js" />
+    <Content Include="Assets\images\logonovo.png" />
     <Content Include="Assets\plugins\bootstrap\css\bootstrap-grid.css" />
     <Content Include="Assets\plugins\bootstrap\css\bootstrap-grid.min.css" />
     <Content Include="Assets\plugins\bootstrap\css\bootstrap-reboot.css" />

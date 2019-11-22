@@ -30,6 +30,8 @@
 </head>
 
 <body class="fix-header fix-sidebar card-no-border">
+
+
     <!-- ============================================================== -->
     <!-- Preloader - style you can find in spinners.css -->
     <!-- ============================================================== -->
@@ -46,7 +48,7 @@
 
                 <div class="navbar-header">
                     <a class="navbar-brand" href="index.html">
-                        <img src="~/Assets/images/logo1.PNG" alt="homepage" class="light-logo" />
+                        <img src="~/Assets/images/logonovo.png" alt="homepage" class="light-logo" />
                     </a>
                 </div>
 
@@ -103,8 +105,17 @@
                             <a class="waves-effect waves-dark" href="~/Colaborador/Consulta" aria-expanded="false"><i class="mdi mdi-account"></i><span class="hide-menu">Colaboradores</span></a>
                         </li>
                         <li>
-                            <a class="waves-effect waves-dark" href="" aria-expanded="false"><i class="mdi mdi-logout"></i><span class="hide-menu">Sair</span></a>
+                            <a class="waves-effect waves-dark" href="~/Account/Register" aria-expanded="false"><i class="mdi mdi-account"></i><span class="hide-menu">Usuários</span></a>
                         </li>
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <li>
+                                <a class="waves-effect waves-dark" href="~/Account/LogOff" aria-expanded="false"><i class="mdi mdi-logout"></i><span class="hide-menu">Sair</span></a>
+                            </li>
+                        }
+                        @*<li>
+
+        </li>*@
                     </ul>
                 </nav>
                 <!-- End Sidebar navigation -->
@@ -177,6 +188,8 @@
         <!-- End Page wrapper  -->
         <!-- ============================================================== -->
     </div>
+
+
     <!-- ============================================================== -->
     <!-- End Wrapper -->
     <!-- ============================================================== -->
