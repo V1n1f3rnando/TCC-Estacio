@@ -211,7 +211,6 @@
     <Content Include="Assets\images\logo-light-icon.png" />
     <Content Include="Assets\images\logo-light-text.png" />
     <Content Include="Assets\images\logo1.PNG" />
-    <Content Include="Assets\images\logonovo.jpeg" />
     <Content Include="Assets\images\users\1.jpg" />
     <Content Include="Assets\images\users\vini.jpg" />
     <Content Include="Assets\login\css\main.css" />

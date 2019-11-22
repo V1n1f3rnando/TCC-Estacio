@@ -3,7 +3,7 @@
     ViewBag.Title = "Registrar";
 }
 
-<a href="" onclick="PreencheUf()" data-toggle="modal" data-target="#modalExemplo">
+<a href="" onclick="PreencheUf()" data-toggle="modal" data-target="#modalCreate">
     <span class="mdi mdi-account btn btn-success"> Novo Usuário</span>
 </a>
 
@@ -21,14 +21,13 @@
             <!-- Percorrer o conteudo da lista.. -->
             @foreach (var item in Model)
             {
-            <tr>
-                <td>@item.Email</td>
-                <td>
-                    <a href="#" class="mdi mdi-pencil btn btn-success" style="width:auto" onclick="" data-toggle="modal" data-target="#modaledit">Editar</a>
-                    <a href="#" class="mdi mdi-note  btn btn-success" onclick="" data-toggle="modal" data-target="#modaldetalhes">Detalhes</a>
-                    <a href="#" class="mdi mdi-delete btn btn-danger" onclick="" data-toggle="modal" data-target="#modaldelete"></a>
-                </td>
-            </tr>
+                <tr>
+                    <td>@item.Email</td>
+                    <td>
+                        <a href="#" class="mdi mdi-pencil btn btn-success" style="width:auto" onclick="" data-toggle="modal" data-target="#modaledit">Editar</a>
+                        <a href="#" class="mdi mdi-delete btn btn-danger" onclick="" data-toggle="modal" data-target="#modaldelete"></a>
+                    </td>
+                </tr>
             }
         </tbody>
         <tfoot>
@@ -36,38 +35,110 @@
         </tfoot>
     </table>
 </div>
+<div class="modal fade" id="modalCreate" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog " role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="exampleModalLabel">Cadastro de Usuários</h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-horizontal col-md-12">
+                    <div class="row" style="align-self:center">
+                        <div class="form-group col-md-12">
+                            <label>Email:</label>
+                            <input type="text" id="txtemail" class="form-control" />
+                        </div>
 
-@*@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-{
-    @Html.AntiForgeryToken()
-    <h4>Novo Usuário</h4>
-    <hr />
-    @Html.ValidationSummary("", new { @class = "text-danger" })
-    <div class="form-group">
-        @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
-        </div>
-    </div>
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" class="btn btn-success" value="Registrar" />
-        </div>
-    </div>
-}*@
+                        <div class="form-group col-md-12">
+                            <label>Senha:</label>
+                            <input type="password" id="txtsenha" class="form-control" />
+                        </div>
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
+                        <div class="form-group col-md-12">
+                            <label>Confirmar Senha:</label>
+                            <input type="password" id="txtsenhaconfirm" class="form-control" />
+                        </div>
+
+                        <br />
+                        <div class="form-group col-md-12">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-success mdi mdi-floppy" style="margin-right:25%; width:50%" onclick="Cadastrar()" id="btncadastro">
+                    Cadastrar Usuário
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+    @section scripts{
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+            $("#tbconsulta").DataTable({
+                responsive: true,
+                "paging": false,
+                "language": {
+                    "lengthMenu": "",
+                    "search": "Procurar",
+                    "info": "Mostrando página _PAGE_  de _PAGE_ ",
+                    "zeroRecords": "Nenhum registro encontrado !",
+                    "infoFiltered": "",
+                    "info": "",
+                    "infoEmpty": "",
+                    "paginate": {
+                        "first": "Primeiro",
+                        "last": "Ultimo",
+                        "next": "Próximo",
+                        "previous": "Anterior"
+                    }
+                }
+            });
+
+        })
+
+        function Cadastrar() {
+
+            
+            var Endereco = {
+
+                Id: null,
+                Rua: $("#txtrua").val(),
+                Numero: $("#txtnumero").val(),
+                Bairro: $("#txtbairro").val(),
+                UF: $("#txtuf").val(),
+                Cep: $("#txtcep").val(),
+            }
+
+            model = {
+
+                Email: $("#txtemail").val(),
+                Password: $("#txtsenha").val(),
+                ConfirmPassword: $("#txtsenhaconfirm").val()
+            };
+
+            $.ajax({
+                type: "POST",
+                url: "/Account/Register",
+                data: model,
+                success: function () {
+                    window.location.reload()
+                },
+                error: function (e) {
+
+                    $("#mensagem").html("Erro: " + e.status);
+                }
+            });
+        }
+</script> 
+
 }
+

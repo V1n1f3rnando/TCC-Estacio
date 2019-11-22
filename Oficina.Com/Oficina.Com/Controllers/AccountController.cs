@@ -151,7 +151,7 @@ namespace Oficina.Com.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Register(RegisterViewModel model)
+        public async Task<JsonResult> Register(RegisterViewModel model)
         {
             if (ModelState.IsValid)
             {
@@ -167,13 +167,13 @@ namespace Oficina.Com.Controllers
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirmar sua conta", "Confirme sua conta clicando <a href=\"" + callbackUrl + "\">aqui</a>");
 
-                    return RedirectToAction("Index", "Home");
+                    return Json("");
                 }
                 AddErrors(result);
             }
 
             // Se chegamos até aqui e houver alguma falha, exiba novamente o formulário
-            return View(model);
+            return Json(model);
         }
 
         //
