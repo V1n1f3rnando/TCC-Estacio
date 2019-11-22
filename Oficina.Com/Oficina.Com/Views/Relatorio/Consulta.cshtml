@@ -12,7 +12,7 @@
             <div class="row" style="align-self:center">
                 <div class="form-group col-md-3">
                     <h4>Tipo:</h4>
-                    <select class="form-control">
+                    <select class="form-control" name="txttipo">
                         <option value="0">Clientes</option>
                         <option value="1">Veículos</option>
                         <option value="2">Ordens de Serviço</option>
@@ -30,7 +30,7 @@
                     <input type="date" id="txtrel" class="form-control" />
                 </div>
                 <div class="form-group col-md-5">
-                    <button class="btn btn-success mdi mdi-book-multiple" style="margin-right:25%; width:50%" onclick="Cadastrar()" id="btncadastro">
+                    <button class="btn btn-success mdi mdi-book-multiple" style="margin-right:25%; width:50%" onclick="Gerar()" id="btncadastro">
                         Gerar
                     </button>
                 </div>
@@ -38,5 +38,22 @@
         </div>
     </div>
 </div>
+@section scripts{
+    <script type="text/javascript">
 
+        function Gerar() {
+            var tipo = $("#txttipo").val();
+            $.ajax({
+                type: "POST",
+                url: "/Relatorio/Gerar",
+                data: tipo,
+                success: function () {
+                },
+                error: function (e) {
 
+                    $("#mensagem").html("Erro: " + e.status);
+                }
+            });
+        }
+    </script>
+}

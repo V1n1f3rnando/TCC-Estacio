@@ -13,5 +13,10 @@ namespace Oficina.Com.Controllers
         {
             return View();
         }
+
+        public JsonResult Gerar()
+        {
+            return Json("");
+        }
     }
 }

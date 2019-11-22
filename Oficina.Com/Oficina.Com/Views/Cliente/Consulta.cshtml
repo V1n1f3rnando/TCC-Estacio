@@ -362,6 +362,7 @@
         </div>
     </div>
 </div>
+
 @section scripts{
     <script type="text/javascript">
 
@@ -393,7 +394,6 @@
 
             });
         })
-
         function showAndDismissAlert(type, message) {
             sleep(2);
             var htmlAlert = '<div class="alert alert-' + type + '">' + message + '</div>';
@@ -403,9 +403,7 @@
             $(".alert-messages .alert").first().hide().fadeIn(200).delay(3000).fadeOut(4000, function () { $(this).remove(); });
 
         }
-
         function Cadastra() {
-
             var Endereco = {
 
                 Id: null,
@@ -415,7 +413,6 @@
                 UF: $("#txtuf").val(),
                 Cep: $("#txtcep").val(),
             }
-
             var Cliente = {
                 Id: null,
                 Nome: $("#txtnome").val(),
@@ -426,7 +423,6 @@
                 Veiculos: "",
                 Endereco: Endereco
             }
-
             $.ajax({
                 type: "POST",
                 url: "/Cliente/Cadastrar",
@@ -439,9 +435,7 @@
                     $("#mensagem").html("Erro: " + e.status);
                 }
             });
-
         };
-
         function PreencheModalEdit(id) {
 
             $.ajax({
@@ -462,7 +456,6 @@
             });
 
         }
-
         function Editar() {
             var model = {
                 Id: $("#txtidedicao").val(),
@@ -488,7 +481,6 @@
             });
 
         };
-
         function PreencheModalDetalhes(id) {
 
             $.ajax({
@@ -514,7 +506,6 @@
                 }
             });
         };
-
         function PreencheUf() {
             $.ajax({
                 type: "POST",
@@ -532,7 +523,6 @@
                 }
             });
         }
-
         function Delete() {
             var id = $("#txtid").val();
 
@@ -548,7 +538,6 @@
                 }
             });
         };
-
         function CarregaIdDelete(id) {
             $("#txtid").val(id)
         };
