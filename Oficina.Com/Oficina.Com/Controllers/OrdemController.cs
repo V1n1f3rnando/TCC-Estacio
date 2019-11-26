@@ -91,7 +91,7 @@ namespace Oficina.Com.Controllers
                 o.Placa = model.Placa;
                 o.Status = model.Status;
                 o.ColaboradorId = model.ColaboradorId;
-                o.DataAbertura = Convert.ToDateTime(model.DataAbertura);
+                o.DataAbertura = Convert.ToDateTime(model.DataAbertura.Replace("-","/"));
 
                 ordemServicoNegocio.Altualizar(o);
                 return Json("");

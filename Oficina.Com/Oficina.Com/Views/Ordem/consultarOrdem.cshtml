@@ -399,14 +399,15 @@
         }
         function Editar() {
             var model = {
+
                 Id: $("#txtidedicao").val(),
-                Placa: $("#txtplaca").val(),
-                DataAbertura: $("#txtdataabertura").val(),//verificar
-                Orcamento: $("#txtorçamento").val(),
-                Status: $("#txtstatus").val(),
-                ColaboradorId: $("#txtcolaborador").val(),
-                Obs: $("#txtobservação").val(),
-                Motivo: $("#txtmotivo").val(),
+                Placa: $("#txteditplaca").val(),
+                DataAbertura: $("#txteditdataabertura").val(),//verificar
+                Orcamento: $("#txteditorçamento").val(),
+                Status: $("#txteditstatus").val(),
+                ColaboradorId: $("#txteditcolaborador").val(),
+                Obs: $("#txteditobservação").val(),
+                Motivo: $("#txteditmotivo").val(),
             }
 
             $.ajax({

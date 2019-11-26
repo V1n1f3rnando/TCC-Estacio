@@ -50,7 +50,7 @@ namespace Oficina.Com.Controllers
 
         }
         [HttpPost]
-        public ActionResult Cadastrar(VeiculoViewModel model)
+        public JsonResult Cadastrar(VeiculoViewModel model)
         {
             try
             {
@@ -82,7 +82,7 @@ namespace Oficina.Com.Controllers
                 throw;
             }
 
-            return View("Consulta");
+            return Json("");
         }
         [HttpPost]
         public JsonResult Edit(int id)
@@ -117,7 +117,7 @@ namespace Oficina.Com.Controllers
             }
         }
         [HttpPost]
-        public ActionResult Editar(VeiculoViewModel model)
+        public JsonResult Editar(VeiculoViewModel model)
         {
             try
             {
@@ -138,7 +138,7 @@ namespace Oficina.Com.Controllers
                     negocio.Altualizar(v);
                 }
 
-                return View("ConsultaVeiculo");
+                return Json("");
             }
             catch (Exception)
             {
