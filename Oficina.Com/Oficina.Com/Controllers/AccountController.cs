@@ -150,8 +150,8 @@ namespace Oficina.Com.Controllers
         // POST: /Account/Register
         [HttpPost]
         [AllowAnonymous]
-        [ValidateAntiForgeryToken]
-        public async Task<JsonResult> Register(RegisterViewModel model)
+        //[ValidateAntiForgeryToken]
+        public async Task<JsonResult> RegisterUser(RegisterViewModel model)
         {
             if (ModelState.IsValid)
             {

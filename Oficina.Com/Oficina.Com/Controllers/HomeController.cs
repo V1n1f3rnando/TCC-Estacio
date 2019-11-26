@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Oficina.Com.Entidades;
+using Oficina.Com.Models;
+using OFicina.Com.Negocio;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,7 +13,27 @@ namespace Oficina.Com.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            OrdemServicoNegocio ordemServicoNegocio = new OrdemServicoNegocio();
+            ColaboradorNegocio colaboradorNegocio = new ColaboradorNegocio();
+            List<OrdemServicoViewModel> lstOrdem = new List<OrdemServicoViewModel>();
+
+            foreach (OrdemServico o in ordemServicoNegocio.Consulta().Take(20))
+            {
+                OrdemServicoViewModel model = new OrdemServicoViewModel();
+                model.ColaboradorId = o.ColaboradorId;
+                model.DataAbertura = o.DataAbertura.ToString("dd/MM/yyyy"); 
+                model.Id = o.Id;
+                model.Motivo = o.Motivo;
+                model.NomeColaborador = colaboradorNegocio.Consulta(o.ColaboradorId).Nome;
+                model.Obs = o.Obs;
+                model.Orcamento = o.Orçamento;
+                model.Placa = o.Placa;
+                model.Status = o.Status;
+
+                lstOrdem.Add(model);
+            }
+
+            return View(lstOrdem);
         }
 
         public ActionResult About()
